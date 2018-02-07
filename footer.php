@@ -2,7 +2,7 @@
 	<div class="footer_content">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-12">
+				<div class="col-md-12" data-aos="fade-right">
 					<p>ActorsPass is a learning experience. It is not an audition or employment opportunity. As per CSA regulations, when your class is over, the casting director/casting associate teaching your class will not be taking home nor be given access to your headshot, resume or any other of your promotional materials.</p>
 				</div>
 			</div>
@@ -40,6 +40,8 @@
 <!-- mobile-menu-js -->
 <script src="assets/plugins/menu/js/jquery.mmenu.all.js"></script>
 <script src="assets/plugins/menu/js/jquery.mhead.js"></script>
+<!-- Animation AOS JS -->
+<script src="assets/js/aos.js"></script>
 <!-- Animation JS -->
 <script src="assets/js/modernizr.custom.js"></script>	
 <!-- script-js -->

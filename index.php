@@ -4,29 +4,31 @@
 	<section class="how-it-works">
 		<div class="container">
 			<div class="row width-secondary">
-				<div class="col-md-12">
+
+				<div class="col-md-12" data-aos="fade-right">
 					<h2 class="heading-primary">HOW IT WORKS</h2>
 					<p>Integer vel vestibulum turpis. Nulla eros urna, molestie eu est et, laoreet aliquet libero. Cras vitae molestie erat. Donec ullamcorper urna libero, ac ultrices magna scelerisque in. Donec tortor nulla, vestibulum sit amet tincidunt vel,</p>
 				</div>
 			</div>
 			<div class="row separator section-icons">
-				<div class="col-md-4 col-sm-6 col-xs-12 text-center">
+				<div class="col-md-4 col-sm-6 col-xs-12 text-center" data-aos="fade-right">
 					<div class="icon">
 						<div class="icon-edit"></div>
 					</div>
-					<h4>Sign Up For An <br>ActorsPass</h4>
+					<h4>SIGN UP FOR AN <br>ACTORSPASS</h4>
 				</div>
-				<div class="col-md-4 col-sm-6 col-xs-12 text-center">
+				<div class="col-md-4 col-sm-6 col-xs-12 text-center" data-aos="fade-right">
 					<div class="icon">
 						<div class="icon-upload"></div>
 					</div>
-					<h4>Upload Your Reel, <br>Headshots, & Resume</h4>
+					<h4>UPLOAD YOUR REEL, <br>HEADSHOTS, & RESUME</h4>
 				</div>
-				<div class="col-md-4 col-sm-6 col-xs-12 text-center col-md-offset-0 col-sm-offset-3 col-xs-offset-0">
+				<div class="col-md-4 col-sm-6 col-xs-12 text-center col-md-offset-0 col-sm-offset-3 col-xs-offset-0" data-aos="fade-right">
 					<div class="icon">
 						<div class="icon-class"></div>
 					</div>
-					<h4> Take an <br>Online Class</h4>
+					<h4> TAKE AN <br>ONLINE CLASS</h4>
+
 				</div>
 			</div>
 		</div>
@@ -38,11 +40,11 @@
 		<div class="bg_color">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-7">
-						<img src="assets/images/aboutus.png" class="img-responsive">
+					<div class="col-md-6 col-sm-12 col-xs-12 text-right" data-aos="fade-right">
+						<img src="assets/images/aboutus_new.png" style="max-width: 350px;">
 
 					</div>
-					<div class="col-md-5">
+					<div class="col-md-5" data-aos="fade-right">
 
 						<h3 class="about_heading">
 							ABOUT US
@@ -68,10 +70,10 @@
 	<section class="take-class">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-2 col-sm-2 only-desktop">
+				<div class="col-md-2 col-sm-2 only-desktop" data-aos="fade-right">
 					<div class="image_light"><img src="assets/images/strob-light.png" class="img-responsive"></div>
 				</div>
-				<div class="col-md-10 col-sm-12 col-xs-12">
+				<div class="col-md-10 col-sm-12 col-xs-12" data-aos="fade-right">
 					<h3 class="about_heading">
 						TAKE A CLASSES
 					</h3>
@@ -82,7 +84,7 @@
 					<p class="about_paragraph">
 						Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
 					</p> 
-					<div class="button_last"> <a href="#" class="btn" type="button">SIGNUP NOW</a></div>
+					<div class="button_last"> <a href="#" class="btn" type="button">SIGN UP NOW</a></div>
 				</div>
 			</div>
 		</div>

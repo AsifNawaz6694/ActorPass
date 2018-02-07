@@ -28,7 +28,7 @@
   .icon-upload:after{
     background: url(../images/arrow_image.png);
     background-repeat: no-repeat;
-    top: 50px;
+    top: 48px;
   }
 }
 
@@ -118,4 +118,24 @@
   .navbar-toggle span {
     border: 1px solid black;
   }
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+
+ .how-it-works p {
+  
+     padding-left: 0px; 
+     padding-right: 0px; 
+  
+}
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+ .how-it-works p {
+  
+     padding-left: 0px; 
+     padding-right: 0px; 
+  
+}
 }

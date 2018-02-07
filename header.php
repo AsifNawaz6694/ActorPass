@@ -27,6 +27,8 @@
 	<!-- Animation CSS -->
 	<!-- <link rel="stylesheet" type="text/css" href="assets/css/default.css" />
 	<link rel="stylesheet" type="text/css" href="assets/css/component.css" /> -->
+	<!-- AOS Animation -->
+    <link href="assets/css/aos.css" rel="stylesheet">
 	<!-- style.css -->
 	<link href="assets/css/style.css" rel="stylesheet">
 	<!-- custom Css Lins -->
@@ -49,7 +51,7 @@
 			<div class="row">
 				<div class="col-md-3 col-sm-8 col-xs-8">
 					<div class="img-logo"  style="margin-top: 21px;">
-						<img src="assets/images/logo_actor.png" alt="Actor Pass Logo" class="img-responsive">
+					<a href="index.php"><img src="assets/images/logo_actor.png" alt="Actor Pass Logo" class="img-responsive"></a>
 					</div>
 				</div>
 

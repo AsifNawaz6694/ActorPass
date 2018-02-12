@@ -1252,3 +1252,24 @@ h3.small_content {
 input[type=checkbox], input[type=radio]{
     margin-right: 10px;
 }
+
+.login-button .btn-login:hover {
+    border: 1px solid #851618;
+    background-color: #851618;
+}
+
+
+.button_last a.btn:hover {
+    border: 1px solid #851618;
+    background-color: #851618;
+}
+
+.button_take a.btn:hover {
+    border: 1px solid #ed1c24;
+    background-color: #ed1c24;
+}
+
+.button_submit button#submit:hover {
+    border: 1px solid #851618;
+    background-color: #851618;
+}

@@ -114,7 +114,7 @@
 				</div>
 
 				<div class="col-md-2 only-desktop">
-					<div class="login-button" style="margin-top: 35px;">
+					<div class="login-button" style="margin-top: 35px;margin-left: 10px;">
 						<a href="login.php" class="btn btn-login">LOGIN</a>
 					</div>
 				</div>

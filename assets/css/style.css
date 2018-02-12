@@ -216,7 +216,7 @@ header > .row > .col-md-7{
 
 .menu nav ul li{
     float: left;
-    width: 19.5%;
+    width: 20%;
     text-align: center;
     padding: 10px 0;
     border-right: 1px solid #ccc;
@@ -284,6 +284,8 @@ p{
 }
 .how-it-works{
     padding: 9% 0;
+    background-color: #eeeeee;
+    margin-top: 42px;
 }
 .how-it-works p {
     text-align: center;
@@ -418,11 +420,12 @@ span.color {
     letter-spacing: 1px;
 }
 .about-us {
-    background-color: #eeeeee;
+   
     padding: 9% 0;
 }
 .take-class{
     padding: 9% 0;
+    background-color: #eeeeee;
 }
 .button_last a.btn {
     padding: 9px 34px;
@@ -499,7 +502,7 @@ span.color {
 
 
 .menu a:hover {
-    color: #851618;
+    color: #ed1c24;
     text-decoration: none;
 }
 
@@ -1243,5 +1246,9 @@ h3.small_content {
     }
 
     span.glyphicon.glyphicon-plus {
+    margin-right: 10px;
+}
+
+input[type=checkbox], input[type=radio]{
     margin-right: 10px;
 }

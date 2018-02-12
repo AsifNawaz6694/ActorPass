@@ -14,12 +14,12 @@
       </div>
 
       <div class="form-group_form">
-        <label for="exampleInputName">EMAIL ADDRESS</label>
-        <input type="email" class="form-control required fullname" id="exampleInputemail">
+        <label for="exampleInputemail">EMAIL ADDRESS</label>
+        <input type="email" class="form-control required email" id="exampleInputemail">
       </div>
       <div class="form-group_form">
-        <label for="exampleInputName">USERNAME</label>
-        <input type="text" class="form-control required fullname" id="exampleInputuName">
+        <label for="exampleuName">USERNAME</label>
+        <input type="text" class="form-control required uname" id="exampleInputuName">
       </div>
       <div class="form-group_form">
         <label for="exampleInputPassword1">PASSWORD</label>
@@ -27,8 +27,8 @@
       </div>
 
       <div class="form-group_form">
-        <label for="exampleInputPassword1">REPEAT PASSWORD</label>
-        <input type="password" class="form-control required" id="exampleInputPassword1"> 
+        <label for="exampleInputPassword">REPEAT PASSWORD</label>
+        <input type="password" class="form-control required" id="exampleInputPassword"> 
       </div>
 
     

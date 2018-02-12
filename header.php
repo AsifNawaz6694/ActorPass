@@ -65,22 +65,22 @@
 					<div id="my-menu">
 						<ul class="nav navbar-nav">
 							<li>
-								<a href="#">HOME</a>
+								<a href="index.php">HOME</a>
 							</li>
 							<li>
-								<a href="#">ABOUT US</a>
+								<a href="aboutus.php">ABOUT US</a>
 							</li>
 							<li>
-								<a href="#">TAKE A CLASS</a>
+								<a href="takeaclass.php">TAKE A CLASS</a>
 							</li>
 							<li>
-								<a href="#">FAQ</a>
+								<a href="faq.php">FAQ</a>
 							</li>
 							<li>
-								<a href="#">CONTACT US</a>
+								<a href="contact.php">CONTACT US</a>
 							</li>
 							<li>
-								<a href="#">LOGIN</a>
+								<a href="login.php">LOGIN</a>
 							</li>
 						</ul>
 					</div>
@@ -102,11 +102,11 @@
 						<div class="menu">
 							<nav>
 								<ul class="navigation only-desktop">
-									<li class="active"><a href="#">HOME</a></li>
-									<li><a href="#">ABOUT US</a></li>
-									<li><a href="#">TAKE A CLASS</a></li>
-									<li><a href="#">FAQ</a></li>
-									<li><a href="#">CONTACT</a></li>
+									<li class="active"><a href="index.php">HOME</a></li>
+									<li><a href="aboutus.php">ABOUT US</a></li>
+									<li><a href="takeaclass.php">TAKE A CLASS</a></li>
+									<li><a href="faq.php">FAQ</a></li>
+									<li><a href="contact.php">CONTACT</a></li>
 								</ul>
 							</nav>
 						</div>
@@ -115,7 +115,7 @@
 
 				<div class="col-md-2 only-desktop">
 					<div class="login-button" style="margin-top: 35px;">
-						<a href="#" class="btn btn-login">LOGIN</a>
+						<a href="login.php" class="btn btn-login">LOGIN</a>
 					</div>
 				</div>
 			</div>

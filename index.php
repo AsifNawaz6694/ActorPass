@@ -35,13 +35,15 @@
 		
 	</section>
 
+	
+
 
 	<section class="about-us">
 		<div class="bg_color">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6 col-sm-12 col-xs-12 text-right" data-aos="fade-right">
-						<img src="assets/images/aboutus_new.png" style="max-width: 350px;">
+						<div class="image_home"><img src="assets/images/aboutus_new.png" class="img-responsive" style="max-width: 350px;"></div>
 
 					</div>
 					<div class="col-md-5" data-aos="fade-right">
@@ -58,6 +60,7 @@
 						<p class="about_paragraph">
 							<span>ActorsPass'</span> <span class="color">ONLINE CLASSES</span> are a great way to begin a relationship with an Industry Pro or strengthen a connection you've already built. Whether it's <i>Vamping Up Your Self Taping Skills or Learning How To Pitch Yourself To Representation,</i> our classes are informative and affordable!
 						</p> 
+
 
 					</div>
 					<div class="about_button"><a href="#" class="btn" type="button">Read More <i class="fa fa-angle-double-right"></i></a></div>

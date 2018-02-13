@@ -4,7 +4,7 @@
 <section class="login">
 <div class="container">
 	<div class="row">
-   <div class="col-md-4 col-md-offset-4 login">
+   <div class="col-md-6 col-md-offset-3 col-sm-12 col-sm-offset-0  login-form">
     <h3 class="login_content">LETS GET STARTED</h3>
      <hr>
      <form id="signin_form">

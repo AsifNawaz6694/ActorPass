@@ -16,7 +16,7 @@ $(document).ready(function(){
 
     // Set countries list in combobox
     var $select = $('.country');
-    $.getJSON('http://localhost:9000/lara/actor-pass/v1/assets/js/countries.json', function(data) {
+    $.getJSON('http://site.startupbug.net:6888/actor-pass/frontend/assets/js/countries.json', function(data) {
       $select.html('');
       $.each(data, function(key, val){
         $select.append('<option value="' + val.dial_code+ '">' + val.name + '</option>');

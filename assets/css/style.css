@@ -533,12 +533,11 @@ section.login {
     margin-bottom: 100px;
 }
 
-.col-md-4.col-md-offset-4.login {
+.login-form {
     border: 1px solid #cccccc;
     background-color: #f3f3f3;
     padding-left: 50px;
     padding-right: 50px;
-    width: 45%;
     padding-bottom: 30px;
 }
 
@@ -570,6 +569,7 @@ a.btn.btn-default_signup {
     font-family: 'hind-bold';
     padding-top: 10px;
     padding-bottom: 10px;
+    width: 64%;
 }
 
 
@@ -584,6 +584,7 @@ button.btn.login_now {
     font-family: 'hind-bold';
     padding-top: 9px;
     padding-bottom: 9px;
+    width: 35%;
 }
 hr {
     margin-top: 20px;

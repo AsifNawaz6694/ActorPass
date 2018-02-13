@@ -10,4 +10,10 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    //generic function for initializing session
+    protected function set_session($msg, $status){
+	     session()->put('result', $status);
+	     session()->put('msg', $msg);
+    }    
 }

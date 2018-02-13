@@ -60,6 +60,7 @@ class Handler extends ExceptionHandler
             return response()->json(['error' => 'Unauthenticated.'], 401);
         }
 
-        return redirect()->guest(route('login'));
+        //Middleware edited to redirect to Login_view view instead of login route
+        return redirect()->guest(route('login_view'));
     }
 }

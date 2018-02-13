@@ -6,6 +6,8 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use Hash;
 
 class RegisterController extends Controller
 {
@@ -53,6 +55,45 @@ class RegisterController extends Controller
             'password' => 'required|string|min:6|confirmed',
         ]);
     }
+
+
+    //Loading register view
+    public function register_index(){
+        return view('authentication.signup');
+    }
+
+    //Posting Register Form
+    public function register_post(Request $request){
+        //dd($request->input());
+
+        /* Validating User */
+        
+        //inserting user
+        try{
+            $user = new User();
+            $user->password = bcrypt($request->password);
+
+            foreach($request->input() as $key => $value) {
+                if($key != '_token' && $key != 'password2' && $key != 'password'){
+                    $user->$key = $value;
+                }
+            }
+
+            if($user->save()){
+                $this->set_session('User Successfully Registered.', true);
+            }else{
+                $this->set_session('User Couldnot be Registered.', false);
+            }
+            
+            return redirect()->route('register_index');
+
+        }catch(\Exception $e){
+            $this->set_session('User Couldnot be Registered.'.$e->getMessage(), false);
+            return redirect()->route('register_index');                
+        }
+    }
+
+
 
     /**
      * Create a new user instance after a valid registration.

@@ -1,0 +1,312 @@
+/*
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    .dashboard_navigation ul li a {
+        font-size: 16px;
+        padding: 16px 20px;
+    }
+
+    .heading_one h1 {
+        font-size: 25px;
+        padding: 10px 15px;
+    }
+
+    .Funding_box_small h5 a {
+        font-size: 14px;
+    }
+
+    .Funding_box_small h6 {
+        font-size: 13px;
+    }
+
+    .checkbox label {
+        margin-right: 18px;
+    }
+
+    .form_error {
+        position: absolute;
+        top: 10px;
+    }
+
+    .dashboard_left_side {
+        background-color: #ffffff;
+        height: auto;
+        -webkit-box-shadow: 1px 3px 3px 0px #88888873;
+        -moz-box-shadow: 1px 3px 3px 0px #88888873;
+        box-shadow: 1px 3px 3px 0px #88888873;
+        border-right: 1px solid #88888873;
+    }
+}
+
+/*
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    .dashboard_left_side a.navbar-brand {
+        display: block;
+        width: 60%;
+        margin: 0px auto;
+    }
+
+    .dashboard_left_side a.navbar-brand img {
+        width: 100%;
+    }
+
+    .user_deatils a {
+        display: block;
+        width: 60%;
+        margin: 0px auto;
+    }
+
+    .user_deatils h3 a {
+        width: 100%;
+        font-family: 'Conv_ProximaNova-Semibold_0';
+        color: #292929;
+        font-size: 14px;
+        text-transform: uppercase;
+        font-weight: 900;
+    }
+
+    .dashboard_navigation ul li a {
+        font-size: 11px;
+        padding: 16px 20px;
+    }
+
+    .navbar {
+        position: relative;
+        min-height: 50px;
+        margin-bottom: 0px;
+        border: 1px solid transparent;
+    }
+
+    .navbar-collapse {
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+
+    .navbar-nav li a {
+        font-family: 'Conv_ProximaNova-Semibold_0';
+        color: #626262;
+        font-size: 14px;
+        text-transform: uppercase;
+    }
+
+    .heading_one h1 {
+        font-size: 20px;
+        padding: 10px 15px;
+    }
+
+    .dashboard_box .panel .panel-body {
+        padding: 10px 7px;
+    }
+
+    .dashboard_box .panel .panel-body h4 {
+        font-size: 14px;
+    }
+
+    .left_dash {
+        position: static;
+    }
+}
+
+/*
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+@media (min-width: 481px) and (max-width: 767px) {
+    .dashboard_left_side .navbar-brand {
+        float: left;
+        width: 15%;
+        margin-left: 10px;
+    }
+
+    .user_deatils {
+        width: 30%;
+        margin: 0px auto;
+    }
+
+    .user_deatils a {
+        width: 30%;
+        margin: 4px auto;
+    }
+
+    .user_deatils h3 {
+        margin-top: 6px;
+    }
+
+    .user_deatils h3 a {
+        width: 100% !important;
+        margin: 12px auto;
+        font-size: 12px;
+        margin: 2px auto;
+    }
+
+    .user_deatils p {
+        font-family: 'Conv_ProximaNova-Semibold_0';
+        color: #e70f7e;
+        font-size: 14px;
+        margin-top: 0px;
+        font-style: italic;
+    }
+
+    .btn_menu {
+        position: absolute;
+        top: 31px;
+        right: 22px;
+    }
+
+    .dashboard_navigation {
+        margin-top: 0px;
+    }
+
+    .dashboard_navigation ul.nav {
+        display: none;
+    }
+
+    .dashboard_navigation ul li {
+        float: none;
+    }
+
+    .dashboard_navigation ul li a {
+        width: 100%;
+        font-size: 14px;
+        display: block;
+    }
+
+    .checkbox label {
+        margin-right: 14px;
+    }
+
+    .left_mobi_nav {
+        float: left;
+    }
+
+    .right_mobi_nav {
+        float: right;
+    }
+
+    .right_mobi_nav li {
+        float: left;
+    }
+
+}
+
+/*
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+@media (min-width: 320px) and (max-width: 480px) {
+
+    .heading_one h1 {
+        text-align: center;
+    }
+
+    .dashboard_left_side .navbar-brand {
+        float: left;
+        width: 24%;
+        margin-left: 10px;
+        margin-top: 14px;
+    }
+
+    .user_deatils {
+        width: 30%;
+        margin: 0px auto;
+    }
+
+    .user_deatils a {
+        width: 30%;
+        margin: 4px auto;
+    }
+
+    .user_deatils h3 {
+        margin-top: 6px;
+    }
+
+    .user_deatils h3 a {
+        width: 100% !important;
+        margin: 12px auto;
+        font-size: 12px;
+        margin: 2px auto;
+    }
+
+    .user_deatils p {
+        font-family: 'Conv_ProximaNova-Semibold_0';
+        color: #e70f7e;
+        font-size: 14px;
+        margin-top: 0px;
+        font-style: italic;
+    }
+
+    .btn_menu {
+        position: absolute;
+        top: 31px;
+        right: 22px;
+    }
+
+    .dashboard_navigation {
+        margin-top: 0px;
+    }
+
+    .dashboard_navigation ul.nav {
+        display: none;
+    }
+
+    .dashboard_navigation ul li {
+        float: none;
+    }
+
+    .dashboard_navigation ul li a {
+        width: 100%;
+        font-size: 14px;
+        display: block;
+    }
+
+    .checkbox label {
+        margin-right: 14px;
+    }
+
+    .Funding_box_small h5 a {
+        font-size: 14px;
+    }
+
+    .Funding_box_small .button_groups a.Badge_tag {
+        font-family: 'Conv_ProximaNova-Extrabold_0';
+        font-size: 20px;
+        text-transform: uppercase;
+        padding: 0px 10px;
+    }
+
+    .Funding_box_small .button_groups a.fund_Price {
+        font-family: 'Conv_ProximaNova-Semibold_0';
+        font-size: 12px;
+        font-weight: 900;
+    }
+
+    .Funding_box_small .Funding_box_footer .Fund_contact a {
+        font-size: 12px;
+        padding: 4px 11px;
+
+    }
+
+    .table tbody tr td {
+        display: block;
+        width: 100%;
+    }
+
+    .left_mobi_nav {
+        float: left;
+    }
+
+    .right_mobi_nav {
+        float: right;
+    }
+
+    .right_mobi_nav li {
+        float: left;
+    }
+}

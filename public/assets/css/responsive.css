@@ -1,0 +1,141 @@
+
+
+
+/*for desktop*/
+@media (min-width: 992px){
+  .only-tablet, .only-mobile{
+    display: none !important;
+  }
+  .only-desktop{
+    display: block !important;
+  }
+  header.container{
+    padding: 0;
+  }
+  h3.about_heading {
+    margin-top: 50px;
+  }
+  .icon-edit:after, .icon-upload:after {
+    content: '';
+    background: url(../images/arrow.png);
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 38px;
+    right: -158%;
+    width: 100%;
+    height: 50px;
+  }
+  .icon-upload:after{
+    background: url(../images/arrow_image.png);
+    background-repeat: no-repeat;
+    top: 48px;
+  }
+}
+
+/*for tablet*/
+@media (min-width: 768px) and (max-width: 991px) {
+  .only-desktop, .only-mobile{
+    display: none !important;
+  }
+  .only-tablet{
+    display: block !important;
+  }
+  .img-logo{
+    padding-left: 15px;
+  }
+  header > .row > .col-sm-12, header > .row > .col-sm-12{
+    margin-top: 10px;
+  }
+  .width-secondary {
+    max-width: 75%;
+    margin: auto;
+  }
+  h3.about_heading {
+    margin-top: 50px;
+  }
+  .navbar-toggle {
+    /* margin-top: -9px; */
+    position: absolute;
+    right: 0;
+    top: 18px;
+    color: black;
+    border: 1px solid #ccc;
+  }
+  .navbar-toggle span {
+    border: 1px solid black;
+  }
+  .icon-edit:after {
+    content: '';
+    background: url(../images/arrow.png);
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 38px;
+    right: -158%;
+    width: 100%;
+    height: 50px;
+  }
+}
+
+/*for mobile*/
+@media (max-width: 767px) {
+  .only-desktop, .only-tablet{
+    display: none !important;
+  }
+  .only-mobile{
+    display: block !important;
+  }
+  .img-logo{
+    padding-left: 15px;
+  }
+  header > .row > .col-sm-12, header > .row > .col-sm-12{
+    margin-top: 10px;
+  }
+  header .header-contact .social{
+    margin-top: 5px;
+  }
+  header .header-contact .social a{
+    font-size: 22px;
+  }
+  header .header-contact .contact a{
+    text-align: center;
+    display: block;
+  }
+  h3.about_heading {
+    margin-top: 30px;
+    text-align: center;
+  }
+  .about_inner_heading{
+    text-align: center;
+  }
+  .navbar-toggle {
+    /* margin-top: -9px; */
+    position: absolute;
+    right: 0;
+    top: 18px;
+    color: black;
+    border: 1px solid #ccc;
+  }
+  .navbar-toggle span {
+    border: 1px solid black;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+
+ .how-it-works p {
+  
+     padding-left: 0px; 
+     padding-right: 0px; 
+  
+}
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+ .how-it-works p {
+  
+     padding-left: 0px; 
+     padding-right: 0px; 
+  
+}
+}

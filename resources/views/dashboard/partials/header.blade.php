@@ -31,5 +31,5 @@
 </head>
 <body>
 <div class="container-fluid r-m-p">
-@include('dashboard.partials.dashboard_nav')
+
 @include('dashboard.partials.left_side')

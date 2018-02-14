@@ -51,5 +51,6 @@
             </ul>
         </div>
     </div>
-</div><!---./End Left Side--->
+</div><!---./End Left Side-->
 <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 r-m-p right_dash">
+    @include('dashboard.partials.dashboard_nav')

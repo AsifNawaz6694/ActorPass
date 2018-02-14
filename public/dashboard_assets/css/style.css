@@ -78,14 +78,14 @@ footer, header, hgroup, menu, nav, section {
     display: block;
 }
 
-.float-left {
-    float: left;
-}
+
 
 .float-right {
     float: right;
 }
-
+.heading_one {
+    margin-top: 40px;
+}
 .clearfix {
     clear: both;
 }
@@ -372,7 +372,7 @@ footer, header, hgroup, menu, nav, section {
 
 .heading_one h1 {
     font-family: 'Conv_ProximaNova-Bold';
-    color: #292929;
+    color: #851618;
     font-size: 32px;
     text-transform: uppercase;
     padding: 15px 15px;
@@ -380,7 +380,7 @@ footer, header, hgroup, menu, nav, section {
 
 .dashboard_box .panel .panel-body h4 {
     font-family: 'Conv_ProximaNova-Semibold_0';
-    color: #292929;
+    color: #851618;
     font-size: 18px;
     text-transform: uppercase;
 }
@@ -686,22 +686,23 @@ footer, header, hgroup, menu, nav, section {
 
 /*=== Footer Css Here===*/
 .bg_footer_color {
-    background-color: #d9d9d9;
+    background-color: #7a1618;
     padding: 10px 0px;
 }
 
 .footer_main p {
     font-family: 'Conv_ProximaNova-Semibold_0';
     font-size: 16px;
-    color: #555555;
+    color: #c28785;
     text-transform: capitalize;
+    text-align: center;
 }
 
 .footer_main p a {
     display: block;
     font-family: 'Conv_ProximaNova-Semibold_0';
     font-size: 16px;
-    color: #555555;
+    color: #c28785;
     text-transform: capitalize;
 }
 
@@ -736,25 +737,27 @@ footer, header, hgroup, menu, nav, section {
 
 .Form_main form div button {
     font-family: 'Conv_ProximaNova-Semibold_0';
-    color: #ffffff;
-    background-color: #383838;
+    color: white;
+    background-color: #ed1c24;
     font-size: 17px;
     text-transform: uppercase;
     border: none;
+    border-radius: 0px;
 }
 
 .Form_main form div button:hover {
-    background-color: #383838;
+    background-color: #ed1c24;
     color: #ffffff;
+    border-radius: 0px;
 }
 
 .Form_main form h4 {
     font-family: 'Conv_ProximaNova-Semibold_0';
-    color: #626262;
+    color: #851618;
     font-size: 18px;
     text-transform: uppercase;
-    margin-top: 21px;
-    margin-bottom: 45px;
+    margin-top: 23px;
+    margin-bottom: 44px;
 }
 
 .Form_main form div textarea {
@@ -764,8 +767,10 @@ footer, header, hgroup, menu, nav, section {
 
 #edit_pass {
     border: none;
-    background-color: #e70e7e !important;
+    background-color: #ed1c24 !important;
     color: #ffffff !important;
+    margin-top: 85px;
+    border-radius: 0px;
 }
 
 /*===Transaction Css Here ===*/
@@ -1038,4 +1043,19 @@ label.form_error p {
     color: #cc0000 !important;
 }
 
+.form-group {
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
 
+
+.dashboard_header {
+    background: #ebebeb;
+    border-bottom: 1px solid #d3d3d3;
+
+}
+
+a:focus, a:hover {
+    color: #23527c;
+    text-decoration: none;
+}

@@ -36,7 +36,7 @@
         </div><!--./End user details-->
         <div class="dashboard_navigation">
             <ul class="nav">
-                <li><a href="index.php" class="actives" #"><i class="fa fa-tachometer"
+                <li><a href="{{route('dash_index')}}" class="actives" #"><i class="fa fa-tachometer"
                                                               aria-hidden="true"></i>Dashboard</a></li>
                 <li><a href="{{route('profile_index')}}"><i class="fa fa-user" aria-hidden="true"></i>My Profile</a></li>
 

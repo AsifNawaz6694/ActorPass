@@ -53,5 +53,8 @@ Route::group(['middleware' => 'auth'], function()
 	Route::get('/dashboard/profile',  'ProfileController@index')->name('profile_index');
 
 	/* Update Profile */	
-	Route::post('/dashboard/update-profile',  'ProfileController@profile_update')->name('profile_update');	
+	Route::post('/dashboard/update-profile',  'ProfileController@profile_update')->name('profile_update');
+
+	/* Edit Profile Password */
+	Route::post('/dashboard/edit_password',  'ProfileController@edit_password_post')->name('edit_password_post');	
 });

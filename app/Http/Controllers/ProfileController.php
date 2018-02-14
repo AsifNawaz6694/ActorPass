@@ -7,6 +7,8 @@ use App\User;
 use App\Profile;
 use Auth;
 use Illuminate\Support\Facades\Input;
+use Hash;
+
 
 class ProfileController extends Controller
 {
@@ -58,6 +60,40 @@ class ProfileController extends Controller
             $this->set_session('Profile couldnot be Updated. '.$e->getMessage(), false);
             return redirect()->route('profile_index');                
       }
+	}
+
+	public function edit_password_post(Request $request){
+
+		/* Validation */
+	  try{
+
+			if (Hash::check($request->input('oldpassword'), Auth::user()->password)) {
+			    // The passwords match...
+				
+				//Updating Password
+				$newpassword1 = bcrypt($request->input('newpassword1'));
+				$user = User::find(Auth::user()->id);
+				$user->password = $newpassword1;
+				$password_updated = $user->save();
+
+				if($password_updated){
+		           $this->set_session('Password Updated', true);
+				}else{
+		           $this->set_session('Password couldnot be Updated. Please try again.', false);			
+				}
+			
+			}else{
+				//old password doesn't match
+		        $this->set_session('Please enter Correct Previous Password to change your Password.', false);			
+			}
+		
+		    return redirect()->route('profile_index');
+
+	  }catch(\Exception $e){
+            $this->set_session('Password couldnot be Updated. '.$e->getMessage(), false);
+            return redirect()->route('profile_index');                
+      }
+
 	}
 
 }

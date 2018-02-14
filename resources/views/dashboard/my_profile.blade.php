@@ -52,21 +52,22 @@
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <div class="Form_main">
-                        <form>
+                        <form action="{{route('edit_password_post')}}" method="post">
                             <h4>Edit my password</h4>
                             <div class="form-group">
                                 <label>Old Password <span>*</span></label>
-                                <input type="text" class="form-control">
+                                <input type="password" name="oldpassword" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>New Password <span>*</span></label>
-                                <input type="text" class="form-control">
+                                <input type="password" name="newpassword1" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>Confirm New Password <span>*</span></label>
-                                <input type="text" class="form-control">
+                                <input type="password" name="newpassword2" class="form-control">
                             </div>
                             <div class="form-group">
+                                <input type="hidden" name="_token" value="{{Session::token()}}">                            
                                 <button type="submit" class="btn btn-default center-block btn-block" id="edit_pass">Save
                                     changes
                                 </button>

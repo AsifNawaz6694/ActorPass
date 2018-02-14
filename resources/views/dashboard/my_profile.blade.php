@@ -15,39 +15,39 @@
                 <!-- Form -->
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 r-m-p">
                     <div class="Form_main">
-                        <form action="{{route('profile_update')}}" method="post" enctype="multipart/form-data">
-                            <div class="form-group">
-                                <label>Full Name <span>*</span></label>
-                                <input type="text" name="fullname" value="@if(isset($user->fullname)){{$user->fullname}}@endif" class="form-control">
-                            </div>  
-                            <div class="form-group">
-                                <label>Phone <span>*</span></label>
-                                <input type="number" name="phone" value="@if(isset($profile->phone)){{$profile->phone}}@endif"  class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label>DOB <span>*</span></label>
-                                <input type="date" name="d_o_b" value="@if(isset($profile->d_o_b)){{$profile->d_o_b}}@endif" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label>I am a <span>*</span></label>
-                                <select class="form-control" name="gender">
-                                    <option>Select</option> 
-                                    <option @if(($profile->gender=="male")) selected @endif value="male">Male</option>
-                                    <option @if(($profile->gender=="female")) selected @endif value="female">Female</option>
-                                </select>
-                            </div>
+                    <form action="{{route('profile_update')}}" method="post" enctype="multipart/form-data">
+                           <div class="form-group">
+                               <label>Full Name <span>*</span></label>
+                               <input type="text" name="fullname" value="@if(isset($user->fullname)){{$user->fullname}}@endif" class="form-control">
+                           </div>  
+                           <div class="form-group">
+                               <label>Phone <span>*</span></label>
+                               <input type="number" name="phone" value="@if(isset($profile->phone)){{$profile->phone}}@endif"  class="form-control">
+                           </div>
+                           <div class="form-group">
+                               <label>DOB <span>*</span></label>
+                               <input type="date" name="d_o_b" value="@if(isset($profile->d_o_b)){{$profile->d_o_b}}@endif" class="form-control">
+                           </div>
+                           <div class="form-group">
+                               <label>I am a <span>*</span></label>
+                               <select class="form-control" name="gender">
+                                   <option>Select</option> 
+                                   <option @if(($profile->gender=="male")) selected @endif value="male">Male</option>
+                                   <option @if(($profile->gender=="female")) selected @endif value="female">Female</option>
+                               </select>
+                           </div>
 
-                            <div class="form-group">
-                                <label>Profile Pic <span></span></label>
-                                <input type="file" name="profile_pic" class="form-control">
-                            </div>
+                           <div class="form-group">
+                               <label>Profile Pic <span></span></label>
+                               <input type="file" name="profile_pic" class="form-control">
+                           </div>
 
-                            <div class="form-group">
-                                <input type="hidden" name="_token" value="{{Session::token()}}">
-                                <button type="submit" class="btn btn-default center-block btn-block">Save changes
-                                </button>
-                            </div>
-                        </form>
+                           <div class="form-group">
+                               <input type="hidden" name="_token" value="{{Session::token()}}">
+                               <button type="submit" class="btn btn-default center-block btn-block">Save changes
+                               </button>
+                           </div>
+                       </form>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">

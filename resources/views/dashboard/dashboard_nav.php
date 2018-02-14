@@ -5,7 +5,7 @@
             <div class="collapse navbar-collapse in" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav left_mobi_nav">
                     <li class="active"><a href="#"><i class="fa fa-home" aria-hidden="true"></i> /
-                            Dashboard
+                           EDIT PROFILE
                         </a>
                     </li>
                 </ul>

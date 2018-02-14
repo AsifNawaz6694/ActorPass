@@ -4,15 +4,9 @@
     <div class="wrapper">
         <div class="footer_main clearfix">
             <div class="footer_left float-left">
-                <p>All rights Reserved © 2017 </p>
+                <p>&copy; COPYRIGHT 2018 BY ACTOR PASS, L.L.C.</p>
             </div>
-            <div class="footer_right float-right">
-                <p>
-                    <a href="#">
-                        Design & Developed By Startupbug.net
-                    </a>
-                </p>
-            </div>
+            
         </div>
     </div>
 </div>

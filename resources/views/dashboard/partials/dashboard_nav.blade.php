@@ -4,8 +4,8 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse in" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav left_mobi_nav">
-                    <li class="active"><a href="#"><i class="fa fa-home" aria-hidden="true"></i> /
-                            Dashboard
+                    <li class="active"><a href="#">HOME /
+                           EDIT PROFILE
                         </a>
                     </li>
                 </ul>
@@ -14,7 +14,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                            aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-bell-o" aria-hidden="true"></i>
-                            <span class="badge">5</span>
+                            <span class="badge">1</span>
                         </a>
                         <ul class="dropdown-menu media-list animated fadeInDown dash_nav clearfix">
                             <li class="dropdown-header">Notifications (5)</li>

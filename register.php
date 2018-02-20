@@ -5,7 +5,7 @@
 <div class="container">
 	<div class="row">
    <div class="col-md-6 col-md-offset-3 col-sm-12 col-sm-offset-0  login-form">
-    <h3 class="login_content">LETS GET STARTED</h3>
+    <h3 class="login_content">LET'S GET STARTED</h3>
      <hr>
      <form id="signin_form">
       <div class="form-group_form">
@@ -34,9 +34,9 @@
     
 
       <div class="form-group" role="group" aria-label="...">
-        <div class="account_signin"><a href="#" class="btn btn-default_signup">NO ACCOUNT? SIGN UP NOW</a>     
+        <div class="account_signin"><a href="#" class="btn btn-default_signup">SIGN UP</a>     
         <!--<a  href="#" class="btn btn-default_login">LOGIN NOW</a>-->
-        <button type="submit" class="btn login_now">LOGIN</button>
+        <!--<button type="submit" class="btn login_now">LOGIN</button>-->
       </div>
   </div>
     </form>
@@ -45,6 +45,7 @@
 </div>
 </div>
 </section>
+
 
 
 

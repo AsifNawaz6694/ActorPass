@@ -569,7 +569,7 @@ a.btn.btn-default_signup {
     font-family: 'hind-bold';
     padding-top: 10px;
     padding-bottom: 10px;
-    width: 64%;
+    width: 100%;
 }
 
 
@@ -1273,4 +1273,25 @@ input[type=checkbox], input[type=radio]{
 .button_submit button#submit:hover {
     border: 1px solid #851618;
     background-color: #851618;
+}
+
+.account_signin_register a.btn.btn-default_signup {
+    border: 1px solid;
+    background-color: #949494;
+    color: white;
+    padding-left: 25px;
+    padding-right: 25px;
+    border-radius: 1px;
+    font-size: 18px;
+    font-family: 'hind-bold';
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 64%;
+}
+.account_signin_register a.btn.btn-default_signup:hover {
+    background-color: #ed1c24;
+}
+
+input[type="checkbox"] {
+    margin-bottom: 10px;
 }

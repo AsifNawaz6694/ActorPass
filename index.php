@@ -63,7 +63,7 @@
 
 
 					</div>
-					<div class="about_button"><a href="#" class="btn" type="button">Read More <i class="fa fa-angle-double-right"></i></a></div>
+					<div class="about_button"><a href="aboutus.php" class="btn" type="button">Read More <i class="fa fa-angle-double-right"></i></a></div>
 				</div>
 			</div>
 		</div>
@@ -87,7 +87,7 @@
 					<p class="about_paragraph">
 						Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
 					</p> 
-					<div class="button_last"> <a href="#" class="btn" type="button">SIGN UP NOW</a></div>
+					<div class="button_last"> <a href="login.php" class="btn" type="button">SIGN UP NOW</a></div>
 				</div>
 			</div>
 		</div>

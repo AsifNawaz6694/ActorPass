@@ -123,13 +123,13 @@
 								<span class="glyphicon glyphicon-ok"></span>Customized feedback with your <br>personal questions & comments 
 							</li>
 							<li>
-								Access to CD/agent/manager follow <br>up addresses
+								<span class="glyphicon glyphicon-ok"></span>Access to CD/agent/manager follow <br>up addresses
 							</li>
 							<li>
-								Advance Notice to sign up for classes
+								<span class="glyphicon glyphicon-ok"></span>Advance Notice to sign up for classes
 							</li>
 							<li>
-								Submit a direct question/comment <br>directly to your teacher
+								<span class="glyphicon glyphicon-ok"></span>Submit a direct question/comment <br>directly to your teacher
 							</li>
 							
 							
@@ -137,7 +137,7 @@
 					</div>
 
 					<div class="button_button_about">
-						 <a href="#" class="btn" type="button">GET STARTED AS A GUEST</a>
+						 <a href="#" class="btn" type="button">GET STARTED AS A VIP</a>
 						
 					</div>
 					

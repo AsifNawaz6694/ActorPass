@@ -43,7 +43,6 @@
         </select>
       </div>
     
-
       <div class="form-group" role="group" aria-label="...">
         <div class="account_signin"><a href="#" class="btn btn-default_signup">NO ACCOUNT? SIGN UP NOW</a>     
         <!--<a  href="#" class="btn btn-default_login">LOGIN NOW</a>-->

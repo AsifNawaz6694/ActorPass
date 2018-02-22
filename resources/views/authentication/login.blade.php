@@ -24,7 +24,7 @@
       </div>
 
       <div class="col-md-6">
-      	<h3 class="fotgot">Forgot Password?</h3>
+      	<a href="{{route('pass_reset_view')}}"><h3 class="fotgot">Forgot Password?</h3></a>
       </div>
 
         <div class="form-group" role="group" aria-label="...">

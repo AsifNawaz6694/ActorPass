@@ -36,6 +36,12 @@ Route::group([ 'middleware' => 'guest'], function()
 	//Signup Post
 	Route::post('/register',  'AuthenticationController@register_post')->name('signup_post');
 
+	//Reset Password view
+	Route::get('/reset-password/{token?}',  'AuthenticationController@pass_reset_view')->name('pass_reset_view'); 
+
+	//Reset Password Post 
+	Route::post('/reset_pass_post',  'AuthenticationController@reset_pass_post')->name('reset_pass_post'); 
+
 });
 
 

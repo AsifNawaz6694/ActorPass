@@ -7,6 +7,8 @@ use Auth;
 use App\User;
 use App\Role;
 use App\Profile;
+use App\Password_reset;
+use Mail;
 
 class AuthenticationController extends Controller
 {
@@ -80,5 +82,94 @@ class AuthenticationController extends Controller
     public function logout_user(){
         Auth::logout();
         return redirect()->route('home');          
-    }    
+    }
+
+    //Reset Password Views
+    public function pass_reset_view($token=null){
+        //dd($token);
+        if(is_null($token)){            
+            $data['page_forget_flag'] = 'email';
+            return view('authentication.forgetpassword')->with($data);  
+        }else{
+            $data['page_forget_flag'] = 'newpass';
+            $data['token'] = $token;
+            $password_reset_exists = Password_reset::where('token', $token)->exists();
+
+            if($password_reset_exists){
+                return view('authentication.forgetpassword')->with($data);   
+            }else{
+                $this->set_session('Invalid Request. Are you Lost?', false);
+                return redirect()->route('login_view');                
+            }
+
+        }      
+    }
+
+    //Reset Password Post
+    public function reset_pass_post(Request $request){
+
+      if($request->input('reqPassFlag')=="email"){
+
+            $user = User::where('email', '=', $request->input('passemail'))->first();
+
+            if (is_null($user)) {
+                $this->set_session('Email not Found.', false);
+                return redirect()->route('pass_reset_view');
+            }else{
+                //Emailing user Password Reset Link
+
+                //Updating Password reset table
+                $token = str_random(30);
+                
+                $password_reset = new Password_reset();
+                $password_reset->email = $request->input('passemail');
+                $password_reset->token = $token;
+
+                if($password_reset->save()){
+                
+                 //Mail user Password verification Link
+                    $mail = Mail::send('email.fogotPass', ['token' => $token, 'user'=>$user ], function ($m) use ($user, $request) {
+                        $m->from('farhanuddin.aimviz@gmail.com', 'Online Class');
+                        $m->to($request->input('passemail'))->subject('OnlineClass Forgot Password Alert');
+                    });
+
+                    $this->set_session('Password Renew Link Mailed to you.', true);
+                    return redirect()->route('pass_reset_view');
+
+
+                }else{
+                    $this->set_session('Something went wrong. Please Try again.', false);
+                    return redirect()->route('pass_reset_view');
+
+                }
+
+            }
+        //-----------------------------------------------------------------    
+       }else if($request->input('reqPassFlag')=="newpass"){ //email end 
+
+            /* Password Change Submission */
+            //Password Form Validation
+
+            //Delete Password Reset row from table 'password_resets'
+            $password_reset = Password_reset::where('token', $request->input('pass_token'))->first();
+            $user = User::where('email', $password_reset->email )->first();
+            $user_update = User::find($user->id);
+
+            $user_update->password = bcrypt($request->input('password1'));
+
+            if($user_update->save()){
+
+                $pass_deleted = Password_reset::where('token', $request->input('pass_token'))->delete();
+
+                //Deleting Password row from Password reset table.
+                $this->set_session('Password Successfully Updated.', true);
+                return redirect()->route('login_view');
+            }else{
+                $this->set_session('Password couldnot be Updated.', false);
+                return redirect()->route('login_view');        
+            }
+
+       }
+
+    }
 }

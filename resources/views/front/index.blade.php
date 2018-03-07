@@ -42,7 +42,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6 col-sm-12 col-xs-12 text-right" data-aos="fade-right">
-						<img src="assets/images/aboutus_new.png" style="max-width: 350px;">
+						<img src="{{ asset('public/assets/images/aboutus_new.png') }}" style="max-width: 350px;">
 
 					</div>
 					<div class="col-md-5" data-aos="fade-right">
@@ -72,7 +72,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-2 col-sm-2 only-desktop" data-aos="fade-right">
-					<div class="image_light"><img src="assets/images/strob-light.png" class="img-responsive"></div>
+					<div class="image_light"><img src="{{ asset('public/assets/images/strob-light.png') }}" class="img-responsive"></div>
 				</div>
 				<div class="col-md-10 col-sm-12 col-xs-12" data-aos="fade-right">
 					<h3 class="about_heading">

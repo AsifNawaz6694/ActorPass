@@ -35,4 +35,10 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'bookeo' => [
+        'Bookeo_apiKey' => env('Bookeo_apiKey'),
+        'Bookeo_secretKey' => env('Bookeo_secretKey'),
+        'Bookeo_base_uri' => env('Bookeo_base_uri')
+    ]
+
 ];

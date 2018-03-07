@@ -20,35 +20,41 @@
 </footer>
 
 </div>
+
+<!-- define APP_URL for javascripts -->
+<script type="text/javascript">
+	var APP_URL = "{{ env('APP_URL') }}";
+	console.log(APP_URL);
+</script>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="{{ asset('assets/js/jquery-3.1.1.min.js') }}"></script>
+<script src="{{ asset('public/assets/js/jquery-3.1.1.min.js') }}"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <!-- Bootstrap -->
-<script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('public/assets/js/bootstrap.min.js') }}"></script>
 <!-- Carousel-min -->
-<script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('public/assets/js/owl.carousel.min.js') }}"></script>
 <!-- Wow-min-js -->
-<script src="{{ asset('assets/js/wow.min.js') }}"></script>
+<script src="{{ asset('public/assets/js/wow.min.js') }}"></script>
 <!-- masonry-grid-js -->
-<script src="{{ asset('assets/js/masonry.pkgd.min.js') }}"></script>
+<script src="{{ asset('public/assets/js/masonry.pkgd.min.js') }}"></script>
 <!-- alertify-js -->
-<script src="{{ asset('assets/js/alertify.min.js') }}"></script>
+<script src="{{ asset('public/assets/js/alertify.min.js') }}"></script>
 
 <!-- juqeyr custom validatoin plugin-js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
 <!-- custom validatoin-js -->
-<script src="{{ asset('assets/js/custom_validatiion.js') }}"></script>
+<script src="{{ asset('public/assets/js/custom_validatiion.js') }}"></script>
 <!-- mobile-menu-js -->
-<script src="{{ asset('assets/plugins/menu/js/jquery.mmenu.all.js') }}"></script>
-<script src="{{ asset('assets/plugins/menu/js/jquery.mhead.js') }}"></script>
+<script src="{{ asset('public/assets/plugins/menu/js/jquery.mmenu.all.js') }}"></script>
+<script src="{{ asset('public/assets/plugins/menu/js/jquery.mhead.js') }}"></script>
 <!-- Animation AOS JS -->
-<script src="{{ asset('assets/js/aos.js') }}"></script>
+<script src="{{ asset('public/assets/js/aos.js') }}"></script>
 <!-- Animation JS -->
-<script src="{{ asset('assets/js/modernizr.custom.js') }}"></script>	
+<script src="{{ asset('public/assets/js/modernizr.custom.js') }}"></script>	
 <!-- script-js -->
-<script src="{{ asset('assets/js/script.js') }}"></script>
+<script src="{{ asset('public/assets/js/script.js') }}"></script>
 <!-- Custom-js -->
-<script src="{{ asset('assets/js/custom.js') }}"></script>
+<script src="{{ asset('public/assets/js/custom.js') }}"></script>
 
 </body>
 </html>

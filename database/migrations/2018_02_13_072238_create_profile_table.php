@@ -16,10 +16,11 @@ class createProfileTable extends Migration
         Schema::create('profile', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->string('phone');       
-            $table->string('gender');
-            $table->string('d_o_b');
-            $table->string('profile_pic');            
+            $table->string('phone')->nullable();       
+            $table->string('gender')->nullable();
+            $table->string('d_o_b')->nullable();
+            $table->string('profile_pic')->default('default.jpg');            
+            $table->string('customer_id')->nullable();            
             $table->timestamps();
 
             /* Assigning Foreign key */

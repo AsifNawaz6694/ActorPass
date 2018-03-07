@@ -16,8 +16,28 @@
 // });
 
 
-//Home Routes
-Route::get('/', 'HomeController@index')->name('home');
+//public pages routes
+Route::get('/', function(){
+	return view('front.index');
+})->name('home');
+
+Route::get('/about', function(){
+	return view('front.about');
+})->name('about');
+
+Route::get('/takeaclass', function(){
+	return view('front.takeaclass');
+})->name('takeaclass');
+
+Route::get('/faq', function(){
+	return view('front.faq');
+})->name('faq');
+
+Route::get('/contact', function(){
+	return view('front.contact');
+})->name('contact');
+
+
 
 
 /* Authentication Routes */
@@ -61,6 +81,21 @@ Route::group(['middleware' => 'auth'], function()
 	/* Update Profile */	
 	Route::post('/dashboard/update-profile',  'ProfileController@profile_update')->name('profile_update');
 
+	/* My classes Route  - Index */
+	Route::get('/dashboard/myclasses',  'ClassesController@my_classes')->name('classes_index');
+
+
 	/* Edit Profile Password */
 	Route::post('/dashboard/edit_password',  'ProfileController@edit_password_post')->name('edit_password_post');	
 });
+
+
+
+
+Route::get('admin', function(){
+	return view('admin.index');
+});
+
+Route::get('admin/users', 'AdminController@users');
+Route::get('admin/user/{id}', 'AdminController@user_view')->name('user');
+Route::get('admin/user/{id}/edit', 'AdminController@user_edit')->name('user.edit');

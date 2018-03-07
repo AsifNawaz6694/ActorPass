@@ -7,21 +7,21 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title></title>
     <!-- Bootstrap -->
-    <link href="{{ asset('dashboard_assets/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/dashboard_assets/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- FontAwesome -->
-    <link href="{{ asset('dashboard_assets/css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/dashboard_assets/css/font-awesome.min.css') }}" rel="stylesheet">
     <!-- Animate -->
-    <link href="{{ asset('dashboard_assets/css/animate.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/dashboard_assets/css/animate.css') }}" rel="stylesheet">
     <!-- Owl Slider -->
-    <link href="{{ asset('dashboard_assets/css/owl.carousel.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/dashboard_assets/css/owl.carousel.css') }}" rel="stylesheet">
     <!-- Owl Slider Theme -->
-    <link href="{{ asset('dashboard_assets/css/owl.theme.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/dashboard_assets/css/owl.theme.css') }}" rel="stylesheet">
     <!--Jquery Validation -->
-    <link href="{{ asset('dashboard_assets/css/validationEngine.jquery.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/dashboard_assets/css/validationEngine.jquery.css') }}" rel="stylesheet">
     <!-- StyleSheet -->
-    <link href="{{ asset('dashboard_assets/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/dashboard_assets/css/style.css') }}" rel="stylesheet">
     <!-- Responsive -->
-    <link href="{{ asset('dashboard_assets/css/responsive.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/dashboard_assets/css/responsive.css') }}" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>

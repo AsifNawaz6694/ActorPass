@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Events\UserEvent;
 use Auth;
 use App\User;
 use App\Role;
 use App\Profile;
 use App\Password_reset;
 use Mail;
+use App\Http\Requests\RegistrationRequest;
 
 class AuthenticationController extends Controller
 {
@@ -18,37 +20,37 @@ class AuthenticationController extends Controller
     }
 
     //Posting Register Form
-    public function register_post(Request $request){
+    public function register_post(RegistrationRequest $request){
 
         /* Validating User */
-        
-        //inserting user
         try{
             $user = new User();
             $user->password = bcrypt($request->password);
+            $user->email_token = base64_encode($user->email);
 
             foreach($request->input() as $key => $value) {
-                if($key != '_token' && $key != 'password2' && $key != 'password'){
+                if($key != '_token' && $key != 'password_confirmation' && $key != 'password'){
                     $user->$key = $value;
                 }
             }         
-
+            //dd($user);
             if($user->save()){
 
-	            /*Attaching User Role to the New User */ 
+                /*Attaching User Role to the New User */ 
 	            // - 2- Actor
 	            // - 3- Student 
-	             $user_role = Role::find($request->input('role_id'));
-	             $user->attachRole($user_role);   
+                $user->attachRole($request->input('role_id'));   
 
 	             //Creating Profile for this new User.
-	             Profile::create(array('user_id' => $user->id));
+                event(new UserEvent($user));
+                dispatch(new SendVerificationEmail($user));
 
-                 $this->set_session('User Successfully Registered.', true);
-            }else{
-                 $this->set_session('User Couldnot be Registered.', false);
+                $this->set_session('User Successfully Registered.', true);
             }
-            
+            else{
+                $this->set_session('User Couldnot be Registered.', false);
+            }
+
             return redirect()->route('register_index');
 
         }catch(\Exception $e){
@@ -64,7 +66,7 @@ class AuthenticationController extends Controller
     public function login_post(Request $request){
         //dd($request->input());
        /* Validation */
-      try{
+        try{
             if(Auth::attempt(['email' => $request->email, 'password' => $request->password ] )) {                
                 return redirect()->route('home');  
             }else{
@@ -72,10 +74,11 @@ class AuthenticationController extends Controller
                 return redirect()->route('login_view');             
             }
 
-      }catch(\Exception $e){
-                $this->set_session('Something went wrong. Please try again'.$e->getMessage(), false);    
-                return redirect()->route('login_view');                       
-      }         
+        }
+        catch(\Exception $e){
+            $this->set_session('Something went wrong. Please try again'.$e->getMessage(), false);    
+            return redirect()->route('login_view');                       
+        }         
     }
 
     //Logging out user
@@ -86,7 +89,7 @@ class AuthenticationController extends Controller
 
     //Reset Password Views
     public function pass_reset_view($token=null){
-        //dd($token);
+            //dd($token);
         if(is_null($token)){            
             $data['page_forget_flag'] = 'email';
             return view('authentication.forgetpassword')->with($data);  
@@ -110,47 +113,47 @@ class AuthenticationController extends Controller
 
       if($request->input('reqPassFlag')=="email"){
 
-            $user = User::where('email', '=', $request->input('passemail'))->first();
+        $user = User::where('email', '=', $request->input('passemail'))->first();
 
-            if (is_null($user)) {
-                $this->set_session('Email not Found.', false);
+        if (is_null($user)) {
+            $this->set_session('Email not Found.', false);
+            return redirect()->route('pass_reset_view');
+        }else{
+                    //Emailing user Password Reset Link
+
+                    //Updating Password reset table
+            $token = str_random(30);
+
+            $password_reset = new Password_reset();
+            $password_reset->email = $request->input('passemail');
+            $password_reset->token = $token;
+
+            if($password_reset->save()){
+
+                     //Mail user Password verification Link
+                $mail = Mail::send('email.fogotPass', ['token' => $token, 'user'=>$user ], function ($m) use ($user, $request) {
+                    $m->from('farhanuddin.aimviz@gmail.com', 'Online Class');
+                    $m->to($request->input('passemail'))->subject('OnlineClass Forgot Password Alert');
+                });
+
+                $this->set_session('Password Renew Link Mailed to you.', true);
                 return redirect()->route('pass_reset_view');
+
+
             }else{
-                //Emailing user Password Reset Link
-
-                //Updating Password reset table
-                $token = str_random(30);
-                
-                $password_reset = new Password_reset();
-                $password_reset->email = $request->input('passemail');
-                $password_reset->token = $token;
-
-                if($password_reset->save()){
-                
-                 //Mail user Password verification Link
-                    $mail = Mail::send('email.fogotPass', ['token' => $token, 'user'=>$user ], function ($m) use ($user, $request) {
-                        $m->from('farhanuddin.aimviz@gmail.com', 'Online Class');
-                        $m->to($request->input('passemail'))->subject('OnlineClass Forgot Password Alert');
-                    });
-
-                    $this->set_session('Password Renew Link Mailed to you.', true);
-                    return redirect()->route('pass_reset_view');
-
-
-                }else{
-                    $this->set_session('Something went wrong. Please Try again.', false);
-                    return redirect()->route('pass_reset_view');
-
-                }
+                $this->set_session('Something went wrong. Please Try again.', false);
+                return redirect()->route('pass_reset_view');
 
             }
-        //-----------------------------------------------------------------    
-       }else if($request->input('reqPassFlag')=="newpass"){ //email end 
+
+        }
+            //-----------------------------------------------------------------    
+           }else if($request->input('reqPassFlag')=="newpass"){ //email end 
 
             /* Password Change Submission */
-            //Password Form Validation
+                //Password Form Validation
 
-            //Delete Password Reset row from table 'password_resets'
+                //Delete Password Reset row from table 'password_resets'
             $password_reset = Password_reset::where('token', $request->input('pass_token'))->first();
             $user = User::where('email', $password_reset->email )->first();
             $user_update = User::find($user->id);
@@ -161,7 +164,7 @@ class AuthenticationController extends Controller
 
                 $pass_deleted = Password_reset::where('token', $request->input('pass_token'))->delete();
 
-                //Deleting Password row from Password reset table.
+                    //Deleting Password row from Password reset table.
                 $this->set_session('Password Successfully Updated.', true);
                 return redirect()->route('login_view');
             }else{
@@ -169,7 +172,7 @@ class AuthenticationController extends Controller
                 return redirect()->route('login_view');        
             }
 
-       }
+        }
 
     }
 }

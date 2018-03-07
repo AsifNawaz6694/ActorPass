@@ -8,15 +8,15 @@ $(document).ready(function(){
     }, "Phone must contain only numbers, + and -.");
 
     // Only Letters
-    // $.validator.addMethod("fullname", function(value, element) {
-    //   return this.optional(element) || /^[a-z\ \_]+$/i.test(value);
-    // }, "Username must contain only letters");
+    $.validator.addMethod("fullname", function(value, element) {
+      return this.optional(element) || /^[a-z\ \_]+$/i.test(value);
+    }, "Username must contain only letters");
 
     
 
     // Set countries list in combobox
     var $select = $('.country');
-    $.getJSON('http://localhost:8000/assets/js/countries.json', function(data) {
+    $.getJSON('http://site.startupbug.net:6888/actor-pass/v1/public/assets/js/countries.json', function(data) {
       $select.html('');
       $.each(data, function(key, val){
         $select.append('<option value="' + val.dial_code+ '">' + val.name + '</option>');

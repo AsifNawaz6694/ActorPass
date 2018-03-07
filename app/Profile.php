@@ -9,7 +9,7 @@ class Profile extends Model
     protected $table = 'profile';
 
     protected $fillable = [
-        'user_id', 'phone', 'gender', 'd_o_b', 'profile_pic',
+        'user_id', 'phone', 'gender', 'd_o_b', 'profile_pic', 'customer_id'
     ];
 
     //User Model Relationship function

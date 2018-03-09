@@ -14,7 +14,8 @@ class ProfileController extends Controller
 {
 
 	//Dashboard Profile index function
-	public function index(){		
+	public function index(){	
+	
 		$data['profile'] = Profile::where('user_id', Auth::user()->id)->first();
 		$data['user'] = User::where('id', Auth::user()->id)->first(['fullname']);
 		return view('dashboard.my_profile')->with($data);

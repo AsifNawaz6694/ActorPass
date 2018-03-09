@@ -14,7 +14,7 @@ class Profile extends Model
 
     //User Model Relationship function
 	public function user()
-	{ dd(123);
+	{ 
 	    return $this->belongsTo('App\User');
 	}
 

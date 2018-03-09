@@ -96,6 +96,17 @@ Route::get('admin', function(){
 	return view('admin.index');
 });
 
-Route::get('admin/users', 'AdminController@users');
+// Users CRUD Routes
+Route::get('admin/users', 'AdminController@users')->name('users');
 Route::get('admin/user/{id}', 'AdminController@user_view')->name('user');
-Route::get('admin/user/{id}/edit', 'AdminController@user_edit')->name('user.edit');
+Route::get('admin/user/{id}/edit', 'AdminController@user_edit')->name('user_edit');
+Route::post('ImageUpload',['as'=>'ImageUpload','uses'=>'AdminController@ImageUpload']);
+Route::post('update_user/{id}',['as'=>'update_user','uses'=>'AdminController@update']);
+
+// Classes CRUD Routes
+Route::get('admin/classes', 'ClassesController@index')->name('classes');
+Route::get('admin/classes/create', 'ClassesController@create')->name('create_class');
+Route::post('admin/classes/store', 'ClassesController@store')->name('store_class');
+Route::get('admin/classes/edit/{id}', 'ClassesController@edit')->name('edit_class');
+Route::post('admin/classes/update/{id}', 'ClassesController@update')->name('update_class');
+Route::get('admin/classes/delete/{id}', 'ClassesController@destroy')->name('delete_class');

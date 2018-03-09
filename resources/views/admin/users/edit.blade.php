@@ -1,21 +1,5 @@
 @extends('admin.masterlayout')
 @section('content')
-
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <h1>
-            User Profile
-        </h1>
-        <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">User</a></li>
-            <li class="active">User edit</li>
-        </ol>
-    </section>
-    <!-- Main content -->
-    <section class="content">
         <div class="row">
             <!-- /.col -->
             <div class="col-md-12">
@@ -26,7 +10,8 @@
                     <div class="tab-content">
                         <!-- /.tab-pane -->
                         <div class="tab-pane active" id="settings">
-                            <form class="form-horizontal">
+                            <form class="form-horizontal" action="{{route('update_user',['id'=>$user->id])}}" method="post" enctype="multipart/form-data">
+                                {{csrf_field()}}
                                 <div class="form-group">
                                     <label for="inputName" class="col-sm-2 control-label">Name</label>
                                     <div class="col-sm-10">
@@ -72,11 +57,11 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputCountry" class="col-sm-2 control-label">Images</label>
+                                    <label for="inputCountry" class="col-sm-2 control-label">Image</label>
                                     <div class="col-sm-10">
                                         <div class="row">
                                             <div class="col-sm-6">
-                                                <input type="file" name="profile" class="filePath " data-class="img1">
+                                                <input type="file" name="profile_pic" class="filePath " data-class="img1">
                                             </div>
                                             <div class="col-sm-6">
                                                 <a href="" class="img1" download>
@@ -104,10 +89,4 @@
             </div>
             <!-- /.col -->
         </div>
-        <!-- /.row -->
-    </section>
-    <!-- /.content -->
-</div>
-<!-- /.content-wrapper -->
-
 @endsection

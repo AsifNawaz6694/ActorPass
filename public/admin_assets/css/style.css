@@ -1,0 +1,45 @@
+/*Profile Picture Camera Icon*/
+  .image-box {
+    width: 160px;
+    height: 160px;
+    margin: auto;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+  }
+  .camera_image {
+    background-color: #00000073;
+    text-align: center;
+    color: #fff;
+    position: absolute;
+    margin: 0px auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10px 0;
+    display: none;
+  }
+  .image-box:hover .camera_image {
+    display: block;
+  }
+  .camera_image input[type="file"] {
+    opacity: 0;
+    position: absolute;
+    bottom: 20px;
+  }
+/*Profile Picture Camera Icon*/
+
+/*Create Button Css On Category Page Started*/
+  .s_button{
+    position: absolute;
+    top: 48px;
+    right: 60px;
+  }
+  @media only screen and (min-width: 320px) and (max-width: 767px) {
+      .s_button{
+      position: absolute;
+      top: 143px;
+      right: 12px;
+    }
+  }
+/*Create Button Css On Category Page Ended*/

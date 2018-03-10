@@ -1,11 +1,11 @@
 <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <div class="pull-right hidden-xs">
-      <b>Version</b> 2.4.0
-    </div>
-    <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
-    reserved.
-  </footer>
+<footer class="main-footer">
+  <div class="pull-right hidden-xs">
+    <b>Version</b> 2.4.0
+  </div>
+  <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
+  reserved.
+</footer>
 <!-- jQuery 3 -->
   <script src="{{asset('public/admin_assets/bower_components/jquery/dist/jquery.min.js')}}"></script>
 <!-- <script src="bower_components/jquery/dist/jquery.min.js"></script> -->
@@ -37,13 +37,14 @@
 <script src="{{asset('public/admin_assets/bower_components/jquery-knob/dist/jquery.knob.min.js')}}"></script>
 <!-- <script src="bower_components/jquery-knob/dist/jquery.knob.min.js"></script> -->
 <!-- daterangepicker -->
-<script src="{{asset('public/admin_assets/bower_components/moment/min/moment.min.js')}}"></script>
+<!-- <script src="{{asset('public/admin_assets/bower_components/moment/min/moment.min.js')}}"></script> -->
 <script src="{{asset('public/admin_assets/bower_components/ckeditor/ckeditor.js')}}"></script>
 <!-- <script src="bower_components/moment/min/moment.min.js"></script> -->
 <script src="{{asset('public/admin_assets/bower_components/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
 <!-- <script src="bower_components/bootstrap-daterangepicker/daterangepicker.js"></script> -->
 <!-- datepicker -->
 <script src="{{asset('public/admin_assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 <!-- <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script> -->
 <!-- Bootstrap WYSIHTML5 -->
 <script src="{{asset('public/admin_assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js')}}"></script>
@@ -61,7 +62,7 @@
 <script src="{{asset('public/admin_assets/dist/js/adminlte.min.js')}}"></script>
 <!-- <script src="dist/js/adminlte.min.js"></script> -->
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{asset('public/admin_assets/dist/js/pages/dashboard.js')}}"></script>
+<!-- <script src="{{asset('public/admin_assets/dist/js/pages/dashboard.js')}}"></script> -->
 <!-- <script src="dist/js/pages/dashboard.js"></script> -->
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('public/admin_assets/dist/js/demo.js')}}"></script>
@@ -74,9 +75,10 @@
   $(function () {
     // Replace the <textarea id="editor1"> with a CKEditor
     // instance, using default configuration.
-    CKEDITOR.replace('editor1')
     //bootstrap WYSIHTML5 - text editor
     $('.textarea').wysihtml5()
+    $('.select2').select2();
+    CKEDITOR.replace('editor1')
   })
 </script>
 </body>

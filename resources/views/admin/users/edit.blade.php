@@ -6,6 +6,7 @@
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#settings" data-toggle="tab">User Information</a></li>
+                        <li><a href="#tab2default" data-toggle="tab">Change Password</a></li>
                     </ul>
                     <div class="tab-content">
                         <!-- /.tab-pane -->
@@ -16,6 +17,12 @@
                                     <label for="inputName" class="col-sm-2 control-label">Name</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" name="fullname" value="{{ $user->fullname }}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputName" class="col-sm-2 control-label">User Name</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" name="username" value="{{ $user->username }}">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -81,6 +88,34 @@
                                 </div>
                             </form>
                         </div>
+                         <div class="tab-pane fade" id="tab2default">
+                             <form class="form-horizontal" action="{{route('update_password',['id'=>$user->id])}}" method="post" enctype="multipart/form-data">
+                                {{csrf_field()}}                                
+                                <div class="form-group">
+                                    <label for="inputName" class="col-sm-2 control-label">Old Password</label>
+                                    <div class="col-sm-10">
+                                        <input type="password" class="form-control" name="old_password">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputName" class="col-sm-2 control-label">New Password</label>
+                                    <div class="col-sm-10">
+                                        <input type="password" class="form-control" name="password">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputName" class="col-sm-2 control-label">Confirm Password</label>
+                                    <div class="col-sm-10">
+                                        <input type="password" class="form-control" name="confirmation_password">
+                                    </div>
+                                </div>                                
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <button type="submit" class="btn btn-danger">Update</button>
+                                    </div>
+                                </div>
+                            </form>
+                         </div>
                         <!-- /.tab-pane -->
                     </div>
                     <!-- /.tab-content -->

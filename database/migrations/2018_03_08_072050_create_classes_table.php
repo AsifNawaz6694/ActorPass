@@ -21,8 +21,7 @@ class CreateClassesTable extends Migration
             $table->string('age')->nullable();
             $table->mediumText('link')->nullable();
             $table->longText('description')->nullable();
-            $table->timestamps();
-            
+            $table->timestamps();            
             /* Assigning Foreign key */
             $table->foreign('teacher_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });

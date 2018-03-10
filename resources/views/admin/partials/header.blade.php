@@ -30,6 +30,8 @@
   <!-- <link rel="stylesheet" href="bower_components/jvectormap/jquery-jvectormap.css"> -->
   <!-- Date Picker -->
   <link href="{{asset('public/admin_assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')}}" rel="stylesheet">
+  <link href="{{asset('public/admin_assets/bower_components/select2/dist/css/select2.CSS')}}" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet">
   <!-- <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css"> -->
   <!-- Daterange picker -->
   <link href="{{asset('public/admin_assets/bower_components/bootstrap-daterangepicker/daterangepicker.css')}}" rel="stylesheet">

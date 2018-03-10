@@ -84,7 +84,6 @@ Route::group(['middleware' => 'auth'], function()
 	/* My classes Route  - Index */
 	Route::get('/dashboard/myclasses',  'ClassesController@my_classes')->name('classes_index');
 
-
 	/* Edit Profile Password */
 	Route::post('/dashboard/edit_password',  'ProfileController@edit_password_post')->name('edit_password_post');	
 });
@@ -96,17 +95,29 @@ Route::get('admin', function(){
 	return view('admin.index');
 });
 
-// Users CRUD Routes
+// Users CRUD/Other Routes
 Route::get('admin/users', 'AdminController@users')->name('users');
+Route::get('admin/user/create', 'AdminController@create')->name('create_user');
+Route::post('admin/user/store', 'AdminController@store')->name('store_user');
 Route::get('admin/user/{id}', 'AdminController@user_view')->name('user');
 Route::get('admin/user/{id}/edit', 'AdminController@user_edit')->name('user_edit');
 Route::post('ImageUpload',['as'=>'ImageUpload','uses'=>'AdminController@ImageUpload']);
 Route::post('update_user/{id}',['as'=>'update_user','uses'=>'AdminController@update']);
+Route::post('admin/user/password_update/{id}', 'AdminController@update_password')->name('update_password');
+Route::get('admin/user/delete/{id}', 'AdminController@destroy')->name('delete_user');
+Route::get('/activate_user/{id}/', ["as" => "activate-user", "uses" => "AdminController@activate_user"]);
+Route::get('/deactivate_user/{id}/', ["as" => "deactivate-user", "uses" => "AdminController@deactivate_user"]);
+
+
+
 
 // Classes CRUD Routes
 Route::get('admin/classes', 'ClassesController@index')->name('classes');
 Route::get('admin/classes/create', 'ClassesController@create')->name('create_class');
 Route::post('admin/classes/store', 'ClassesController@store')->name('store_class');
-Route::get('admin/classes/edit/{id}', 'ClassesController@edit')->name('edit_class');
 Route::post('admin/classes/update/{id}', 'ClassesController@update')->name('update_class');
+Route::post('admin/classes/enroll_students_store', 'ClassesController@enroll_students_store')->name('enroll_students_store');
+Route::get('admin/classes/edit/{id}', 'ClassesController@edit')->name('edit_class');
+Route::get('admin/classes/view/{id}', 'ClassesController@view_class')->name('view_class');
 Route::get('admin/classes/delete/{id}', 'ClassesController@destroy')->name('delete_class');
+Route::get('admin/classes/enroll_students/{id}', 'ClassesController@enroll_students')->name('enroll_students');

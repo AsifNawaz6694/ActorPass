@@ -1,137 +1,123 @@
 @extends('admin.masterlayout')
 @section('content')
-
       <div class="row">
-        <div class="col-md-3">
-          <!-- Profile Image -->
-          <div class="box box-primary">
-            <div class="box-body box-profile">
-               <div class="image-box">
-                  <img src="{{asset('public/storage/profile-pictures/'.$user->profile->profile_pic) }}" style="height:100%" class="profile-user-img img-responsive img-circle">
-                  <form action="{{route('ImageUpload')}}" method="post" enctype="multipart/form-data" id="change_admin_profile_pic">
-                        <input name="_token" value="{{csrf_token()}}" type="hidden">
-                  <div class="camera_image">
-                    <i class="fa fa-camera fa-2x" aria-hidden="true"></i>
-                    <input name="profile_pic" id="change_admin_profile_pic" type="file">
-                  </div>
-                </form>
-              </div>              
-              <h3 class="profile-username text-center">{{ $user->fullname }}</h3>
-              <p class="text-muted text-center">{{ $user->roles[0]->display_name }}</p>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-        </div>
         <!-- /.col -->
-        <div class="col-md-9">
+        <div class="col-md-12">
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-              <li class="active"><a href="#settings"  data-toggle="tab" aria-expanded="true">User Information</a></li>
+              <li class="active"><a href="#settings"  data-toggle="tab" aria-expanded="true">Detailed View Of Class</a></li>
             </ul>
             <div class="tab-content">
               <!-- /.tab-pane -->
               <div class="tab-pane active" id="settings">
                 <form class="form-horizontal">
                   <div class="form-group">
-                    <label for="inputName" class="col-sm-2 control-label">Name:</label>
+                    <label for="inputName" class="col-sm-2 control-label">Class Name:</label>
                     <div class="col-sm-10">
-                     <p>{{ $user->fullname }}</p>
+                     <p>{{$class->title}}</p>
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputEmail" class="col-sm-2 control-label">Email:</label>
+                    <label for="inputEmail" class="col-sm-2 control-label">Teacher Name:</label>
                     <div class="col-sm-10">
-                     <p>{{ $user->email }}</p>
+                     <p>{{$class->users->fullname}}</p>                               
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputPhone" class="col-sm-2 control-label">Phone:</label>
+                    <label for="inputPhone" class="col-sm-2 control-label">Location:</label>
                     <div class="col-sm-10">
-                     <p>{{ $user->profile->phone }}</p>
+                     <p>{{$class->location}}</p>
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputCountry" class="col-sm-2 control-label">Gender</label>
+                    <label for="inputCountry" class="col-sm-2 control-label">Cost</label>
                     <div class="col-sm-10">
-                      <p>{{ $user->profile->gender }}</p>
+                     <p>{{$class->cost}}</p>
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputCountry" class="col-sm-2 control-label">Date of Birth</label>
-
+                    <label for="inputCountry" class="col-sm-2 control-label">Class Date</label>
                     <div class="col-sm-10">
-                      <p>{{ $user->profile->d_o_b }}</p>
+                     <p>{{$class->date}}</p>                     
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputStatus" class="col-sm-2 control-label">Status</label>
-
+                    <label for="inputCountry" class="col-sm-2 control-label">Class Time</label>
+                    <div class="col-sm-10">                     
+                     <p>{{$class->time}}</p>                     
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputStatus" class="col-sm-2 control-label">Age</label>
                     <div class="col-sm-10">
-                      @if( $user->verified == 1)
-                        <p>Active</p>
-                      @else
-                        <p>Pending</p>
-                      @endif
+                     <p>{{$class->age}}</p>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputStatus" class="col-sm-2 control-label">Link</label>
+                    <div class="col-sm-10">
+                     <p>{{$class->link}}</p>                    
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputStatus" class="col-sm-2 control-label">Description</label>
+                    <div class="col-sm-10">                     
+                    {!!html_entity_decode($class->description)!!}
                     </div>
                   </div>
                 </form>
-              </div>
-                <!--<form class="form-horizontal">
-                  <div class="form-group">
-                    <label for="inputName" class="col-sm-2 control-label">Name:</label>
-
-                    
-                  </div>
-                  <div class="form-group">
-                    <label for="inputEmail" class="col-sm-2 control-label">Email:</label>
-
-                   
-                  </div>
-                  <div class="form-group">
-                    <label for="inputPhone" class="col-sm-2 control-label">Phone:</label>
-
-                   
-                  </div>
-                  <div class="form-group">
-                    <label for="inputCountry" class="col-sm-2 control-label">Country</label>
-
-                    
-                  </div>
-                  <div class="form-group">
-                    <label for="inputStatus" class="col-sm-2 control-label">Status</label>
-
-                  
-                  </div>
-                  <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                      <button type="submit" class="btn btn-danger">Submit</button>
-                    </div>
-                  </div>
-                </form>-->
-        
+              </div>                
               <!-- /.tab-pane -->
             </div>
             <!-- /.tab-content -->
           </div>
           <!-- /.nav-tabs-custom -->
         </div>
+         <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">Students Enrolled In This Class</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Student Name</th>
+                                    <th>Email</th>
+                                    <th>Phone number</th>
+                                    <th>Gender</th>
+                                    <th>Date Of Birth</th>
+                                    <th>Status</th>                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                              @foreach($students as $value)
+                                <tr>                                 
+                                  <td>{{$value->fullname}}</td>
+                                  <td>{{$value->email}}</td>                                  
+                                  <td>{{$value->phone}}</td>                                  
+                                  <td>{{$value->gender}}</td>                                  
+                                  <td>{{$value->d_o_b}}</td>                                  
+                                  <td>
+                                    @if($value->verified == 1)
+                                    <a href="" class="btn btn-primary">Activated</a>
+                                    @else
+                                    <a href="" class="btn btn-primary">DeActivated</a>
+                                    @endif
+                                  </td>                                                                    
+                                </tr>
+                              @endforeach          
+                            </tbody>
+                        </table>
+                        <div class="s_button">
+                            <a class="btn btn-primary" href="{{route('enroll_students',['id'=>$class->id])}}">Add More Students</a>
+                        </div>  
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+            </div>
         <!-- /.col -->
-      </div>
- 
+      </div> 
 @endsection
-
-
-
-
-
-

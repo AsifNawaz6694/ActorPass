@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Input;
 use App\User;
 use App\Profile;
 use App\Classes;
+use App\ClassStudent;
 use Auth;
 use DB;
 
@@ -14,6 +15,16 @@ class ClassesController extends Controller
     public function index(){
     	$args['index'] = Classes::all();    	
     	return view('admin.classes.index')->with($args);
+    }
+
+    public function view_class(Request $request,$id){
+        $args['class'] = Classes::find($id);
+        $args['students'] = ClassStudent::leftJoin('users','users.id','=','class_student.student_id')
+                                        ->leftJoin('profile','profile.user_id','=','class_student.student_id')                                        
+                                        ->where('class_id',$id)
+                                        ->get();       
+       // dd($args['students']);
+        return view('admin.classes.view')->with($args);
     }
 
     public function create(){
@@ -70,5 +81,27 @@ class ClassesController extends Controller
         $delete = Classes::find($id);
         $delete->delete();
         return redirect()->route('classes');
+    }
+    public function enroll_students_store(Request $request){
+
+         
+        $users = $request->student_id;            
+        $class_id = $request->class_id;
+        foreach ($users as $value) {            
+        $store = new ClassStudent;
+        if (ClassStudent::where('class_id', '=',$class_id)->where('student_id','=',$value)->exists()) {               
+        }else{
+            $store->class_id = $class_id;
+            $store->student_id = $value;        
+            $store->save();
+        }
+
+        }
+        return redirect()->back();
+    }
+    public function enroll_students(Request $request,$id){
+    $args['class'] = Classes::find($id); 
+    $args['students'] = User::where('role_id',3)->get();
+    return view('admin.classes.enroll_students')->with($args);      
     }
 }

@@ -89,6 +89,7 @@
                                     <th>Gender</th>
                                     <th>Date Of Birth</th>
                                     <th>Status</th>                                    
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -106,12 +107,19 @@
                                     <a href="" class="btn btn-primary">DeActivated</a>
                                     @endif
                                   </td>                                                                    
+                                  <td>
+                                    <form action="{{route('delete_enroll_student',['id'=>$value->id])}}" method="get">
+                                      <input type="hidden" name="class_id" value="{{$class->id}}">
+                                      <button class="btn btn-primary" type="submit">Remove</button>                                    
+                                    </form>
+                                  </td>                                  
                                 </tr>
                               @endforeach          
                             </tbody>
                         </table>
                         <div class="s_button">
                             <a class="btn btn-primary" href="{{route('enroll_students',['id'=>$class->id])}}">Add More Students</a>
+                            <a class="btn btn-primary" href="{{route('send_emails',['id'=>$class->id])}}">Send Email</a>
                         </div>  
                     </div>
                     <!-- /.box-body -->

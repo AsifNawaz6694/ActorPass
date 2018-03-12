@@ -10,7 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 // Route::get('/', function () {
 //     return view('welcome');
 // });
@@ -121,3 +120,6 @@ Route::get('admin/classes/edit/{id}', 'ClassesController@edit')->name('edit_clas
 Route::get('admin/classes/view/{id}', 'ClassesController@view_class')->name('view_class');
 Route::get('admin/classes/delete/{id}', 'ClassesController@destroy')->name('delete_class');
 Route::get('admin/classes/enroll_students/{id}', 'ClassesController@enroll_students')->name('enroll_students');
+
+Route::get('/send_emails_to_all_users/{id}','ClassesController@send_emails')->name('send_emails');
+Route::get('admin/classes/delete_enroll_student/{id}', 'ClassesController@delete_enroll_student')->name('delete_enroll_student');

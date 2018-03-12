@@ -9,7 +9,9 @@ use App\Classes;
 use App\ClassStudent;
 use Auth;
 use DB;
-
+use Mail;
+use Illuminate\Bus\Queueable;
+use Illuminate\Mail\Mailable;
 class ClassesController extends Controller
 {
     public function index(){
@@ -20,7 +22,8 @@ class ClassesController extends Controller
     public function view_class(Request $request,$id){
         $args['class'] = Classes::find($id);
         $args['students'] = ClassStudent::leftJoin('users','users.id','=','class_student.student_id')
-                                        ->leftJoin('profile','profile.user_id','=','class_student.student_id')                                        
+                                        ->leftJoin('profile','profile.user_id','=','class_student.student_id')
+                                        ->select('users.fullname','users.email','users.verified','profile.d_o_b','profile.phone','profile.gender','users.id')                          
                                         ->where('class_id',$id)
                                         ->get();       
        // dd($args['students']);
@@ -82,26 +85,47 @@ class ClassesController extends Controller
         $delete->delete();
         return redirect()->route('classes');
     }
-    public function enroll_students_store(Request $request){
-
-         
+    public function enroll_students_store(Request $request){         
         $users = $request->student_id;            
         $class_id = $request->class_id;
         foreach ($users as $value) {            
-        $store = new ClassStudent;
-        if (ClassStudent::where('class_id', '=',$class_id)->where('student_id','=',$value)->exists()) {               
-        }else{
-            $store->class_id = $class_id;
-            $store->student_id = $value;        
-            $store->save();
-        }
-
+            $store = new ClassStudent;
+            if (ClassStudent::where('class_id', '=',$class_id)->where('student_id','=',$value)->exists()) {               
+            }else{
+                $store->class_id = $class_id;
+                $store->student_id = $value;        
+                $store->save();
+            }
         }
         return redirect()->back();
     }
+
     public function enroll_students(Request $request,$id){
-    $args['class'] = Classes::find($id); 
-    $args['students'] = User::where('role_id',3)->get();
-    return view('admin.classes.enroll_students')->with($args);      
+        $args['class'] = Classes::find($id); 
+        $args['students'] = User::where('role_id',3)->get();
+        return view('admin.classes.enroll_students')->with($args);      
+    }
+
+    // This is the function
+
+    public function delete_enroll_student(Request $request,$id){    
+    $delete = ClassStudent::where('class_student.class_id','=',$request->class_id)->where('class_student.student_id','=',$id)->delete();              
+    return redirect()->back();
+    }
+
+    public function send_emails(Request $request,$id){
+        $link = 'localhost/actor-pass/your_class/' . $id;       
+        $users = Classes::leftJoin('class_student','class_student.class_id','=','classes.id')
+                        ->leftJoin('users','users.id','=','class_student.student_id')
+                        ->select('class_student.student_id','users.email','users.fullname')
+                        ->where('class_student.class_id','=',$id)
+                        ->get();
+        foreach($users as $user){
+            Mail::send('email.send_email',['users'=>$user,'link'=> $link] , function ($message) use($user) {
+                $message->from('asifnawaz.aimviz@gmail.com', 'Actor Pass - Enrollment Email');
+                $message->to($user->email)->subject('ACTOR PASS - YOU ARE ENROLLED');
+            });
+        }
+        return redirect()->back();
     }
 }

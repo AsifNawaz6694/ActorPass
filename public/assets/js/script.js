@@ -54,4 +54,36 @@ $(function() {
 
 //for custom javascript functions function
 
+//on form submit change Admin Profile picture
+$('#submit_video').change(function(e){
+    e.preventDefault();
+    console.log("herezz");
+    var form = new FormData(this);
+     $.ajaxSetup({
+        headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
+      });  
+    $.ajax({
+        type: $(this).attr('method'),
+        url: $(this).attr('action'),
+        data: form,
+        processData: false,
+        contentType: false,
+        success: function(response){
+            if(response.code === 200){              
+                // alert(response.img);
+            }
+            if(response.code === 202){
+                // alert(response.error);
+                //alert(response.img);
+            }
+            if(response.code === 202){
+                //alert(response.error);
+            }
+        },
+        error: function(){
+            alert('Video uploading failed');
+        }
+    });
+});
+
 

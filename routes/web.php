@@ -36,9 +36,6 @@ Route::get('/contact', function(){
 	return view('front.contact');
 })->name('contact');
 
-
-
-
 /* Authentication Routes */
 //Routes not allowed to access after Authentication using Guest Middleware
 Route::group([ 'middleware' => 'guest'], function()
@@ -108,8 +105,6 @@ Route::get('/activate_user/{id}/', ["as" => "activate-user", "uses" => "AdminCon
 Route::get('/deactivate_user/{id}/', ["as" => "deactivate-user", "uses" => "AdminController@deactivate_user"]);
 
 
-
-
 // Classes CRUD Routes
 Route::get('admin/classes', 'ClassesController@index')->name('classes');
 Route::get('admin/classes/create', 'ClassesController@create')->name('create_class');
@@ -123,3 +118,7 @@ Route::get('admin/classes/enroll_students/{id}', 'ClassesController@enroll_stude
 
 Route::get('/send_emails_to_all_users/{id}','ClassesController@send_emails')->name('send_emails');
 Route::get('admin/classes/delete_enroll_student/{id}', 'ClassesController@delete_enroll_student')->name('delete_enroll_student');
+
+//Wall Related Routes
+Route::get('your_class/{id}','StudentController@video_upload')->name('upload_video');
+Route::post('my_video','StudentController@submit_video')->name('ajax_submit_video');

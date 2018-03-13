@@ -1295,3 +1295,45 @@ input[type=checkbox], input[type=radio]{
 input[type="checkbox"] {
     margin-bottom: 10px;
 }
+
+p.upload_content {
+   text-align: center;
+}
+
+.img_upload img.img-responsive {
+   text-align: center;
+   margin: 0 auto;
+}
+
+.img_upload {
+   padding-top: 23px;
+}
+
+.icon_cloud {
+   text-align: center;
+   font-size: 155px;
+}
+.icon_cloud i.fa.fa-cloud-upload {
+   font-size: 119px;
+}
+
+input[type=file] {
+   display: none;
+}
+
+p.description {
+   text-align: center;
+   margin-top: 10px;
+}
+.upload_icon {
+   text-align: center;
+   font-size: 145px;
+}
+
+section.upload_section {
+   padding-top: 41px;
+}
+
+i.fa.fa-cloud-upload {
+   color: gainsboro;
+}

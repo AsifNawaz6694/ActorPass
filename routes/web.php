@@ -121,4 +121,5 @@ Route::get('admin/classes/delete_enroll_student/{id}', 'ClassesController@delete
 
 //Wall Related Routes
 Route::get('your_class/{id}','StudentController@video_upload')->name('upload_video');
+Route::get('student-profile/{id}','StudentController@student_profile')->name('student_profile');
 Route::post('my_video','StudentController@submit_video')->name('ajax_submit_video');

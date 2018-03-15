@@ -68,7 +68,13 @@ class AuthenticationController extends Controller
        /* Validation */
         try{
             if(Auth::attempt(['email' => $request->email, 'password' => $request->password ] )) {                
+                
+                if (Auth::user()->role_id == '1') {
+                    return redirect()->route('admin_index');
+                }else{
                 return redirect()->route('home');  
+                }
+            
             }else{
                 $this->set_session('Invalid Username/Password', false);
                 return redirect()->route('login_view');             

@@ -75,6 +75,14 @@
                       @endif
                     </div>
                   </div>
+
+
+                  <div class="form-group">
+                    <div class="col-sm-12" style="margin-left: 100px;">                      
+                      <a href="{{route('user_edit',['id'=>$user->id])}}" class="btn btn-primary">Edit</a>
+                    </div>
+                  </div>
+
                 </form>
               </div>
                 <!--<form class="form-horizontal">

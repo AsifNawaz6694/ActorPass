@@ -7,6 +7,10 @@
     overflow: hidden;
     position: relative;
   }
+  .nav > li > a > img {
+    width: 20px;
+    height: 20px;
+  }
   .camera_image {
     background-color: #00000073;
     text-align: center;

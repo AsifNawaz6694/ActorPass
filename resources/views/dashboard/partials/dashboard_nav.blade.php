@@ -10,11 +10,18 @@
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right icons right_mobi_nav">
-                    <li class="dropdown">
+                    <li>
+                        @if(Auth::user()->featured == '1')
+                            <a href="" class="btn btn-default">Featured</a>
+                        @else
+                            <a href="{{route('account_feature')}}" class="btn btn-default">Feature</a>
+                        @endif
+                    </li>
+                    <!-- <li class="dropdown">                        
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                            aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-bell-o" aria-hidden="true"></i>
-                            <span class="badge">1</span>
+                            <span class="badge">11</span>
                         </a>
                         <ul class="dropdown-menu media-list animated fadeInDown dash_nav clearfix">
                             <li class="dropdown-header">Notifications (5)</li>
@@ -67,7 +74,7 @@
                                 <a href="javascript:;">View more</a>
                             </li>
                         </ul>
-                    </li>
+                    </li> -->
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                            aria-haspopup="true" aria-expanded="false">

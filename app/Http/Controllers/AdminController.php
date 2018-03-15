@@ -11,6 +11,9 @@ use Hash;
 use DB;
 class AdminController extends Controller
 {
+    public function index(){
+        return view('admin.index');
+    }
     public function users(){
     	$users = User::all();
        // dd($users);
@@ -173,5 +176,10 @@ class AdminController extends Controller
         $delete = User::find($id);
         $delete->delete();
         return redirect()->route('users');
+    }
+
+    public function admin_logout(){
+        Auth::logout();
+      return redirect()->route('home');
     }
 }

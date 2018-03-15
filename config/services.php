@@ -39,6 +39,11 @@ return [
         'Bookeo_apiKey' => env('Bookeo_apiKey'),
         'Bookeo_secretKey' => env('Bookeo_secretKey'),
         'Bookeo_base_uri' => env('Bookeo_base_uri')
-    ]
+    ],
+
+       'paypal' => [
+        'client_id' => env('PAYPAL_CLIENT_ID'),
+        'secret' => env('PAYPAL_SECRET'),
+    ],
 
 ];

@@ -94,16 +94,16 @@
               Image Donot Exist
                 @endif
                 <p>
-                  ADMIN - JOHN
-                  <small>Member since 12-12-2018</small>
+                  ADMIN - {{Auth::user()->fullname}}
+                  <small>Member since {{Auth::user()->created_at->format('Y-F-d')}}</small>
                 </p>
               </li>             
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="" class="btn btn-default btn-flat">Profile</a>
+                  <a href="{{route('user',['id'=>Auth::user()->id])}}" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="{{route('admin_logout')}}" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>

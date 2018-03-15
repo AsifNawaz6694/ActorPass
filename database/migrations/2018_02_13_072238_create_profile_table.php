@@ -20,7 +20,10 @@ class createProfileTable extends Migration
             $table->string('gender')->nullable();
             $table->string('d_o_b')->nullable();
             $table->string('profile_pic')->default('default.jpg');            
-            $table->string('customer_id')->nullable();            
+            $table->string('customer_id')->nullable();  
+            $table->string('address')->nullable();  
+            $table->string('about_me')->nullable();                        
+            $table->string('cover')->default('default.jpg');            
             $table->timestamps();
 
             /* Assigning Foreign key */

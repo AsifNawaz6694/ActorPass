@@ -1,5 +1,6 @@
 @extends('masterlayout')
 @section('content')
+
 <article>
 	<section class="how-it-works">
 		<div class="container">

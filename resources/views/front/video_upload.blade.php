@@ -19,6 +19,15 @@
 							</label>
 						</span>
 					</div>
+					<br>
+					<br>
+					<div class="center" style="text-align: center;">
+						<label class="">Description</label>
+							<textarea name="description"></textarea>
+					</div>
+					<div class="center" style="text-align: center;">
+						<button type="submit">upload</button>
+					</div>
 				</form>
 				<p class="description">Integer vel vestibulum turpis. Nulla eros urna, molestie eu est et, laoreet aliquet libero. Cras vitae molestie erat. Donec </p>
 			</div>

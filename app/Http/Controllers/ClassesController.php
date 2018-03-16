@@ -7,6 +7,7 @@ use App\User;
 use App\Profile;
 use App\Classes;
 use App\ClassStudent;
+use App\StudentVideo;
 use Auth;
 use DB;
 use Mail;
@@ -19,14 +20,52 @@ class ClassesController extends Controller
     	return view('admin.classes.index')->with($args);
     }
 
+    public function send_emails_teachers($id){
+        $link = 'localhost/actor-pass/public_wall/' . $id;       
+        $users = Classes::leftJoin('users','users.id','=','classes.teacher_id')
+                        ->select('users.email','users.fullname')
+                        ->where('classes.id','=',$id)
+                        ->first();    
+        Mail::send('email.send_email_teacher',['users'=>$users,'link'=> $link] , function ($message) use($users) {
+            $message->from('asifnawaz.aimviz@gmail.com', 'Actor Pass - Enrollment Email');
+            $message->to($users->email)->subject('ACTOR PASS - YOU ARE ENROLLED');
+        });        
+        return redirect()->back();
+
+    }
+    public function approve_video($id){
+      
+        DB::table('student_videos')
+            ->where('id', $id)
+            ->update(['status' => 1]);        
+        return redirect()->back();
+    }
+    
+    public function disapprove_video($id){
+       
+        DB::table('student_videos')
+            ->where('id', $id)
+            ->update(['status' => 0]);         
+        return redirect()->back();
+    }  
+
+    public function all_videos(Request $request,$id){
+        $args['class'] = Classes::find($id);
+        $args['videos'] = StudentVideo::leftJoin('users','users.id','=','student_videos.student_id')
+                                        ->select('student_videos.id as studen_video_id','student_videos.status','users.fullname','users.email','users.verified','users.id','student_videos.video','student_videos.description')
+                                        ->where('student_videos.class_id',$id)
+                                        ->orderBy('student_videos.id' , 'DESC')
+                                        ->get();
+        return view('admin.classes.all_videos')->with($args);
+    }
+
     public function view_class(Request $request,$id){
         $args['class'] = Classes::find($id);
         $args['students'] = ClassStudent::leftJoin('users','users.id','=','class_student.student_id')
                                         ->leftJoin('profile','profile.user_id','=','class_student.student_id')
                                         ->select('users.fullname','users.email','users.verified','profile.d_o_b','profile.phone','profile.gender','users.id')                          
                                         ->where('class_id',$id)
-                                        ->get();       
-       // dd($args['students']);
+                                        ->get();
         return view('admin.classes.view')->with($args);
     }
 

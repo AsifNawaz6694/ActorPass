@@ -5,22 +5,22 @@
 <div class="content-wrapper">
 
   <form role="form">
-              <div class="box-body">
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Email address</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword1">Password</label>
-                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                </div>
-                
-                
-              </div>
-              <!-- /.box-body -->
+    <div class="box-body">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+      </div>
+      
+      
+    </div>
+    <!-- /.box-body -->
 
-            
-            </form>
+    
+  </form>
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
@@ -64,20 +64,20 @@
           </div>
         </div>
 
-         <form role="form">
-   
-  <div class="form-group">
-                  <label for="exampleInputEmail1">Description</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1">
-                </div>
-            
-            </form>
-              <div class="box-footer" style="display: inline-block;">
-                <button type="save" class="btn btn-primary">Save</button>
-              </div>
-              <div class="box-footer" style="display: inline-block;">
-                <button type="reset" class="btn btn-primary">Reset</button>
-              </div>
+        <form role="form">
+         
+          <div class="form-group">
+            <label for="exampleInputEmail1">Description</label>
+            <input type="email" class="form-control" id="exampleInputEmail1">
+          </div>
+          
+        </form>
+        <div class="box-footer" style="display: inline-block;">
+          <button type="save" class="btn btn-primary">Save</button>
+        </div>
+        <div class="box-footer" style="display: inline-block;">
+          <button type="reset" class="btn btn-primary">Reset</button>
+        </div>
       </div>
       <!-- /.col-->
 

@@ -16,9 +16,8 @@
 
 
 //public pages routes
-Route::get('/', function(){
-	return view('front.index');
-})->name('home');
+Route::get('/', 'PagesController@index')->name('public_index');
+Route::get('public_wall/{id}', 'PagesController@public_wall')->name('public_wall');
 
 Route::get('/about', function(){
 	return view('front.about');
@@ -115,7 +114,7 @@ Route::get('/activate_user/{id}/', ["as" => "activate-user", "uses" => "AdminCon
 Route::get('/deactivate_user/{id}/', ["as" => "deactivate-user", "uses" => "AdminController@deactivate_user"]);
 
 
-// Classes CRUD Routes
+// Classes CRUD/Related Routes
 Route::get('classes', 'ClassesController@index')->name('classes');
 Route::get('classes/create', 'ClassesController@create')->name('create_class');
 Route::post('classes/store', 'ClassesController@store')->name('store_class');
@@ -123,11 +122,14 @@ Route::post('classes/update/{id}', 'ClassesController@update')->name('update_cla
 Route::post('classes/enroll_students_store', 'ClassesController@enroll_students_store')->name('enroll_students_store');
 Route::get('classes/edit/{id}', 'ClassesController@edit')->name('edit_class');
 Route::get('classes/view/{id}', 'ClassesController@view_class')->name('view_class');
+Route::get('classes/all_videos/{id}', 'ClassesController@all_videos')->name('all_videos');
 Route::get('classes/delete/{id}', 'ClassesController@destroy')->name('delete_class');
 Route::get('classes/enroll_students/{id}', 'ClassesController@enroll_students')->name('enroll_students');
 Route::get('/send_emails_to_all_users/{id}','ClassesController@send_emails')->name('send_emails');
 Route::get('classes/delete_enroll_student/{id}', 'ClassesController@delete_enroll_student')->name('delete_enroll_student');
-
+Route::get('/approve_video/{id}/', ["as" => "approve-video", "uses" => "ClassesController@approve_video"]);
+Route::get('/disapprove_video/{id}/', ["as" => "disapprove-video", "uses" => "ClassesController@disapprove_video"]);
+Route::get('/send_emails_teachers/{id}','ClassesController@send_emails_teachers')->name('send_emails_teachers');
 });
 
 // Payment Related Routes

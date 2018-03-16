@@ -9,9 +9,12 @@ use App\Profile;
 use Auth;
 use Hash;
 use DB;
+use Carbon\Carbon;
+use Datetime;
+use File;
 class AdminController extends Controller
 {
-    public function index(){
+    public function index(){                
         return view('admin.index');
     }
     public function users(){

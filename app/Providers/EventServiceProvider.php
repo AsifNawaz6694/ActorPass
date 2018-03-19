@@ -18,7 +18,6 @@ class EventServiceProvider extends ServiceProvider
         ],
         'App\Events\UserEvent' => [
             'App\Listeners\UserProfile',
-            'App\Listeners\CreateCustomer',
         ],
     ];
 

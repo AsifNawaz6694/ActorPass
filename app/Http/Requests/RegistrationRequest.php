@@ -23,12 +23,13 @@ class RegistrationRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        //dd(123);
+        /*return [
             //
             'fullname' =>'required|string|max:191',
             'email' =>'required|unique:users|max:191',
             'username' =>'required|string|max:191',
             'password' =>'required|confirmed|min:6'
-        ];
+        ]; */
     }
 }

@@ -20,6 +20,10 @@
     <link href="{{ asset('public/dashboard_assets/css/validationEngine.jquery.css') }}" rel="stylesheet">
     <!-- StyleSheet -->
     <link href="{{ asset('public/dashboard_assets/css/style.css') }}" rel="stylesheet">
+
+    <!-- Datatable css -->
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
+
     <!-- Responsive -->
     <link href="{{ asset('public/dashboard_assets/css/responsive.css') }}" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->

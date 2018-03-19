@@ -71,6 +71,12 @@ Route::group(['middleware' => 'auth'], function()
 	/* Dashbboard Routes */
 	Route::get('/dashboard',  'DashboardController@index')->name('dash_index');
 
+	/* Dashbboard Classes */
+	Route::get('/dashboard/student-classes',  'DashboardController@dash_classes')->name('dash_classes');
+
+	/* Classes Datable Request */ 
+	Route::get('/dashboard/get-classes-dt',  'DashboardController@dash_classes_dt')->name('dash_classes_dt');
+
 	/* Profile Route  - Index */
 	Route::get('/dashboard/profile',  'ProfileController@index')->name('profile_index');
 

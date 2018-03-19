@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -21,15 +20,16 @@ class ClassesController extends Controller
     }
 
     public function send_emails_teachers($id){
-        $link = 'localhost/actor-pass/public_wall/' . $id;       
+        $link = 'localhost/actor-pass/class_wall/' . $id;       
         $users = Classes::leftJoin('users','users.id','=','classes.teacher_id')
                         ->select('users.email','users.fullname')
                         ->where('classes.id','=',$id)
-                        ->first();    
-        Mail::send('email.send_email_teacher',['users'=>$users,'link'=> $link] , function ($message) use($users) {
+                        ->first();
+        Mail::send('email.send_email_teacher',['users'=>$users,'link'=> $link] , function ($message) use($users){
             $message->from('asifnawaz.aimviz@gmail.com', 'Actor Pass - Enrollment Email');
             $message->to($users->email)->subject('ACTOR PASS - YOU ARE ENROLLED');
-        });        
+        }); 
+        $this->set_session('You Have Successfully Send An Email', true);       
         return redirect()->back();
 
     }
@@ -37,7 +37,8 @@ class ClassesController extends Controller
       
         DB::table('student_videos')
             ->where('id', $id)
-            ->update(['status' => 1]);        
+            ->update(['status' => 1]);    
+        $this->set_session('You Have Successfully Approved This Video', true);     
         return redirect()->back();
     }
     
@@ -46,6 +47,7 @@ class ClassesController extends Controller
         DB::table('student_videos')
             ->where('id', $id)
             ->update(['status' => 0]);         
+        $this->set_session('You Have Successfully DisApproved This Video',false);     
         return redirect()->back();
     }  
 
@@ -122,6 +124,7 @@ class ClassesController extends Controller
     public function destroy($id){
         $delete = Classes::find($id);
         $delete->delete();
+         $this->set_session('Class Deleted Successfully.', false);
         return redirect()->route('classes');
     }
     public function enroll_students_store(Request $request){         
@@ -134,6 +137,7 @@ class ClassesController extends Controller
                 $store->class_id = $class_id;
                 $store->student_id = $value;        
                 $store->save();
+                $this->set_session('Students Enrolled In Class Successfully.', true);
             }
         }
         return redirect()->back();
@@ -148,7 +152,8 @@ class ClassesController extends Controller
     // This is the function
 
     public function delete_enroll_student(Request $request,$id){    
-    $delete = ClassStudent::where('class_student.class_id','=',$request->class_id)->where('class_student.student_id','=',$id)->delete();              
+    $delete = ClassStudent::where('class_student.class_id','=',$request->class_id)->where('class_student.student_id','=',$id)->delete(); 
+    $this->set_session('Enrolled Student Removed Successfully.', false);             
     return redirect()->back();
     }
 
@@ -165,6 +170,7 @@ class ClassesController extends Controller
                 $message->to($user->email)->subject('ACTOR PASS - YOU ARE ENROLLED');
             });
         }
+        $this->set_session('Emails Have Been Sent To All The Users Of This Class.', true);
         return redirect()->back();
     }
 }

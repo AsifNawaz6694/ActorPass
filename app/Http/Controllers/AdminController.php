@@ -61,9 +61,12 @@ class AdminController extends Controller
           $location=public_path('public/storage/profile-pictures/'.$filename);
           $store_profile->profile_pic=$filename;         
     }
-    $store_profile->profile_pic = $this->UploadImage('profile_pic', Input::file('profile_pic'));     
-    $store_profile->save();
-
+    $store_profile->profile_pic = $this->UploadImage('profile_pic', Input::file('profile_pic'));         
+    if ($store_profile->save()) {
+    $this->set_session('User Created successfully.', true);        
+    }else{
+    $this->set_session('User is Not Created.', false);        
+    }
     return redirect()->route('users');
 
     }
@@ -88,7 +91,9 @@ class AdminController extends Controller
         ]);  
         $path = asset('public/storage/profile-pictures/').'/'.$img_name; 
         return \Response()->json(['success' => "Image update successfully", 'code' => 200, 'img' => $path]); 
+        $this->set_session('Image Uploaded successfully', true); 
         }else{      
+            $this->set_session('Image is Not Uploaded. Please Try Again', false); 
         return \Response()->json(['error' => "Image uploading failed", 'code' => 202]);
         }
     }
@@ -118,6 +123,7 @@ class AdminController extends Controller
                 'gender' => $request->gender,
                 'd_o_b' => $request->d_o_b
             ]);
+        $this->set_session('User Updated Successfully', true);
         return redirect()->route('users');
     }
     public function UploadImage($type, $file){
@@ -133,6 +139,7 @@ class AdminController extends Controller
         DB::table('users')
             ->where('id', $id)
             ->update(['verified' => 1]);        
+        $this->set_session('User Is Activated', true); 
         return redirect()->back();
     }
     
@@ -140,6 +147,7 @@ class AdminController extends Controller
         DB::table('users')
             ->where('id', $id)
             ->update(['verified' => 0]);         
+        $this->set_session('User Is Deactivated', false); 
         return redirect()->back();
     }  
 
@@ -170,19 +178,19 @@ class AdminController extends Controller
         else{
             Session::flash('old_password','Old password is incorrect, please enter valid password');
             return redirect()->route('users');
-        }
-
-                   
+        }                   
     } 
 
     public function destroy($id){
-        $delete = User::find($id);
+        $profile = Profile::where('user_id',$id)->delete();
+        $delete = User::find($id);                
         $delete->delete();
+        $this->set_session('User Is Deleted', false); 
         return redirect()->route('users');
     }
 
     public function admin_logout(){
         Auth::logout();
-      return redirect()->route('home');
+        return redirect()->route('home');
     }
 }

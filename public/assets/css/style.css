@@ -1666,6 +1666,58 @@ h3.home {
        margin-left: 16px;
    }
 }
-
-
 /*New Css For WAll ANd Profile*/
+
+/*New Css For CommentsSystem On Public Wall*/
+.padding_commit{
+   padding: 0px 17px;
+}
+.comment-wrap {
+   margin-top: 33px;
+}
+.comment-wrap {
+   margin-bottom: 1.25rem;
+   display: table;
+   width: 100%;
+   min-height: 5.3125rem;
+}
+.photo {
+   padding-top: 0.625rem;
+   display: table-cell;
+   width: 3.5rem;
+}
+.photo .avatar {
+   height: 2.25rem;
+   width: 2.25rem;
+   border-radius: 50%;
+   background-size: contain;
+}
+.avatar img {
+   width: 100%;
+}
+.comment-block {
+   padding: 1rem;
+   background-color: #fff;
+   display: table-cell;
+   vertical-align: top;
+   border-radius: 0.1875rem;
+   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
+}
+.comment-text {
+   margin-bottom: 1.25rem;
+}
+textarea#comment {
+   border-style: none;
+   width: 100%;
+   font-size: 14px;
+}
+.button_comment {
+   margin-left: 59px;
+}
+.button_comment button.btn {
+   background-color: black;
+   color: white;
+   font-size: 17px;
+   padding: 7px 30px;
+}
+/*New Css For CommentsSystem On Public Wall*/

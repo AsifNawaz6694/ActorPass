@@ -20,6 +20,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-6 form">
+		@include('partials.error_section')
 			<p class="about_paragraph">
 				If you're talented and looking for a job, contact us here:
 			</p>

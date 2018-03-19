@@ -3,6 +3,7 @@
 <div class="row">
     <!-- /.col -->
     <div class="col-md-12">
+        @include('partials.error_section')
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#settings" data-toggle="tab">Enroll Students</a></li>

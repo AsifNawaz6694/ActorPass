@@ -17,8 +17,9 @@
 
 //public pages routes
 Route::get('/', 'PagesController@index')->name('public_index');
-Route::get('public_wall/{id}', 'PagesController@public_wall')->name('public_wall');
+Route::get('class_wall/{id}', 'PagesController@public_wall')->name('public_wall');
 Route::POST('/contact_page','PagesController@contact_page')->name('contact_page');
+Route::POST('/post_comment','PagesController@post_comment')->name('post_comment');
 Route::get('/about', function(){
 	return view('front.about');
 })->name('about');

@@ -18,7 +18,7 @@
 //public pages routes
 Route::get('/', 'PagesController@index')->name('public_index');
 Route::get('public_wall/{id}', 'PagesController@public_wall')->name('public_wall');
-
+Route::POST('/contact_page','PagesController@contact_page')->name('contact_page');
 Route::get('/about', function(){
 	return view('front.about');
 })->name('about');
@@ -96,40 +96,40 @@ Route::post('update_cover','StudentController@update_cover')->name('ajax_change_
 
 Route::group(['prefix' => 'admin' ,  'middleware' => 'is-admin'], function () {
 
-Route::get('index', 'AdminController@index')->name('admin_index');
-Route::get('admin_logout', 'AdminController@admin_logout')->name('admin_logout');
+	Route::get('index', 'AdminController@index')->name('admin_index');
+	Route::get('admin_logout', 'AdminController@admin_logout')->name('admin_logout');
 
 
 // Users CRUD/Other Routes
-Route::get('users', 'AdminController@users')->name('users');
-Route::get('user/create', 'AdminController@create')->name('create_user');
-Route::post('user/store', 'AdminController@store')->name('store_user');
-Route::get('user/{id}', 'AdminController@user_view')->name('user');
-Route::get('user/{id}/edit', 'AdminController@user_edit')->name('user_edit');
-Route::post('ImageUpload',['as'=>'ImageUpload','uses'=>'AdminController@ImageUpload']);
-Route::post('update_user/{id}',['as'=>'update_user','uses'=>'AdminController@update']);
-Route::post('user/password_update/{id}', 'AdminController@update_password')->name('update_password');
-Route::get('user/delete/{id}', 'AdminController@destroy')->name('delete_user');
-Route::get('/activate_user/{id}/', ["as" => "activate-user", "uses" => "AdminController@activate_user"]);
-Route::get('/deactivate_user/{id}/', ["as" => "deactivate-user", "uses" => "AdminController@deactivate_user"]);
+	Route::get('users', 'AdminController@users')->name('users');
+	Route::get('user/create', 'AdminController@create')->name('create_user');
+	Route::post('user/store', 'AdminController@store')->name('store_user');
+	Route::get('user/{id}', 'AdminController@user_view')->name('user');
+	Route::get('user/{id}/edit', 'AdminController@user_edit')->name('user_edit');
+	Route::post('ImageUpload',['as'=>'ImageUpload','uses'=>'AdminController@ImageUpload']);
+	Route::post('update_user/{id}',['as'=>'update_user','uses'=>'AdminController@update']);
+	Route::post('user/password_update/{id}', 'AdminController@update_password')->name('update_password');
+	Route::get('user/delete/{id}', 'AdminController@destroy')->name('delete_user');
+	Route::get('/activate_user/{id}/', ["as" => "activate-user", "uses" => "AdminController@activate_user"]);
+	Route::get('/deactivate_user/{id}/', ["as" => "deactivate-user", "uses" => "AdminController@deactivate_user"]);
 
 
 // Classes CRUD/Related Routes
-Route::get('classes', 'ClassesController@index')->name('classes');
-Route::get('classes/create', 'ClassesController@create')->name('create_class');
-Route::post('classes/store', 'ClassesController@store')->name('store_class');
-Route::post('classes/update/{id}', 'ClassesController@update')->name('update_class');
-Route::post('classes/enroll_students_store', 'ClassesController@enroll_students_store')->name('enroll_students_store');
-Route::get('classes/edit/{id}', 'ClassesController@edit')->name('edit_class');
-Route::get('classes/view/{id}', 'ClassesController@view_class')->name('view_class');
-Route::get('classes/all_videos/{id}', 'ClassesController@all_videos')->name('all_videos');
-Route::get('classes/delete/{id}', 'ClassesController@destroy')->name('delete_class');
-Route::get('classes/enroll_students/{id}', 'ClassesController@enroll_students')->name('enroll_students');
-Route::get('/send_emails_to_all_users/{id}','ClassesController@send_emails')->name('send_emails');
-Route::get('classes/delete_enroll_student/{id}', 'ClassesController@delete_enroll_student')->name('delete_enroll_student');
-Route::get('/approve_video/{id}/', ["as" => "approve-video", "uses" => "ClassesController@approve_video"]);
-Route::get('/disapprove_video/{id}/', ["as" => "disapprove-video", "uses" => "ClassesController@disapprove_video"]);
-Route::get('/send_emails_teachers/{id}','ClassesController@send_emails_teachers')->name('send_emails_teachers');
+	Route::get('classes', 'ClassesController@index')->name('classes');
+	Route::get('classes/create', 'ClassesController@create')->name('create_class');
+	Route::post('classes/store', 'ClassesController@store')->name('store_class');
+	Route::post('classes/update/{id}', 'ClassesController@update')->name('update_class');
+	Route::post('classes/enroll_students_store', 'ClassesController@enroll_students_store')->name('enroll_students_store');
+	Route::get('classes/edit/{id}', 'ClassesController@edit')->name('edit_class');
+	Route::get('classes/view/{id}', 'ClassesController@view_class')->name('view_class');
+	Route::get('classes/all_videos/{id}', 'ClassesController@all_videos')->name('all_videos');
+	Route::get('classes/delete/{id}', 'ClassesController@destroy')->name('delete_class');
+	Route::get('classes/enroll_students/{id}', 'ClassesController@enroll_students')->name('enroll_students');
+	Route::get('/send_emails_to_all_users/{id}','ClassesController@send_emails')->name('send_emails');
+	Route::get('classes/delete_enroll_student/{id}', 'ClassesController@delete_enroll_student')->name('delete_enroll_student');
+	Route::get('/approve_video/{id}/', ["as" => "approve-video", "uses" => "ClassesController@approve_video"]);
+	Route::get('/disapprove_video/{id}/', ["as" => "disapprove-video", "uses" => "ClassesController@disapprove_video"]);
+	Route::get('/send_emails_teachers/{id}','ClassesController@send_emails_teachers')->name('send_emails_teachers');
 });
 
 // Payment Related Routes

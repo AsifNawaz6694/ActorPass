@@ -7,7 +7,7 @@
   reserved.
 </footer>
 <!-- jQuery 3 -->
-  <script src="{{asset('public/admin_assets/bower_components/jquery/dist/jquery.min.js')}}"></script>
+<script src="{{asset('public/admin_assets/bower_components/jquery/dist/jquery.min.js')}}"></script>
 <!-- <script src="bower_components/jquery/dist/jquery.min.js"></script> -->
 <!-- jQuery UI 1.11.4 -->
 <script src="{{asset('public/admin_assets/bower_components/jquery-ui/jquery-ui.min.js')}}"></script>

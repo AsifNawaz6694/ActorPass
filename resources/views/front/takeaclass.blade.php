@@ -27,7 +27,7 @@
 			<div class="col-md-9">
 				<div class="row">
 					<div class="col-md-9">
-						<h3 class="main_content">
+						<h3 class="s_main_content">
 							MOCK COSTAR AUDITION CLASS
 						</h3>
 						<h3 class="inner_content">
@@ -36,7 +36,7 @@
 						<h3 class="small_content">
 							DEADLINE TO SIGN UP: MAY 13th 2016
 						</h3>
-						
+
 					</div>
 					<div class="col-md-3">
 						<div class="button_take"><a href="#" class="btn" type="button">SIGN UP NOW</a></div>
@@ -63,7 +63,7 @@
 			<div class="col-md-9">
 				<div class="row">
 					<div class="col-md-9">
-						<h3 class="main_content">
+						<h3 class="s_main_content">
 							MOCK COSTAR AUDITION CLASS
 						</h3>
 						<h3 class="inner_content">
@@ -72,7 +72,7 @@
 						<h3 class="small_content">
 							DEADLINE TO SIGN UP: MAY 13th 2016
 						</h3>
-						
+
 					</div>
 					<div class="col-md-3">
 						<div class="button_take"><a href="#" class="btn" type="button">SIGN UP NOW</a></div>
@@ -99,7 +99,7 @@
 			<div class="col-md-9">
 				<div class="row">
 					<div class="col-md-9">
-						<h3 class="main_content">
+						<h3 class="s_main_content">
 							MOCK COSTAR AUDITION CLASS
 						</h3>
 						<h3 class="inner_content">
@@ -108,7 +108,7 @@
 						<h3 class="small_content">
 							DEADLINE TO SIGN UP: MAY 13th 2016
 						</h3>
-						
+
 					</div>
 					<div class="col-md-3">
 						<div class="button_take"><a href="#" class="btn" type="button">SIGN UP NOW</a></div>
@@ -122,7 +122,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 	</div>
 </section>
 

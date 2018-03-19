@@ -20,8 +20,8 @@ class AuthenticationController extends Controller
     }
 
     //Posting Register Form
-    public function register_post(RegistrationRequest $request){
-
+    public function register_post(Request $request){
+        //dd($request->input());
         /* Validating User */
         try{
             $user = new User();
@@ -43,7 +43,7 @@ class AuthenticationController extends Controller
 
 	             //Creating Profile for this new User.
                 event(new UserEvent($user));
-                dispatch(new SendVerificationEmail($user));
+                //dispatch(new SendVerificationEmail($user));
 
                 $this->set_session('User Successfully Registered.', true);
             }

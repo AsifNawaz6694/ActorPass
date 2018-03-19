@@ -1,18 +1,67 @@
 @extends('dashboard.dashboardmasterlayout')
 @section('content')
-<div class="wrapper">
+    <div class="wrapper">
+        <div class="heading_one">
+            <h1>Dashboard</h1>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+            <div class="dashboard_box">
+                <div class="panel panel-default">
+                    <!-- Default panel contents -->
+                    <div class="panel-body">
+                        <h4 class="float-left text-left">About me</h4>
+                        <h4 class="float-right text-right"><a href="{{route('profile_index')}}">Edit Profile</a></h4>
+                    </div>
+                    <!-- Table -->
+                    <table class="table">
+                        <tr>
+                            <td>
+                                <label>Full Name <span>*</span></label>
+                                
+                                <p>{{isset(Auth::user()->fullname) ? Auth::user()->fullname : '-'}}</p>
+
+                            </td>
+                            <td>
+                                <label>Phone <span>*</span></label>
+                                <p>{{isset($profile->phone) ? $profile->phone : '-'}}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Email Address <span>*</span></label>
+                                <p>{{isset(Auth::user()->email) ? Auth::user()->email : '-'}}</p>
+                            </td>
+                            <td>
+                                <label>DOB <span>*</span></label>
+                                <p>{{isset($profile->d_o_b) ? $profile->d_o_b : '-'}}</p>
+                            </td>
+                        </tr>
+                        <!--<tr>
+                            <td>
+                                <label>Password <span>*</span></label>
+                                <p>123456</p>
+                            </td>
+                            <td>
+                                <label>I am a <span>*</span></label>
+                                <p>Innovator</p>
+                            </td>
+                        </tr> -->
+                    </table>
+
+<!-- <div class="wrapper">
     <div class="heading_one">
         <h1>Dashboard</h1>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
         <div class="dashboard_box">
             <div class="panel panel-default">
-                <!-- Default panel contents -->
+                <!-- Default panel contents 
                 <div class="panel-body">
                     <h4 class="float-left text-left">About me</h4>
                     <h4 class="float-right text-right"><a href="#">Edit Profile</a></h4>
+
                 </div>
-                <!-- Table -->
+                <!-- Table 
                 <table class="table">
                     <tr>
                         <td>
@@ -44,7 +93,7 @@
                             <p>Innovator</p>
                         </td>
                     </tr>
-                </table>
+                </table> -->
             </div>
         </div>
     </div>

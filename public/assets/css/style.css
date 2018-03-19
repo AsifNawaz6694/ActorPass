@@ -112,7 +112,7 @@ footer, header, hgroup, menu, nav, section {
 @font-face {
     font-family: 'GOTHAM-BOLD';
     src: url('../fonts/GOTHAM-BOLD.ttf');
-  
+
     font-weight: normal;
     font-style: normal;
 }
@@ -120,7 +120,7 @@ footer, header, hgroup, menu, nav, section {
 @font-face {
     font-family: 'hind-regular';
     src: url('../fonts/hind-regular.otf');
-  
+
     font-weight: normal;
     font-style: normal;
 }
@@ -128,14 +128,14 @@ footer, header, hgroup, menu, nav, section {
 @font-face {
     font-family: 'hind-medium';
     src: url('../fonts/hind-medium.otf');
-  
+
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: 'hind-semibold';
     src: url('../fonts/hind-semibold.otf');
-  
+
     font-weight: normal;
     font-style: normal;
 }
@@ -143,7 +143,7 @@ footer, header, hgroup, menu, nav, section {
 @font-face {
     font-family: 'GOTHAM-MEDIUM';
     src: url('../fonts/GOTHAM-MEDIUM.ttf');
-  
+
     font-weight: normal;
     font-style: normal;
 }
@@ -151,7 +151,7 @@ footer, header, hgroup, menu, nav, section {
 @font-face {
     font-family: 'hind-bold';
     src: url('../fonts/hind-bold.otf');
-  
+
     font-weight: normal;
     font-style: normal;
 }
@@ -159,7 +159,7 @@ footer, header, hgroup, menu, nav, section {
 @font-face {
     font-family: 'GOTHAM-LIGHT';
     src: url('../fonts/GOTHAM-LIGHT.ttf');
-  
+
     font-weight: normal;
     font-style: normal;
 }
@@ -291,13 +291,13 @@ p{
     text-align: center;
     padding-left: 152px;
     padding-right: 152px;
-  
+
     line-height: 24px;
     font-family: 'hind-regular';
 }
 .how-it-works h2.heading-primary{
     margin-bottom: 50px;
-} 
+}
 
 .icon{
     width: 115px;
@@ -315,9 +315,9 @@ p{
     background: #ed1c24;
 }
 .icon:hover:after {
-   
+
     box-shadow: 0 0 0 2px red;
-   
+
 }
 .icon:after {
     top: -27px;
@@ -372,7 +372,7 @@ p{
     font-size: 18px;
     color: #4f4f4f;
     font-family: 'GOTHAM-MEDIUM';
-   
+
     line-height: 26px;
 }
 .section-icons h4:hover{
@@ -420,7 +420,7 @@ span.color {
     letter-spacing: 1px;
 }
 .about-us {
-   
+
     padding: 9% 0;
 }
 .take-class{
@@ -512,7 +512,7 @@ span.color {
 }
 
 a:focus, a:hover {
-   
+
     text-decoration: none;
 }
 
@@ -543,11 +543,11 @@ section.login {
 
 
 .form-control {
-   
+
     height: 48px;
     border-radius: 1px;
-  
-  
+
+
 }
 
 .form-group_form label {
@@ -635,31 +635,31 @@ h3.fotgot {
 @media only screen and (min-device-width : 320px) and (max-device-width : 767px) {
 
     .col-md-4.col-md-offset-4.login {
-  
+
     width: 100%;
-   
+
 }
 a.btn.btn-default_signup {
-   
+
     font-size: 15px;
-   
+
     width: 100%;
     padding-left: 0px;
     padding-right: 0px;
         margin-bottom: 10px;
 }
 button.btn.login_now {
-  
+
     font-size: 17px;
-    
+
     width: 100%;
 }
 h3.fotgot {
-     text-align:left; 
+     text-align:left;
     font-family: 'GOTHAM-LIGHT';
     font-size: 16px;
     font-weight: 700;
-    margin-right: 0px; 
+    margin-right: 0px;
     color: #4f4f4f;
     margin-top: 10px;
 }
@@ -668,21 +668,21 @@ h3.fotgot {
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
 
      .col-md-4.col-md-offset-4.login {
-  
+
     width: 100%;
 }
 button.btn.login_now {
-   
+
     float: right;
 }
 }
 
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation:landscape){
    .col-md-4.col-md-offset-4.login {
-  
+
     width: 55%;
 }
-    
+
 }
 
 /*CSS OF CONTACT FORM*/
@@ -708,7 +708,7 @@ h3.content_middle {
     color: #851618;
     text-align: center;
     font-family: 'GOTHAM-BOLD';
-   
+
 }
 
 .col-md-6.form {
@@ -721,7 +721,7 @@ h3.content_middle {
 }
 
 .form-group .form-control {
-  
+
     border-radius: 0px;
 }
 
@@ -768,16 +768,16 @@ ul.address_contact_right li {
 @media only screen and (min-device-width : 320px) and (max-device-width : 767px) {
     ul.address_contact_right {
     float: left;
-    
+
 }
 h3.content_middle {
     font-size: 24px;
-   
+
 }
 p.about_paragraph {
-   
+
     font-size: 13px;
-    
+
 }
 }
 
@@ -809,17 +809,17 @@ h4.panel-title {
     color: #4f4f4f;
 }
 .panel-default>.panel-heading {
-   
+
     background-color: transparent;
     border-radius: 0px;
     margin-top: 20px;
-    
+
 }
 
 .panel {
-   
+
     border: none;
-    
+
 }
 .panel {
     -webkit-box-shadow: 0 0px 0px rgba(0,0,0,.05);
@@ -840,7 +840,7 @@ div#accordion {
 }
 
 
-h3.main_content {
+h3.s_main_content {
     font-size: 24px;
     color: #ed1c24;
     font-family: 'GOTHAM-BOLD';
@@ -924,32 +924,32 @@ section.takeatime {
 
     h3.about_content {
     font-size: 17px;
-  
+
 }
 h3.main_content {
     font-size: 16px;
-   
+
 }
 
 h3.inner_content {
     font-size: 13px;
-    
+
 }
 
 .button_take {
-  
+
     text-align: center;
     margin-top: 10px;
     float: none;
 }
 h3.main_content {
- 
+
     margin-top: 15px;
 }
 h3.small_content {
-  
+
     font-size: 17px;
-   
+
 }
 }
 
@@ -957,7 +957,7 @@ h3.small_content {
 
 
     .image_content {
- 
+
     text-align: center;
 }
 }
@@ -965,16 +965,16 @@ h3.small_content {
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
 
     .image_content {
-   
+
     text-align: center;
 }
 
 h3.main_content {
-   
+
     margin-top: 22px;
 }
 .button_take {
-   
+
     margin-top: -72px;
 }
 }
@@ -1002,7 +1002,7 @@ p.left_content {
 
 .about_image {
     margin-top: 48px;
-  
+
 }
 
 section.about_class {
@@ -1113,10 +1113,10 @@ span.glyphicon.glyphicon-ok {
 
 
     .button_button_about a.btn {
-   
-     margin-left: 0px; 
+
+     margin-left: 0px;
      font-size: 19px;
-    
+
 }
 }
 
@@ -1209,26 +1209,26 @@ h3.about_content_guest:after {
 
     h3.attend {
     font-size: 13px;
-   
+
 }
 }
 @media only screen and (min-device-width : 320px) and (max-device-width : 767px) and (orientation:landscape){
 
 .box {
- 
+
     top: 15px;
-  
+
 }
 h3.main_content {
-   
+
     text-align: center;
 }
 h3.inner_content {
-   
+
     text-align: center;
 }
 h3.small_content {
-  
+
     text-align: center;
 }
 }
@@ -1236,9 +1236,9 @@ h3.small_content {
 @media only screen and (min-device-width : 767px) and (max-device-width : 1024px){
 
     .box {
- 
+
     top: 15px;
-  
+
 }
 
     }
@@ -1355,7 +1355,7 @@ p.text_profile {
 
 
 .vertical-menu a {
-   
+
     color: black !important;
     display: block;
     padding: 12px;
@@ -1414,7 +1414,7 @@ ul.list_profile {
 @media only screen and (min-device-width : 320px) and (max-device-width : 767px) {
 
     .side_img {
-   
+
     left: 49px;
 }
 .img_profile img.img-responsive {
@@ -1426,8 +1426,8 @@ ul.list_profile {
     right: 23% !important;
 }
 .main_content_name {
-    
-    
+
+
     right: 23% !important;
 }
 }
@@ -1435,7 +1435,7 @@ ul.list_profile {
 
 @media only screen and (min-device-width : 320px) and (max-device-width : 767px) and (orientation:landscape) {
     .main_content {
-  
+
     right: 63% !important;
 }
 .main_content_name {
@@ -1451,7 +1451,7 @@ ul.list_profile {
     right: 68% !important;
 }
 .main_content_name {
-   
+
     right: 68% !important;
 }
 }
@@ -1535,10 +1535,11 @@ p.upload_content {
 
 .icon_cloud {
     text-align: center;
-    font-size: 155px;
+    font-size: 90px;
 }
 .icon_cloud i.fa.fa-cloud-upload {
-    font-size: 119px;
+  font-size: 150px;
+  cursor: pointer;
 }
 
 
@@ -1557,7 +1558,10 @@ section.upload_section {
 }
 
 i.fa.fa-cloud-upload {
-    color: gainsboro;
+    color: #949494;
+}
+i.fa.fa-cloud-upload:hover {
+    color: #bcbcbc;
 }
 
 .text_content {
@@ -1570,9 +1574,9 @@ img#imagePreview {
 }
 
 .panel-heading {
-   
+
     border-bottom: NONE;
-   
+
 }
 h3.home {
     font-size: 24px;
@@ -1668,56 +1672,83 @@ h3.home {
 }
 /*New Css For WAll ANd Profile*/
 
-/*New Css For CommentsSystem On Public Wall*/
 .padding_commit{
-   padding: 0px 17px;
+    padding: 0px 17px;
 }
 .comment-wrap {
-   margin-top: 33px;
+    margin-top: 33px;
 }
 .comment-wrap {
-   margin-bottom: 1.25rem;
-   display: table;
-   width: 100%;
-   min-height: 5.3125rem;
+    margin-bottom: 1.25rem;
+    display: table;
+    width: 100%;
+    min-height: 5.3125rem;
 }
 .photo {
-   padding-top: 0.625rem;
-   display: table-cell;
-   width: 3.5rem;
+    padding-top: 0.625rem;
+    display: table-cell;
+    width: 3.5rem;
 }
 .photo .avatar {
-   height: 2.25rem;
-   width: 2.25rem;
-   border-radius: 50%;
-   background-size: contain;
+    height: 2.25rem;
+    width: 2.25rem;
+    border-radius: 50%;
+    background-size: contain;
 }
 .avatar img {
-   width: 100%;
+    width: 100%;
 }
 .comment-block {
-   padding: 1rem;
-   background-color: #fff;
-   display: table-cell;
-   vertical-align: top;
-   border-radius: 0.1875rem;
-   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
+    padding: 1rem;
+    background-color: #fff;
+    display: table-cell;
+    vertical-align: top;
+    border-radius: 0.1875rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
 }
 .comment-text {
-   margin-bottom: 1.25rem;
+    margin-bottom: 1.25rem;
 }
 textarea#comment {
-   border-style: none;
-   width: 100%;
-   font-size: 14px;
+    border-style: none;
+    width: 100%;
+    font-size: 14px;
 }
 .button_comment {
-   margin-left: 59px;
+    margin-left: 59px;
 }
 .button_comment button.btn {
-   background-color: black;
-   color: white;
-   font-size: 17px;
-   padding: 7px 30px;
+    background-color: black;
+    color: white;
+    font-size: 17px;
+    padding: 7px 30px;
 }
-/*New Css For CommentsSystem On Public Wall*/
+.s_border_header{
+
+    border:1px solid #ccc !important;
+}
+.btn-login {
+    border: 1px solid #ccc;
+    padding: 10px 0;
+    border-radius: 0;
+    background: #ed1c24;
+    color: #fff;
+    font-family: 'hind-bold';
+    letter-spacing: 1px;
+    font-size: 18px;
+    width: 85%;
+}
+.btn-login:hover {
+    color: #fff;
+    border: 1px solid #851618;
+    background-color: #851618;
+}
+.s-btn-width{
+      width: 100%;
+}
+
+.center_video{
+  text-align: center;
+  padding: 10px;
+}
+/*New Css For WAll ANd Profile*/

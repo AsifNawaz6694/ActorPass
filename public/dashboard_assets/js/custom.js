@@ -1,4 +1,22 @@
 $(document).ready(function () {
+
+
+    /* Classes Datatable users Profile */
+    $('#classesTable').DataTable();
+
+    /*oclassTable = $('#classes').DataTable({
+          "processing": true,
+          "serverSide": true,
+          "ajax": 'http://localhost/actor-pass/' + "/dashboard/get-classes-dt",
+          "columns": [
+              {data: 'title', name: 'title'},
+              {data: 'fullname', name: 'fullname'},
+              {data: 'cost', name: 'cost'},
+              {data: 'age', name: 'age'},
+          ]
+    }); */
+
+
     $('.dashboard_navigation ul li a').click(function () {
         $('ul li a').removeClass("actives");
         $(this).addClass("actives");

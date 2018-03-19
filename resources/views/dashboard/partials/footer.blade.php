@@ -24,6 +24,12 @@
 <script src="{{ asset('public/dashboard_assets/js/owl.carousel.min.js') }}"></script>
 <!-- Wow-min-js -->
 <script src="{{ asset('public/dashboard_assets/js/wow.min.js') }}"></script>
+
+  <!-- DataTables -->
+<script src="{{asset('public/admin_assets/bower_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('public/admin_assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script> 
+
+
 <!-- Custom-js -->
 <script src="{{ asset('public/dashboard_assets/js/custom.js') }}"></script>
 </body>

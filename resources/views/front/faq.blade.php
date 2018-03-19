@@ -7,7 +7,7 @@
 			<h3 class="about_content">
 				FAQs
 			</h3>
-			
+
 		</div>
 	</div>
 </div>
@@ -19,25 +19,25 @@
 				General Information
 			</h3>
 
-			
+
 			<div class="panel-group" id="accordion">
 				<div class="panel panel-default">
-					<div class="panel-heading">
+					<div class="panel-heading s_border_header">
 						<h4 class="panel-title">
 							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-								<span class="glyphicon glyphicon-minus"></span>
+								<span class="glyphicon glyphicon-plus"></span>
 								What is ActorsPass?
 							</a>
 						</h4>
 					</div>
-					<div id="collapseOne" class="panel-collapse collapse in">
+					<div id="collapseOne" class="panel-collapse collapse">
 						<div class="panel-body">
 							<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
 						</div>
 					</div>
 				</div>
 				<div class="panel panel-default">
-					<div class="panel-heading">
+					<div class="panel-heading s_border_header">
 						<h4 class="panel-title">
 							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
 								<span class="glyphicon glyphicon-plus"></span>
@@ -57,11 +57,11 @@
 				<h3 class="content_left">
 					Pricing
 				</h3>
-				
+
 
 
 				<div class="panel panel-default">
-					<div class="panel-heading">
+					<div class="panel-heading s_border_header">
 						<h4 class="panel-title">
 							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
 								<span class="glyphicon glyphicon-plus"></span>
@@ -80,7 +80,7 @@
 					Membership
 				</h3>
 				<div class="panel panel-default">
-					<div class="panel-heading">
+					<div class="panel-heading s_border_header">
 						<h4 class="panel-title">
 							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
 								<span class="glyphicon glyphicon-plus"></span>
@@ -97,7 +97,7 @@
 
 
 				<div class="panel panel-default">
-					<div class="panel-heading">
+					<div class="panel-heading s_border_header">
 						<h4 class="panel-title">
 							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
 								<span class="glyphicon glyphicon-plus"></span>
@@ -119,7 +119,7 @@
 
 
 				<div class="panel panel-default">
-					<div class="panel-heading">
+					<div class="panel-heading s_border_header">
 						<h4 class="panel-title">
 							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseSix">
 								<span class="glyphicon glyphicon-plus"></span>
@@ -136,7 +136,7 @@
 
 
 				<div class="panel panel-default">
-					<div class="panel-heading">
+					<div class="panel-heading s_border_header">
 						<h4 class="panel-title">
 							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven">
 								<span class="glyphicon glyphicon-plus"></span>
@@ -152,7 +152,7 @@
 				</div>
 
 				<div class="panel panel-default">
-					<div class="panel-heading">
+					<div class="panel-heading s_border_header">
 						<h4 class="panel-title">
 							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseEight">
 								<span class="glyphicon glyphicon-plus"></span>
@@ -169,7 +169,7 @@
 
 
 				<div class="panel panel-default">
-					<div class="panel-heading">
+					<div class="panel-heading s_border_header">
 						<h4 class="panel-title">
 							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseNine">
 								<span class="glyphicon glyphicon-plus"></span>
@@ -190,7 +190,7 @@
 				</h3>
 
 				<div class="panel panel-default">
-					<div class="panel-heading">
+					<div class="panel-heading s_border_header">
 						<h4 class="panel-title">
 							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTen">
 								<span class="glyphicon glyphicon-plus"></span>
@@ -206,7 +206,7 @@
 				</div>
 
 				<div class="panel panel-default">
-					<div class="panel-heading">
+					<div class="panel-heading s_border_header">
 						<h4 class="panel-title">
 							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseEleven">
 								<span class="glyphicon glyphicon-plus"></span>
@@ -221,7 +221,7 @@
 					</div>
 				</div>
 				<div class="panel panel-default">
-					<div class="panel-heading">
+					<div class="panel-heading s_border_header">
 						<h4 class="panel-title">
 							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwelve">
 								<span class="glyphicon glyphicon-plus"></span>
@@ -236,7 +236,7 @@
 					</div>
 				</div>
 				<div class="panel panel-default">
-					<div class="panel-heading">
+					<div class="panel-heading s_border_header">
 						<h4 class="panel-title">
 							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThirteen">
 								<span class="glyphicon glyphicon-plus"></span>
@@ -251,7 +251,7 @@
 					</div>
 				</div>
 				<div class="panel panel-default">
-					<div class="panel-heading">
+					<div class="panel-heading s_border_header">
 						<h4 class="panel-title">
 							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFourteen">
 								<span class="glyphicon glyphicon-plus"></span>
@@ -266,7 +266,7 @@
 					</div>
 				</div>
 				<div class="panel panel-default">
-					<div class="panel-heading">
+					<div class="panel-heading s_border_header">
 						<h4 class="panel-title">
 							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFifteen">
 								<span class="glyphicon glyphicon-plus"></span>
@@ -287,7 +287,7 @@
 
 
 				<div class="panel panel-default">
-					<div class="panel-heading">
+					<div class="panel-heading s_border_header">
 						<h4 class="panel-title">
 							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseSixteen">
 								<span class="glyphicon glyphicon-plus"></span>
@@ -303,7 +303,7 @@
 				</div>
 
 				<div class="panel panel-default">
-					<div class="panel-heading">
+					<div class="panel-heading s_border_header">
 						<h4 class="panel-title">
 							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseSeventeen">
 								<span class="glyphicon glyphicon-plus"></span>
@@ -318,7 +318,7 @@
 					</div>
 				</div>
 				<div class="panel panel-default">
-					<div class="panel-heading">
+					<div class="panel-heading s_border_header">
 						<h4 class="panel-title">
 							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseEighteen">
 								<span class="glyphicon glyphicon-plus"></span>
@@ -333,7 +333,7 @@
 					</div>
 				</div>
 				<div class="panel panel-default">
-					<div class="panel-heading">
+					<div class="panel-heading s_border_header">
 						<h4 class="panel-title">
 							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseNineteen">
 								<span class="glyphicon glyphicon-plus"></span>
@@ -348,7 +348,7 @@
 					</div>
 				</div>
 				<div class="panel panel-default">
-					<div class="panel-heading">
+					<div class="panel-heading s_border_header">
 						<h4 class="panel-title">
 							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwenty">
 								<span class="glyphicon glyphicon-plus"></span>
@@ -363,7 +363,7 @@
 					</div>
 				</div>
 				<div class="panel panel-default">
-					<div class="panel-heading">
+					<div class="panel-heading s_border_header">
 						<h4 class="panel-title">
 							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwentyone">
 								<span class="glyphicon glyphicon-plus"></span>
@@ -382,7 +382,7 @@
 				</h3>
 
 				<div class="panel panel-default">
-					<div class="panel-heading">
+					<div class="panel-heading s_border_header">
 						<h4 class="panel-title">
 							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwentytwo">
 								<span class="glyphicon glyphicon-plus"></span>
@@ -398,7 +398,7 @@
 				</div>
 
 				<div class="panel panel-default">
-					<div class="panel-heading">
+					<div class="panel-heading s_border_header">
 						<h4 class="panel-title">
 							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwentythree">
 								<span class="glyphicon glyphicon-plus"></span>
@@ -414,7 +414,7 @@
 				</div>
 
 				<div class="panel panel-default">
-					<div class="panel-heading">
+					<div class="panel-heading s_border_header">
 						<h4 class="panel-title">
 							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwentyfour">
 								<span class="glyphicon glyphicon-plus"></span>
@@ -430,7 +430,7 @@
 				</div>
 
 				<div class="panel panel-default">
-					<div class="panel-heading">
+					<div class="panel-heading s_border_header">
 						<h4 class="panel-title">
 							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwentyfive">
 								<span class="glyphicon glyphicon-plus"></span>

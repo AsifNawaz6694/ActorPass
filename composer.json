@@ -9,8 +9,10 @@
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
-        "netshell/paypal": "dev-master",
-        "zizaco/entrust": "5.2.x-dev"
+        "zizaco/entrust": "5.2.x-dev",
+        "yajra/laravel-datatables-oracle": "~5.0",        
+        "guzzlehttp/guzzle": "^6.3",
+        "netshell/paypal": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

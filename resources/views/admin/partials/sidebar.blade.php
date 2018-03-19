@@ -13,11 +13,8 @@
         @endif
       </div>
       <div class="pull-left info">
-        <p>ABC</p>
-        
+        <p>{{Auth::user()->fullname}}</p>        
         <a href="#"><i class="fa fa-circle text-success"></i>Online</a>
-        
-
       </div>
     </div>     
     <!-- sidebar menu: : style can be found in sidebar.less -->

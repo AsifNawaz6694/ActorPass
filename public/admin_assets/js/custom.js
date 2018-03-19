@@ -1,3 +1,4 @@
+var base_url = 'http://localhost/actor-pass/';
 $(function () {
     $('#example1').DataTable()
     $('#example2').DataTable({
@@ -38,4 +39,15 @@ $('#change_admin_profile_pic').change(function(e){
             alert('Image uploading failed');
         }
     });
+});
+
+$('.video_lecture').click(function(e){
+
+    var link = $(this).data('message');
+    var description = $(this).data('description');
+    var src= base_url+"public/assets/lecturevideos/"+link;
+    $("#video_link_model").attr("src", src);  
+    $("#video_description > p").text(description);  
+
+    console.log(src);
 });

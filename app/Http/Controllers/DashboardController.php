@@ -12,12 +12,13 @@ use Datatables;
 
 class DashboardController extends Controller
 {
+
     public function index(){
     	$data['profile'] = Profile::where('user_id', Auth::user()->id)->first();
         //dd($data['profile']);
     	return view('dashboard.index')->with($data);
     }
-
+    
     public function dash_classes(){
 
         if(Auth::user()->role_id == 3){ //he is a student

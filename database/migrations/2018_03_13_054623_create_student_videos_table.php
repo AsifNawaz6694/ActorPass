@@ -18,6 +18,7 @@ class CreateStudentVideosTable extends Migration
             $table->integer('class_id')->unsigned();
             $table->integer('student_id')->unsigned();
             $table->string('video')->nullable();
+            $table->longText('description')->nullable();
             $table->foreign('class_id')->references('id')->on('classes')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('student_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

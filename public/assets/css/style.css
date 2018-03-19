@@ -1474,8 +1474,8 @@ h3.wall_content {
 
 .main_content {
     position: absolute;
-    top: 91px;
-    right: 73%;
+    top: -57px;
+    right: 77%;
 }
 
 iframe.embed-responsive-item {
@@ -1541,9 +1541,7 @@ p.upload_content {
     font-size: 119px;
 }
 
-input[type=file] {
-    display: none;
-}
+
 
 p.description {
     text-align: center;
@@ -1579,3 +1577,95 @@ img#imagePreview {
 h3.home {
     font-size: 24px;
 }
+
+.side_img {
+   max-width: 194px;
+   max-height: 230px;
+}
+
+.wall_img  {
+   max-width: 45px;
+   max-height: 54px;
+}
+
+.button_banner {
+    background: #bbb6b68c;
+    width: 157px;
+    height: 41px;
+    text-align: right;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #fff;
+    font-size: 15px;
+    text-align: left;
+}
+
+.button_banner input[type=file] {
+    opacity: 0;
+    width: 100px;
+    margin-top: -34px;
+    margin-right: -26px;
+    margin-left: 10px;
+}
+
+.set_update_btn {
+    padding: 12px 1px 12px 14px;
+    font-size: 20px;
+    color: #fff;
+}
+
+
+/*New Css For WAll ANd Profile*/
+.f_side_img {
+   position: absolute;
+   top: -125px;
+   left: 44px;
+}
+
+.f_img_banner img {
+   width: 100%;
+   height: 500px;
+}
+.f_side_img {
+   width: 194px;
+   height: 230px;
+}
+.f_side_img img{
+   width: 100%;
+   height: 230px;
+}
+.f_img_profile {
+   width: 210px;
+   height: 230px;
+}
+.f_img_profile img{
+   width: 100%;
+   height: 230px;
+}
+.f_wall_img img {
+   width: 45px;
+   height: 40px;
+   margin-bottom: 12px;
+}
+.f_padding_profile{
+   padding: 0;
+}
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+   .f_side_img img.img-responsive {
+       margin-left: 236px;
+   }
+}
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation: landscape){
+   .f_side_img img.img-responsive {
+       margin-left: -27px;
+   }
+}
+@media only screen and (min-device-width : 320px) and (max-device-width : 767px) {
+   .f_side_img img.img-responsive {
+       margin-left: 16px;
+   }
+}
+
+
+/*New Css For WAll ANd Profile*/

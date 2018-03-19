@@ -54,8 +54,8 @@ $(function() {
 
 //for custom javascript functions function
 
-//on form submit change Admin Profile picture
-$('#submit_video').change(function(e){
+//on form submit Upload Video And Description
+$('#submit_video').submit(function(e){
     e.preventDefault();
     console.log("herezz");
     var form = new FormData(this);
@@ -86,4 +86,41 @@ $('#submit_video').change(function(e){
     });
 });
 
+
+
+//on form submit change Cover Photo Of Student Profile
+$('#change_cover').change(function(e){
+   e.preventDefault();
+    console.log("herezz");
+    var form = new FormData(this);
+    $.ajaxSetup({
+        headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
+      });  
+    $.ajax({
+        type: $(this).attr('method'),
+        url: $(this).attr('action'),
+        data: form,
+        processData: false,
+        contentType: false,
+        success: function(response){
+            console.log(response);
+            if(response.code === 200){
+              location.reload();
+                //$('.img_banner > img').attr('src', response.img);
+                // alert(response.img);
+            }
+            if(response.code === 302){
+                location.reload();
+                // alert(response.error);
+                //alert(response.img);
+            }
+            if(response.code === 202){
+                //alert(response.error);
+            }
+        },
+        error: function(){
+            alert('Image uploading failed');
+        }
+    });
+});
 

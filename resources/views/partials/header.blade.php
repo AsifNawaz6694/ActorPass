@@ -65,7 +65,7 @@
 					<div id="my-menu">
 						<ul class="nav navbar-nav">
 							<li>
-								<a href="{{ route('home') }}">HOME</a>
+								<a href="{{ route('public_index') }}">HOME</a>
 							</li>
 							<li>
 								<a href="{{ route('about') }}">ABOUT US</a>
@@ -102,7 +102,7 @@
 						<div class="menu">
 							<nav>
 								<ul class="navigation only-desktop">
-									<li {{{ (Request::is('/') ? 'class=active' : '') }}} ><a href="{{ route('home') }}">HOME</a></li>
+									<li {{{ (Request::is('/') ? 'class=active' : '') }}} ><a href="{{ route('public_index') }}">HOME</a></li>
 									<li {{{ (Request::is('/about') ? 'class=active' : '') }}}><a href="{{ route('about') }}">ABOUT US</a></li>
 									<li {{{ (Request::is('/takeaclass') ? 'class=active' : '') }}}><a href="{{ route('takeaclass') }}">TAKE A CLASS</a></li>
 									<li {{{ (Request::is('/faq') ? 'class=active' : '') }}}><a href="{{ route('faq') }}">FAQ</a></li>

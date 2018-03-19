@@ -68,7 +68,13 @@ class AuthenticationController extends Controller
        /* Validation */
         try{
             if(Auth::attempt(['email' => $request->email, 'password' => $request->password ] )) {                
-                return redirect()->route('home');  
+                
+                if (Auth::user()->role_id == '1') {
+                    return redirect()->route('admin_index');
+                }else{
+                return redirect()->route('public_index');  
+                }
+            
             }else{
                 $this->set_session('Invalid Username/Password', false);
                 return redirect()->route('login_view');             
@@ -84,7 +90,7 @@ class AuthenticationController extends Controller
     //Logging out user
     public function logout_user(){
         Auth::logout();
-        return redirect()->route('home');          
+        return redirect()->route('public_index');          
     }
 
     //Reset Password Views

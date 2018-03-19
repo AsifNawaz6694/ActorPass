@@ -34,6 +34,8 @@ class User extends Authenticatable
         return $this->hasOne('App\Profile');
     } 
 
+   
+
     public function class()
     {   
         return $this->hasMany('App\Classes', 'teacher_id', 'id');

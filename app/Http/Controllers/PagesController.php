@@ -18,6 +18,8 @@ class PagesController extends Controller
     }  
     public function public_wall($id){
       if ( ( DB::table('classes')->where('id', '=', $id)->where('teacher_id','=',Auth::user()->id)->exists() )|| ( Auth::user()->role_id == '1' ) || ( DB::table('winners')->where('class_id',$id)->exists() &&  DB::table('class_student')->where('class_id',$id)->where('student id',Auth::user()->id) ) ){
+             $args['winner'] = DB::table('winners')->leftJoin('users','users.id','winners.user_id')->select('user_id as winner_id')->where('class_id',$id)->first();
+            
             $args['videos']= StudentVideo::leftJoin('users','users.id','=','student_videos.student_id')
                                         ->leftJoin('profile','profile.user_id','=','users.id')
                                         ->leftJoin('classes','classes.id','=','student_videos.class_id')
@@ -38,11 +40,13 @@ class PagesController extends Controller
     }
 
     public function winner(Request $request,$id,$class_id){
-    if (DB::table('winners')->where('class_id', '=', $class_id)->exists()) {              
-        $this->set_session('You Have Already Selected a Winner For This Class', false);             
+        $winner_id = Winner::where('class_id',$class_id)->first();        
+        if (DB::table('winners')->where('class_id', '=', $class_id)->exists()) {              
+            $winner = Winner::find($winner_id->id);            
         }
-        else{     
-        $winner = new Winner;     
+        else{ 
+            $winner = new Winner;     
+        }    
         $winner->user_id = $id;
         $winner->class_id = $class_id;
         if ($winner->save()) {
@@ -51,7 +55,7 @@ class PagesController extends Controller
         else{
             $this->set_session('Winner Is Not Selected', false);            
         }
-    }
+   
         return redirect()->back();
     }
     public function post_comment(Request $request,$class_id){

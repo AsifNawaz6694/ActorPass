@@ -41,7 +41,7 @@
                 <li><a href="{{route('profile_index')}}" {{{ (Request::is('dashboard/profile') ? 'class=actives' : '') }}}><i class="fa fa-user" aria-hidden="true"></i>My Profile</a></li>
                 <li><a href="{{route('dash_classes')}}" {{{ (Request::is('dashboard/myclasses') ? 'class=actives' : '') }}}><i class="fa fa-user" aria-hidden="true"></i>My Classes</a></li>
 
-               
+               <li><a href="{{route('student_wall',['id'=>Auth::user()->id])}}"><i class="fa fa-sign-out" aria-hidden="true"></i>My Wall</a></li>
                 <li><a href="{{route('logout_user')}}"><i class="fa fa-sign-out" aria-hidden="true"></i>Log out</a></li>
             </ul>
         </div>

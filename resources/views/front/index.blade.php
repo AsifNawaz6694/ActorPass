@@ -2,9 +2,9 @@
 @section('content')
 <article>
 	<section class="how-it-works">
+@include('partials.error_section')
 		<div class="container">
 			<div class="row width-secondary">
-
 				<div class="col-md-12" data-aos="fade-right">
 					<h2 class="heading-primary">HOW IT WORKS</h2>
 					<p>Integer vel vestibulum turpis. Nulla eros urna, molestie eu est et, laoreet aliquet libero. Cras vitae molestie erat. Donec ullamcorper urna libero, ac ultrices magna scelerisque in. Donec tortor nulla, vestibulum sit amet tincidunt vel,</p>

@@ -19,7 +19,8 @@
 Route::get('/', 'PagesController@index')->name('public_index');
 Route::get('class_wall/{id}', 'PagesController@public_wall')->name('public_wall');
 Route::POST('/contact_page','PagesController@contact_page')->name('contact_page');
-Route::POST('/post_comment','PagesController@post_comment')->name('post_comment');
+Route::POST('/post_comment/{class_id}','PagesController@post_comment')->name('post_comment');
+Route::get('select_winner/{id}/{class_id}','PagesController@winner')->name('select_winner');
 Route::get('/about', function(){
 	return view('front.about');
 })->name('about');
@@ -102,11 +103,9 @@ Route::post('update_cover','StudentController@update_cover')->name('ajax_change_
 
 
 Route::group(['prefix' => 'admin' ,  'middleware' => 'is-admin'], function () {
-
 	Route::get('index', 'AdminController@index')->name('admin_index');
 	Route::get('admin_logout', 'AdminController@admin_logout')->name('admin_logout');
-
-
+	
 // Users CRUD/Other Routes
 	Route::get('users', 'AdminController@users')->name('users');
 	Route::get('user/create', 'AdminController@create')->name('create_user');

@@ -25,8 +25,7 @@ class DashboardController extends Controller
             //Student Classes
             $data['classes'] = Classes::join('users', 'users.id', '=', 'classes.teacher_id')
                                ->join('class_student', 'classes.id', '=', 'class_student.class_id')
-                               ->select('classes.title', 'users.fullname', 'classes.cost', 'classes.location', 'classes.age') 
-                               //->where('classes.teacher_id', '=', Auth::user()->id)  
+                               ->select('classes.id', 'classes.title', 'users.fullname', 'classes.cost', 'classes.location', 'classes.age')2                          
                                ->where('class_student.student_id', '=', Auth::user()->id)
                                ->get();
 
@@ -36,8 +35,8 @@ class DashboardController extends Controller
             //dd(1234);
             $data['classes'] = Classes::join('class_student', 'classes.id', '=', 'class_student.class_id')
                                ->join('users', 'users.id', '=', 'class_student.student_id')
-                               ->select('classes.title', 'users.fullname', 'classes.cost', 'classes.location', 'classes.age') 
-                               ->where('classes.teacher_id', '=', Auth::user()->id)                           
+                               ->select('classes.title','users.fullname', 'classes.cost', 'classes.location', 'classes.age') 
+                               ->where('classes.teacher_id', '=', Auth::user()->id)                         
                                ->get();
            // / dd($data['classes']);                    
         }

@@ -15,24 +15,22 @@
                 <table id="classesTable">
                     <thead>
                         <tr>
-                            <th>Title</th>
-                            
+                            <th>Title</th>                            
                             @if(Auth::user()->role_id == 3)
                               <th>Teacher</th>                            
                             @elseif(Auth::user()->role_id == 2)
                               <th>Student</th>                            
                             @endif
-
                             <th>Location</th>
                             <th>Age</th>                                                        
-                            <th>Cost</th>                        
-                            <!-- <th>Action</th> -->
+                            <th>Cost</th>                  
+                            
                         </tr>
                     </thead>
                     <tbody>                        
                        @foreach($classes as $class)
                         <tr>
-                            <td>{{$class->title}}</td>
+                            <td><a href="{{route('public_wall',['id'=>$class->id])}}">{{$class->title}}</a></td> 
                             <td>{{$class->fullname}}</td>
                             <td>{{$class->location}}</td>
                             <td>{{$class->age}}</td>

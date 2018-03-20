@@ -25,8 +25,7 @@
          <hr>
          <ul class="list_profile">
             <li><i class="fa fa-male male_profile"></i>Gender : {{$user->profile->gender}}</li>
-            <li><i class="fa fa-map-marker marker_profile" aria-hidden="true"></i>Location : {{$user->profile->address}}</li>
-            <li><i class="fa fa-graduation-cap cap_pro"></i>School/College : Neque porro quisquam est qui dolorem</li>
+            <li><i class="fa fa-map-marker marker_profile" aria-hidden="true"></i>Location : {{$user->profile->address}}</li>            
             <li><i class="fa fa-edit edit_profile"></i>About Me :</li>
          </ul>
          <div class="border_profile">

@@ -8,28 +8,46 @@ use App\Profile;
 use Auth;
 use Illuminate\Support\Facades\Input;
 use Hash;
+use DB;
 
 class StudentController extends Controller
 {
+	public function video_upload($id,Request $request){	
 
-
-	public function video_upload($id){	
-		$class_id = $id;				
-		return view('front.video_upload',['class_id'=>$class_id]);
+        if(DB::table('class_student')->where('class_id', '=', $id)->where('student_id','=',Auth::user()->id)->exists()) {
+            $class_id = $id;                
+            $variable = StudentVideo::where('student_id',Auth::user()->id)->where('class_id',$id)->first();
+            return view('front.video_upload',['class_id'=>$class_id,'variable'=>$variable]);
+        }else{
+            $this->set_session('You Donot Have Access To This Page', false);
+            return redirect()->route('public_index');
+        }		
 	}
 	public function submit_video(Request $request){	
-		$store = new StudentVideo;
+        
+        if (!empty($request->video_id) && isset($request->video_id)) {
+            $store = StudentVideo::find($request->video_id);
+        }else{
+            $store = new StudentVideo;            
+        }
         $store->class_id = $request->class_id;
 		$store->description = $request->description;
-		$store->student_id =1;
+		$store->student_id =Auth::user()->id;
 		if ($request->hasFile('video')) {
           $video=$request->file('video');
           $filename=time() . '.' . $video->getClientOriginalExtension();
           $location=public_path('assets/lecturevideos/'.$filename);
           $store->video=$filename;
+        }else{
+            $this->set_session('Select The Video To Upload', false);        
         }
         $store->video = $this->UploadFiles('video', Input::file('video'));
         $store->save();
+          if (!empty($request->video_id) && isset($request->video_id)) {            
+            $this->set_session('You Have Successfully Updated Video', true);
+        }else{            
+            $this->set_session('You Have Successfully Uploaded Video', true);
+        }
         return redirect()->back();
 	}
 

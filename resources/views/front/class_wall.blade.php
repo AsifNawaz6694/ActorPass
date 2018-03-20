@@ -19,17 +19,21 @@
 				            <p class="wall_text">{{$value->created_at}} <i class="fa fa-globe" aria-hidden="true"></i></p>
 				         </div>
 			         </div>
+			         <div class="center_video">
 			         <div class="video">
-			           	<video width="100%" controls>
+			           	<video width="70%" controls>
 			              <source src="{{asset('public/assets/lecturevideos/'.$value->video) }}" type="video/mp4">
 			              <source src="https://www.w3schools.com/html/mov_bbb.ogg" type="video/ogg">
 			              Your browser does not support HTML5 video.
 			           	</video>
            				<p class="video_content">{{$value->description}}</p>
+           				@if(Auth::user()->id == $value->teacher_id)
+           				<a href="{{route('select_winner',['id'=>$value->user_id,'class_id'=>$value->class_id])}}">Select Winner</a>
+           				@endif
 		                 <div class="row">
 		                   <div class="col-md-12">
 		                     <div class="padding_commit">
-		                       <form action="{{route('post_comment')}}" method="post">
+		                       <form action="{{route('post_comment',['class_id'=>$value->class_id])}}" method="post">
 		                        {{csrf_field()}}
 		                         <div class="comment-wrap">
 		                           <div class="photo">
@@ -62,6 +66,7 @@
 		                     </div>
 		                   </div>
 		                 </div>
+        			</div>
         			</div>
 			         <hr>		         
 	         	</div>         

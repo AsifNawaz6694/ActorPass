@@ -191,6 +191,6 @@ class AdminController extends Controller
 
     public function admin_logout(){
         Auth::logout();
-        return redirect()->route('home');
+        return redirect()->route('public_index');
     }
 }

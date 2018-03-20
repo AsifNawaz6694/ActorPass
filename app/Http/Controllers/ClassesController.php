@@ -29,6 +29,9 @@ class ClassesController extends Controller
             $message->from('asifnawaz.aimviz@gmail.com', 'Actor Pass - Enrollment Email');
             $message->to($users->email)->subject('ACTOR PASS - YOU ARE ENROLLED');
         }); 
+        DB::table('classes')
+            ->where('id', $id)
+            ->update(['class_status' => 1]);
         $this->set_session('You Have Successfully Send An Email', true);       
         return redirect()->back();
 

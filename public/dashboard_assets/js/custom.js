@@ -50,6 +50,40 @@ $(document).ready(function () {
         $('.navbar-form').addClass('clearfix');
     }
 
+    //Image Upload Jquery
+    $("#image_upload").change(function(e){
+       e.preventDefault();
+       console.log("Image uploadz");
+
+        var image = $('#image_upload')[0].files[0];
+        var form = new FormData();
+        var url = $("#Singleimage_upload_form").attr('action');
+
+        form.append('image_upload', image);
+        console.log(form);
+ 
+        $.ajaxSetup({
+            headers: { 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content') }
+        });
+
+        $.ajax({
+              type: 'post',
+              url: url,             
+              data: form,             
+              processData: false,
+              contentType: false,
+              success: function(response){
+                console.log(response);
+                location.reload();
+              },
+              error: function(response){
+                   console.log(response);
+
+                  console.log('Image uploading failed');
+              }
+          });
+    });
+
 });
 
 

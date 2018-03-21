@@ -97,4 +97,32 @@ class ProfileController extends Controller
 
 	}
 
+	public function image_upload(Request $request){
+
+	   try{
+
+	      if(Input::hasFile('image_upload')){
+
+	        $file = Input::file('image_upload');
+	        $tmpFilePath = '/dashboard_assets/images/profile';
+	        $tmpFileName = time() . '-' . $file->getClientOriginalName();
+	        $file = $file->move(public_path() . $tmpFilePath, $tmpFileName);
+
+	        $path = $tmpFileName;
+	        $profile = Profile::where('user_id', Auth::user()->id); 
+	        $result = $profile->update(['profile_pic'=>$path]);
+	        //return $result;
+
+	        if($result){
+	        	return \Response::json(array('success' => true, 'code' => 200), 200);  
+	        }else{
+	        	return \Response::json(array('success' => false, 'code' => 422), 422);  
+	        }
+	      }
+
+	  }catch(\Exception $e){
+            return \Response::json(array('success' => false, 'code' => 422), 422);                
+      }	      
+	}
+
 }

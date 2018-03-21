@@ -14,11 +14,13 @@
                         <img src="{{ asset('public/dashboard_assets/images/user-dummy.png') }}" class="img-responsive center-block img-circle"/>
                     @endif
 
-
+                  <form action="{{route('user_image_upload')}}" method="post" enctype="multipart/form-data" id="Singleimage_upload_form">
+                        <input name="_token" value="{{csrf_token()}}" type="hidden">
                     <span class="camera_image">
                     <i class="fa fa-camera fa-2x" aria-hidden="true"></i>
-                        <input type="file" id="image_upload" value="" style="display: none"/>
-                </span>
+                        <input type="file" id="image_upload" name="image_upload" value="" style="display: none"/>
+                    </span>
+                  </form>               
                 </div>
             </a>
             <h3>

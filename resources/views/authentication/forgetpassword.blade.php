@@ -40,7 +40,6 @@
                 @elseif($page_forget_flag=="newpass")
                   <button type="submit" class="btn login_now">Change Password</button>
                 @endif
-
               </div>
             </div>
       </form>

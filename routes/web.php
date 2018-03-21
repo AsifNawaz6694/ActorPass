@@ -84,6 +84,9 @@ Route::group(['middleware' => 'auth'], function()
 	/* Update Profile */	
 	Route::post('/dashboard/update-profile',  'ProfileController@profile_update')->name('profile_update');
 
+	/*Update only Profile Image */ 
+	Route::post('/dashboard/image-upload',  'ProfileController@image_upload')->name('user_image_upload');
+
 	/* My classes Route  - Index */
 	Route::get('/dashboard/myclasses',  'ClassesController@my_classes')->name('classes_index');
 

@@ -96,7 +96,7 @@ class AuthenticationController extends Controller
     //Reset Password Views
     public function pass_reset_view($token=null){
             //dd($token);
-        if(is_null($token)){            
+        if(is_null($token)){      
             $data['page_forget_flag'] = 'email';
             return view('authentication.forgetpassword')->with($data);  
         }else{

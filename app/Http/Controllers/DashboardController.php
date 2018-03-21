@@ -32,13 +32,21 @@ class DashboardController extends Controller
             //dd($data['classes']);
         }else if(Auth::user()->role_id == 2){ //he is a teacher
             //Teacher Classes
-            //dd(1234);
-            $data['classes'] = Classes::join('class_student', 'classes.id', '=', 'class_student.class_id')
-                               ->join('users', 'users.id', '=', 'class_student.student_id')
-                               ->select('classes.title','users.fullname', 'classes.cost', 'classes.location', 'classes.age') 
-                               ->where('classes.teacher_id', '=', Auth::user()->id)                         
+
+            // $data['classes'] = Classes::join('class_student', 'classes.id', '=', 'class_student.class_id')
+            //                    ->join('users', 'users.id', '=', 'class_student.student_id')
+            //                    ->select('classes.title','users.fullname', 'classes.cost', 'classes.location', 'classes.age') 
+            //                    ->where('classes.teacher_id', '=', Auth::user()->id)                         
+            //                    ->get();
+
+            $data['classes'] = Classes::select('class_student.student_id', \DB::raw('count(class_student.student_id) as student_total'))
+                               ->where('classes.teacher_id', '=', Auth::user()->id)             
+                               ->join('class_student', 'class_student.class_id', '=', 'classes.id')
+                               ->groupBy('classes.id')
+                                                     
                                ->get();
-           // / dd($data['classes']);                    
+
+            dd($data['classes']);                    
         }
 
     	return view('dashboard.studentclasses')->with($data);

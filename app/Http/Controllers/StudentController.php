@@ -13,7 +13,7 @@ use DB;
 class StudentController extends Controller
 {
 	public function video_upload($id,Request $request){
-        if(DB::table('classes')->where('id',$request->class_id)->where('class_status',1)->exists() && DB::table('class_student')->where('class_id', '=', $id)->where('student_id','=',Auth::user()->id)->exists()) {
+        if(DB::table('classes')->where('id',$id)->where('class_status',1)->exists() && DB::table('class_student')->where('class_id', '=', $id)->where('student_id','=',Auth::user()->id)->exists()) {
             $class_id = $id;                
             $variable = StudentVideo::where('student_id',Auth::user()->id)->where('class_id',$id)->first();
             return view('front.video_upload',['class_id'=>$class_id,'variable'=>$variable]);

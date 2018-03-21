@@ -10,22 +10,27 @@
 	         	<div class="col-md-12">
 	         		<div class="row">
 			         	<div class="col-md-1">
+			         		<img src="{{asset('public/assets/images/crown.jpg') }}" class="img-responsive">
 					         <div class="f_wall_img img_top pull-right">
 					         	<img src="{{asset('public/storage/profile-pictures/'.$value->profile_pic) }}" class="img-responsive">
 					         </div>
 				         </div>
 				         <div class="col-md-6 f_padding_profile">
-				            <h3 class="wall_content">{{$value->fullname}}</h3>
+				            <h3 class="wall_content">{{$value->fullname}}
+
+				             <b style="color: grey">  @if($value->user_id == $winner->winner_id) Winner @endif</b>
+				         </h3>
 				            <p class="wall_text">{{$value->created_at}} <i class="fa fa-globe" aria-hidden="true"></i></p>
 				         </div>
 			         </div>
-			         <div class="center_video">
 			         <div class="video">
+			         <div class="center_video">
 			           	<video width="70%" controls>
 			              <source src="{{asset('public/assets/lecturevideos/'.$value->video) }}" type="video/mp4">
 			              <source src="https://www.w3schools.com/html/mov_bbb.ogg" type="video/ogg">
 			              Your browser does not support HTML5 video.
 			           	</video>
+			           </div>
            				<p class="video_content">{{$value->description}}</p>
            				@if(Auth::user()->id == $value->teacher_id)
            				<a href="{{route('select_winner',['id'=>$value->user_id,'class_id'=>$value->class_id])}}">Select Winner</a>
@@ -66,7 +71,7 @@
 		                     </div>
 		                   </div>
 		                 </div>
-        			</div>
+        			
         			</div>
 			         <hr>		         
 	         	</div>         

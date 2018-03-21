@@ -5,10 +5,13 @@ use App\User;
 use App\StudentVideo;
 use App\Role;
 use App\Profile;
+use App\UserMedia;
 use Auth;
 use Illuminate\Support\Facades\Input;
 use Hash;
 use DB;
+use PDF;
+use Response;
 
 class StudentController extends Controller
 {
@@ -103,7 +106,14 @@ class StudentController extends Controller
 
         public function student_profile($id){
             $args['user'] = User::find($id);   
-            $args['role'] = Role::select('name')->where('id','=',$args['user']->role_id)->first();   
+            $args['role'] = Role::select('name')->where('id','=',$args['user']->role_id)->first();
+            $args['media_images'] = UserMedia::where('user_id',$id)->where('media_type',1)->get();
+            $args['media_videos'] = UserMedia::where('user_id',$id)->where('media_type',2)->get();
+            $args['media_resume'] = UserMedia::where('user_id',$id)
+                                               ->where('media_type',3)
+                                               ->orderBy('id','DESC')
+                                               ->first();
+            
             return view('front.student_profile')->with($args);
         }   
     	

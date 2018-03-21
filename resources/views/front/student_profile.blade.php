@@ -33,16 +33,41 @@
          </div>
          <h3 class="profile_content">PHOTO</h3>
          <hr>
-         <div class="f_img_profile"><img src="{{asset('public/storage/profile-pictures/'.$user->profile->profile_pic) }}" class="img-responsive"></div>
+         @foreach($media_images as $value)
+         <div class="col-md-4 col-sm-6">
+            <div class="f_img_profile">
+               <img src="{{asset('public/storage/user-images/'.$value->media) }}" class="img-responsive">
+            </div>
+         </div>
+         @endforeach
+         <div class="clearfix"></div>
+
+
          <h3 class="profile_content">VIDEO</h3>
          <hr>
-         <div class="video">
-            <video width="100%" controls>
-               <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-               <source src="https://www.w3schools.com/html/mov_bbb.ogg" type="video/ogg">
-               Your browser does not support HTML5 video.
-            </video>
+         @foreach($media_videos as $value)
+         <div class="col-md-4 col-sm-6">
+            <div class="video">
+               <video width="100%" controls>
+                  <source src="{{asset('public/storage/user-videos/'.$value->media) }}" type="video/mp4">
+                  <source src="https://www.w3schools.com/html/mov_bbb.ogg" type="video/ogg">
+                  Your browser does not support HTML5 video.
+               </video>
+            </div>
          </div>
+         @endforeach        
+         <div class="clearfix"></div>
+          <h3 class="profile_content">Resume</h3>
+         <hr>
+         <div class="col-md-4 col-sm-6">
+            <div class="resume">
+               @if(!empty($media_resume->id))
+               <a href="{{route('download_resume',['id'=>$media_resume->id])}}">Download</a>
+               @endif
+            </div>
+         </div>
+         <div class="clearfix"></div>
+         <h3 class="profile_content"></h3>        
       </div>
    </div>
 </section>

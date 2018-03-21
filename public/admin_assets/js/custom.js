@@ -51,3 +51,23 @@ $('.video_lecture').click(function(e){
 
     console.log(src);
 });
+
+// $('#package_id').on('change', function(e){
+//     e.preventDefault();
+//     console.log("herezz");
+//     console.log($(this).val());
+//     var user_type_id = $(this).val();
+//     if(user_type_id == 3){
+//         var stu_html = `<label for="inputStatus" class="col-sm-2 control-label">Student Package</label><div class="col-sm-10">
+//                                     <select name="student_package" class="form-control">
+//                                         <option selected disabled>Select a Student Package</option>
+//                                         <option value="1">Normal</option>
+//                                         <option value="0">Premium</option>
+//                                     </select>
+//                                 </div>`;
+//         console.log(stu_html);
+//         $('#student_div').html(stu_html);
+//     }else{
+//           $('#student_div').html('');          
+//     }
+// });

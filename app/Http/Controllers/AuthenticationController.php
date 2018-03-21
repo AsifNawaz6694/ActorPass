@@ -72,7 +72,7 @@ class AuthenticationController extends Controller
                 if (Auth::user()->role_id == '1') {
                     return redirect()->route('admin_index');
                 }else{
-                return redirect()->route('public_index');  
+                return redirect()->route('dash_index');  
                 }
             
             }else{

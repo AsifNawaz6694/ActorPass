@@ -25,9 +25,7 @@ Route::get('/about', function(){
 	return view('front.about');
 })->name('about');
 
-Route::get('/takeaclass', function(){
-	return view('front.takeaclass');
-})->name('takeaclass');
+Route::get('/takeaclass','PagesController@take_class')->name('takeaclass');
 
 Route::get('/faq', function(){
 	return view('front.faq');
@@ -71,6 +69,8 @@ Route::group(['middleware' => 'auth'], function()
 
 	/* Dashbboard Routes */
 	Route::get('/dashboard',  'DashboardController@index')->name('dash_index');
+	Route::post('/upload_media',  'DashboardController@upload_media')->name('upload_media');
+	Route::get('/download_resume/{id}','DashboardController@download_resume')->name('download_resume');
 
 	/* Dashbboard Classes */
 	Route::get('/dashboard/student-classes',  'DashboardController@dash_classes')->name('dash_classes');
@@ -140,5 +140,6 @@ Route::group(['prefix' => 'admin' ,  'middleware' => 'is-admin'], function () {
 
 // Payment Related Routes
 Route::get('account_feature/', 'PaypalController@getCheckout')->name('account_feature');
+Route::get('account_feature_status/', 'PagesController@account_feature_status')->name('account_feature_status');
 Route::get('getDone/', 'PaypalController@getDone')->name('getDone');
 Route::get('getCancel/', 'PaypalController@getCancel')->name('getCancel');

@@ -14,8 +14,7 @@ class IsAdminMiddleware
      * @return mixed
      */
     public function handle($request, Closure $next)
-    {
-        //dd(132);
+    {        
         if(!Auth::check() || Auth::user()->role_id != '1'){
             return redirect()->route('login');
         }

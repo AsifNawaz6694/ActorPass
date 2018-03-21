@@ -1,6 +1,7 @@
 <div class="dashboard_header">
     <div class="wrapper">
         <nav class="navbar">
+
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse in" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav left_mobi_nav">
@@ -12,7 +13,7 @@
                 <ul class="nav navbar-nav navbar-right icons right_mobi_nav">
                     <li>
                         @if(Auth::user()->featured == '1')
-                            <a href="" class="btn btn-default">Featured</a>
+                            <a href="{{route('account_feature_status')}}" class="btn btn-default" style="background-color: red; color: white;">Featured</a>
                         @else
                             <a href="{{route('account_feature')}}" class="btn btn-default">Feature</a>
                         @endif
@@ -93,6 +94,7 @@
                     </div>
                 </form>
             </div><!-- /.navbar-collapse -->
+              @include('partials.error_section')   
         </nav>
     </div>
 </div>

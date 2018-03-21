@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
 use App\Classes;
 use App\StudentVideo;
 use App\User;
@@ -16,6 +17,11 @@ class PagesController extends Controller
     public function index(){
     	return view('front.index');
     }  
+    public function take_class(){
+    $classes = Classes::leftJoin('users','users.id','=','classes.teacher_id')->leftJoin('profile','profile.user_id','=','classes.teacher_id')->paginate(10);
+    
+    return view('front.takeaclass',['classes' => $classes]);
+    }
     public function public_wall($id){
       if ( ( DB::table('classes')->where('id', '=', $id)->where('teacher_id','=',Auth::user()->id)->exists() )|| ( Auth::user()->role_id == '1' ) || ( DB::table('winners')->where('class_id',$id)->exists() &&  DB::table('class_student')->where('class_id',$id)->where('student id',Auth::user()->id) ) ){
              $args['winner'] = DB::table('winners')->leftJoin('users','users.id','winners.user_id')->select('user_id as winner_id')->where('class_id',$id)->first();
@@ -88,5 +94,9 @@ class PagesController extends Controller
             $this->set_session('Please First Log In To Send An Emails', false);
             return redirect()->back();            
         }
+    }
+    public function account_feature_status(){
+        $this->set_session('You Have Already Featured Your Account', false);
+            return redirect()->back();  
     }
 }

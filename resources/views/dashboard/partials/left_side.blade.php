@@ -1,6 +1,6 @@
 <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 r-m-p left_dash">
     <div class="dashboard_left_side clearfix">
-        <a href="index.php" class="navbar-brand">
+        <a href="{{route('public_index')}}" class="navbar-brand">
             <img src="{{ asset('public/assets/images/logo_actor.png') }}" class="img-responsive center-block"/>
         </a>
         <div class="user_deatils">

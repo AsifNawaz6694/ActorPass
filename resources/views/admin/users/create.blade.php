@@ -68,9 +68,11 @@
                                 </select>
                             </div>
                         </div>
+
                         <div class="form-group">
                             <label for="inputStatus" class="col-sm-2 control-label">User Type</label>
                             <div class="col-sm-10">
+                                <!-- <select name="role_id" class="form-control" id="package_id"> -->
                                 <select name="role_id" class="form-control">
                                     <option selected disabled>Select a Type</option>
                                     @foreach($roles as $value)
@@ -79,6 +81,16 @@
                                 </select>
                             </div>
                         </div>
+                        <!-- <div class="form-group" id="student_div"> -->
+                         <!--    <label for="inputStatus" class="col-sm-2 control-label">Student Package</label>
+                            <div class="col-sm-10">
+                                <select name="student_package" class="form-control">
+                                    <option selected disabled>Select a Student Package</option>
+                                    <option value="1">Normal</option>
+                                    <option value="0">Premium</option>
+                                </select>
+                            </div> -->
+                        <!-- </div> -->
                         <div class="form-group">
                             <label for="inputCountry" class="col-sm-2 control-label">Image</label>
                             <div class="col-sm-10">

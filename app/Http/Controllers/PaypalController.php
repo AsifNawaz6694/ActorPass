@@ -33,6 +33,7 @@ class PaypalController extends Controller
 
     public function getCheckout()
 	{		
+		
 		$payer = PayPal::Payer();
 		$payer->setPaymentMethod('paypal');
 
@@ -79,7 +80,11 @@ class PaypalController extends Controller
 	    // Thank the user for the purchase
 		DB::table('users')
             ->where('id', Auth::user()->id)
-            ->update(['featured' => 1]);
+            ->update(['featured' => 1]);		
+
+		DB::table('profile')
+            ->where('user_id', Auth::user()->id)
+            ->update(['package_student' => 1]);
 		return redirect()->route('dash_index');
 	}
 

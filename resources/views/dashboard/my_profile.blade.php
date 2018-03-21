@@ -78,5 +78,57 @@
             </div>
         </div>
     </div>
+
+     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="dashboard_box">
+            <div class="panel panel-default clearfix">
+                <!-- Default panel contents -->
+                <div class="panel-body border_line_bottom">
+                    <h4 class="float-left text-left">Media</h4>
+                </div>
+                <!-- Form -->
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 r-m-p">
+                    <div class="Form_main">
+                    <form action="{{route('upload_media')}}" method="post" enctype="multipart/form-data">
+                      {{csrf_field()}}
+                      <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                           <div class="form-group">
+                               <label>Picture <span></span></label>
+                               <input type="file" name="image[]" accept="image/x-png,image/gif,image/png,image/jpeg" class="form-control" {{ Auth::user()->profile->package_student ? 'multiple' : ''}}>
+                               @if(Auth::user()->profile->package_student == 1)
+                               <p>You May Select Up To 3 Images</p>
+                               @endif
+                                @if($errors->first('image'))
+                                  <div class="text-danger">{{ $errors->first('image') }}</div>
+                                @endif
+                          </div>
+                          <div class="form-group">
+                               <label>Video <span></span></label>
+                               <input type="file" name="video[]" accept="video/mp4,video/x-m4v,video/*" class="form-control" {{ Auth::user()->profile->package_student ? 'multiple' : ''}}>
+                               @if(Auth::user()->profile->package_student == 1)
+                               <p>You May Select Up To 3 Videos</p>
+                               @endif
+                               @if($errors->first('video'))
+                                  <div class="text-danger">{{ $errors->first('video') }}</div>
+                                @endif
+                          </div>
+                          <div class="form-group">
+                               <label>Resume<span></span></label>
+                               <input type="file" name="resume" accept="application/pdf" class="form-control">
+                               @if($errors->first('resume'))
+                                  <div class="text-danger">{{ $errors->first('resume') }}</div>
+                                @endif
+                          </div>                          
+                           <div class="form-group">
+                               <input type="hidden" name="_token" value="{{Session::token()}}">
+                               <button type="submit" class="btn btn-default center-block btn-block">Save changes
+                               </button>
+                           </div>
+                       </form>                      
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </div>
 </div>
 @endsection   

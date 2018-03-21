@@ -14,13 +14,13 @@
           @if($page_forget_flag=="email")
             <div class="form-group_form">
               <label for="exampleInputName">Enter Your Email to Renew Password</label>
-              <input type="type" class="form-control required fullname" name="passemail" id="exampleInputName">
+              <input type="type" class="form-control required " name="passemail" id="exampleInputName">
               <input type="hidden" class="form-control required" name="reqPassFlag" value="email" id="exampleInputPassword1">              
             </div>            
           @elseif($page_forget_flag=="newpass")
             <div class="form-group_form">
               <label for="exampleInputName">New Password</label>
-              <input type="password" class="form-control required fullname" name="password1" id="exampleInputName">
+              <input type="password" class="form-control required " name="password1" id="exampleInputName">
             </div>
             <div class="form-group_form">
               <label for="exampleInputPassword1">Re-enter Password</label>

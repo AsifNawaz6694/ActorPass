@@ -21,6 +21,7 @@
                             @elseif(Auth::user()->role_id == 2)
                               <th>Student</th>                            
                             @endif
+                            <th>Link</th>
                             <th>Location</th>
                             <th>Age</th>                                                        
                             <th>Cost</th>                  
@@ -32,6 +33,7 @@
                         <tr>
                             <td><a href="{{route('public_wall',['id'=>$class->id])}}">{{$class->title}}</a></td> 
                             <td>{{$class->fullname}}</td>
+                            <td><a href="{{$class->link}}" target="_blank">{{"$class->link"}}</a> </td>
                             <td>{{$class->location}}</td>
                             <td>{{$class->age}}</td>
                             <td>{{$class->cost}}</td>

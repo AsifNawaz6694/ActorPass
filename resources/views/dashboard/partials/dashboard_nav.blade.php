@@ -76,13 +76,13 @@
                         </ul>
                     </li> -->
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                        <a href="{{route('logout_user')}}" class="dropdown-toggle" data-toggle="dropdown" role="button"
                            aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-sign-out" aria-hidden="true"></i>
                         </a>
                     </li>
                 </ul>
-                <form class="navbar-form navbar-right">
+                <!--<form class="navbar-form navbar-right">
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Search...">
                         <span class="input-group-btn">
@@ -91,7 +91,7 @@
                                          </button>
                                     </span>
                     </div>
-                </form>
+                </form> -->
             </div><!-- /.navbar-collapse -->
         </nav>
     </div>

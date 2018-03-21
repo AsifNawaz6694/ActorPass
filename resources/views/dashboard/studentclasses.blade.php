@@ -14,29 +14,74 @@
                 </div> -->
                 <table id="classesTable">
                     <thead>
-                        <tr>
-                            <th>Title</th>                            
+                            <tr>
+                            @if(Auth::user()->role_id == 3)
+                               <!-- Student -->
+                                <th>Title</th>                       
+                                <th>Teacher</th>
+                                <th>Location</th>
+                                <th>Age</th>                                                        
+                                <th>Cost</th>
+
+                            @elseif(Auth::user()->role_id == 2)
+                               <!-- Teacher -->
+                                <th>Class</th> 
+                                <th>No of Students</th>
+                                <th>Link</th>                                
+                                <th>Date</th>                                                        
+                                <th>Status</th>                                             
+                            @endif
+
+                    
+            <!--                 @if(Auth::user()->role_id == 3)
+                                <th>Title</th>                       
+                            @elseif(Auth::user()->role_id == 2)
+                                <th>Class</th>                            
+                            @endif
+
+                                 
                             @if(Auth::user()->role_id == 3)
                               <th>Teacher</th>                            
                             @elseif(Auth::user()->role_id == 2)
                               <th>Student</th>                            
-                            @endif
-                            <th>Location</th>
-                            <th>Age</th>                                                        
-                            <th>Cost</th>                  
+                            @endif -->
+               
                             
                         </tr>
                     </thead>
-                    <tbody>                        
-                       @foreach($classes as $class)
-                        <tr>
-                            <td><a href="{{route('public_wall',['id'=>$class->id])}}">{{$class->title}}</a></td> 
-                            <td>{{$class->fullname}}</td>
-                            <td>{{$class->location}}</td>
-                            <td>{{$class->age}}</td>
-                            <td>{{$class->cost}}</td>
-                        </tr>
-                       @endforeach 
+                    <tbody>
+
+                        @if(Auth::user()->role_id == 3)
+                           <!-- Student -->
+
+                           @foreach($classes as $class)
+                            <tr>
+                                <td><a href="{{route('public_wall',['id'=>$class->id])}}">{{$class->title}}</a></td> 
+                                <td>{{$class->fullname}}</td>
+                                <td>{{$class->location}}</td>
+                                <td>{{$class->age}}</td>
+                                <td>{{$class->cost}}</td>
+                            </tr>
+                           @endforeach
+
+
+                        @elseif(Auth::user()->role_id == 2)
+                           <!-- Teacher -->
+                           @foreach($classes as $class)
+                            <tr>
+                                <td><a target="_blank" href="{{route('public_wall',['id'=>$class->class_id])}}">{{$class->title}}</a></td>
+                                <td>{{$class->student_total}}</td> 
+                                <td><a target="_blank" href="{{$class->link}}">Link</a></td>
+                                <td>{{$class->date}}</td>
+                                <td>@if($class->class_status==1)
+                                     <span class="label label-warning">under Review</span>
+                                    @elseif($class->class_status==0)
+                                     <span class="label label-success">Availiable</span>
+                                    @endif</td>                                
+                            </tr>
+                           @endforeach                                      
+                        @endif
+
                     </tbody>
 
                 </table>

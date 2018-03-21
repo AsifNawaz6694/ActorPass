@@ -102,90 +102,77 @@
             <div class="panel panel-default panel-min">
                 <!-- Default panel contents -->
                 <div class="panel-body">
-                    <h4 class="float-left text-left">Recent Notifications</h4>
-                    <h4 class="float-right text-right"><a href="#">View All</a></h4>
+                    <h4 class="float-left text-left">Recent Classes</h4>
+                    <h4 class="float-right text-right"><a href="{{route('dash_classes')}}">View All</a></h4>
                 </div>
                 <!-- List group -->
                 <ul class="list-group">
-                    <?php for ($a = 1; $a <= 3; $a++) { ?>
-                    <li class="list-group-item">
-                        <div class="media">
-                            <div class="media-body">
-                                <h4 class="media-heading">
-                                    <a href="#">Neque porro quisquam est qui dolorem ipsum...</a>
-                                </h4>
-                                <p>
-                                    Sed ut perspiciatis unde omnis iste natus...
-                                </p>
-                            </div>
-                            <div class="media-right media-middle">
-                                <span class="media-object">
-                                    <i class="fa fa-clock-o" aria-hidden="true"></i> 3 min ago</span>
+                @if(Auth::user()->role_id == 3)
+                    <!-- Student -->
+                    @foreach($recent_classes as $recent_class)
+                        <li class="list-group-item">
+                            <div class="media">
+                                <div class="media-body">
+                                    <h4 class="media-heading">
+                                        <a href="{{route('public_wall',['id'=>$recent_class->class_id])}}">{{$recent_class->title}} - Tought by {{$recent_class->teacher_name}}</a>
+                                    </h4>
+                                    <p>
+                                        
+                                    </p>
+                                    @if($recent_class->class_status==1)
+                                     <span class="label label-warning">under Review</span>
+                                    @elseif($recent_class->class_status==0)
+                                     <span class="label label-success">Availiable</span>
+                                    @endif
+                                </div>
+                                <div class="media-right media-middle">
+                                    <span class="media-object">
+                                        <i class="fa fa-clock-o" aria-hidden="true"></i> {{$recent_class->created_at->diffForHumans()}}</span>
                                 </div>
                             </div>
-                        </li>
-                        <?php } ?>
-                    </ul>
+                        </li>                    
+                    @endforeach
+                @elseif(Auth::user()->role_id == 2)
+                    <!-- Teacher -->
+                    @foreach($recent_classes as $recent_class)
+                        <li class="list-group-item">
+                            <div class="media">
+                                <div class="media-body">
+                                    <h4 class="media-heading">
+                                        <a href="{{route('public_wall',['id'=>$recent_class->class_id])}}">{{$recent_class->title}} (Students: {{$recent_class->student_total}} )</a>
+                                    </h4>
+<!--                                     <p>
+                                        
+                                    </p> -->
+                                    @if($recent_class->class_status==1)
+                                     <span class="label label-warning">under Review</span>
+                                    @elseif($recent_class->class_status==0)
+                                     <span class="label label-success">Availiable</span>
+                                    @endif
+                                </div>
+                                <div class="media-right media-middle">
+                                    <span class="media-object">
+                                        <i class="fa fa-clock-o" aria-hidden="true"></i> {{$recent_class->created_at->diffForHumans()}}</span>
+                                </div>
+                            </div>
+                        </li>                    
+                    @endforeach                    
+                @endif
+
+                </ul>
                 </div>
             </div>
         </div><!--end notification-->
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <div class="dashboard_box">
-                <div class="panel panel-default">
-                    <!-- Default panel contents -->
-                    <div class="panel-body ">
-                        <h4 class="float-left text-left">Viewed Listings</h4>
-                        <h4 class="float-right text-right"><a href="#">View All</a></h4>
-                        <div class="list_border clearfix"></div>
-                        <div class="row">
-                            <?php
-                            $color = array('green_box', 'red_box', 'blue_box', 'orange_box', 'green_box', 'red_box', 'blue_box', 'orange_box', 'green_box', 'red_box', 'blue_box', 'orange_box');
-                            for ($a = 1; $a <= 3; $a++) {
-                                ?>
-                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-                                    <div class="Funding_box Funding_box_small <?php echo $color[$a]; ?>">
-                                        <h5><a href="#">perspiciatis unde omnis</a></h5>
-                                        <h6>exercitationem ullam</h6>
-                                        <div class="button_groups">
-                                            <a class="btn btn-default Badge_tag">p</a>
-                                            <a class="btn btn-default fund_Price">Funding needs: $21,000</a>
-                                        </div>
-                                        <div class="funding_description">
-                                            <h2>Problem it solves:</h2>
-                                            <p>
-                                                Dignissimos ducimus qui blandit pruiis praesentium
-                                                voluptatum
-                                                deleniti atque
-                                                corrupti
-                                                quos
-                                                dolores et quastert
-                                            </p>
-                                        </div>
-                                        <div class="Funding_box_footer clearfix">
-                                            <span class="ready_img">
-                                                <img src="{{ asset('dashboard_assets/images/ready_img.png') }}" class="img-responsive"/>
-                                            </span>
-                                            <span class="Fund_contact">
-                                                <a href="#" class="btn btn-default">Contact</a>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <?php } ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div><!--./End My Listing Here -->
-            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+
+<!--             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                 <div class="dashboard_box">
                     <div class="panel panel-default panel-min">
-                        <!-- Default panel contents -->
+                        <!-- Default panel contents 
                         <div class="panel-body">
                             <h4 class="float-left text-left">Funded Details</h4>
                             <h4 class="float-right text-right"><a href="#">View All</a></h4>
                         </div>
-                        <!-- List group -->
+                        <!-- List group 
                         <ul class="list-group">
                             <?php for ($a = 1; $a <= 3; $a++) { ?>
                             <li class="list-group-item">
@@ -206,6 +193,6 @@
                         </ul>
                     </div>
                 </div>
-            </div><!---./End Transaction -->
+            </div><!---./End Transaction --> 
         </div>
         @endsection    

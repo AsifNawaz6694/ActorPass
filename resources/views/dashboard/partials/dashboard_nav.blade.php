@@ -5,7 +5,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse in" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav left_mobi_nav">
-                    <li class="active"><a href="#">HOME /
+                    <li class="active"><a href="{{route('profile_index')}}">HOME /
                            EDIT PROFILE
                         </a>
                     </li>
@@ -77,13 +77,13 @@
                         </ul>
                     </li> -->
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                           aria-haspopup="true" aria-expanded="false">
+                        <a href="{{route('logout_user')}}" class="dropdown-toggle" role="button"
+                           >
                             <i class="fa fa-sign-out" aria-hidden="true"></i>
                         </a>
                     </li>
                 </ul>
-                <form class="navbar-form navbar-right">
+                <!--<form class="navbar-form navbar-right">
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Search...">
                         <span class="input-group-btn">
@@ -92,7 +92,7 @@
                                          </button>
                                     </span>
                     </div>
-                </form>
+                </form> -->
             </div><!-- /.navbar-collapse -->
               @include('partials.error_section')   
         </nav>

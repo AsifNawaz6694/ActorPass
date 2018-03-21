@@ -83,7 +83,7 @@ class AdminController extends Controller
    
     public function ImageUpload(){
         $img_name = '';
-        if(Input::file('profile_pic')){      
+        if(Input::file('profile_pic')){
         $img_name = $this->UploadImage('profile_pic', Input::file('profile_pic'));
 
         Profile::where('user_id' ,'=', '1')->update([

@@ -37,10 +37,10 @@
                                </select>
                            </div>
 
-                           <div class="form-group">
-                               <label>Profile Pic <span></span></label>
-                               <input type="file" name="profile_pic" class="form-control">
-                           </div>
+                          <div class="form-group">
+                              <label>Profile Pic <span></span></label>
+                              <input type="file" name="profile_pic" class="form-control">
+                          </div>
 
                            <div class="form-group">
                                <input type="hidden" name="_token" value="{{Session::token()}}">

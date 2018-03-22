@@ -11,11 +11,22 @@
             <div class="col-md-6 col-md-offset-3 col-sm-12 col-sm-offset-0  login-form">
                 <h3 class="login_content">LETS GET STARTED</h3>
                 <hr>
+
+                @if (count($errors) > 0)
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                 @include('partials.error_section')
                 <form id="signin_form" action="{{ route('signup_post') }}" method="post">
                     <div class="form-group_form">
                         <label for="exampleInputName">FULLNAME</label>
-                        <input type="text" class="form-control required fullname" name="fullname" id="exampleInputName">
+                        <input type="text" class="form-control required fullname" value="{{ old('fullname') }}" name="fullname" id="exampleInputName">
                         @if ($errors->has('fullname'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('fullname') }}</strong>
@@ -24,7 +35,7 @@
                     </div>
                     <div class="form-group_form">
                         <label for="exampleInputemail">EMAIL ADDRESS</label>
-                        <input type="email" class="form-control required email" name="email"  id="exampleInputemail">
+                        <input type="email" class="form-control required email" name="email" value="{{ old('email') }}"  id="exampleInputemail">
                         @if ($errors->has('email'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('email') }}</strong>
@@ -33,7 +44,7 @@
                     </div>
                     <div class="form-group_form">
                         <label for="exampleInputuName">USERNAME</label>
-                        <input type="text" class="form-control required fullname" name="username"  id="exampleInputuName">
+                        <input type="text" class="form-control required fullname" value="{{ old('username') }}" name="username"  id="exampleInputuName">
                         @if ($errors->has('username'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('username') }}</strong>
@@ -55,7 +66,7 @@
                     </div>
                     <div class="form-group_form">
                         <label for="UserRole">User Type</label>
-                        <select class="form-control required" name="role_id"  id="UserRole">
+                        <select class="form-control required" name="role_id"  id="UserRole" required>
                             <option value="2">Teacher</option>
                             <option value="3">Student</option>
                         </select>

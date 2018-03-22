@@ -11,6 +11,15 @@
                 <!-- Default panel contents -->
                 <div class="panel-body border_line_bottom">
                     <h4 class="float-left text-left">About me</h4>
+                      @if (count($errors) > 0)
+                          <div class="alert alert-danger">
+                              <ul>
+                                  @foreach ($errors->all() as $error)
+                                      <li>{{ $error }}</li>
+                                  @endforeach
+                              </ul>
+                          </div>
+                      @endif
                 </div>
                 <!-- Form -->
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 r-m-p">
@@ -60,11 +69,11 @@
                             </div>
                             <div class="form-group">
                                 <label>New Password <span>*</span></label>
-                                <input type="password" name="newpassword1" class="form-control">
+                                <input type="password" name="password" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label>Confirm New Password <span>*</span></label>
-                                <input type="password" name="newpassword2" class="form-control">
+                                <input type="password" name="password_confirmation" class="form-control">
                             </div>
                             <div class="form-group">
                                 <input type="hidden" name="_token" value="{{Session::token()}}">                            
@@ -88,6 +97,7 @@
                 </div>
                 <!-- Form -->
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 r-m-p">
+                  
                     <div class="Form_main">
                     <form action="{{route('upload_media')}}" method="post" enctype="multipart/form-data">
                       {{csrf_field()}}

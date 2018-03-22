@@ -21,8 +21,16 @@ class AuthenticationController extends Controller
 
     //Posting Register Form
     public function register_post(Request $request){
-        //dd($request->input());
+
         /* Validating User */
+        $this->validate($request, [
+            'fullname' => 'required|alpha',
+            'email' => 'required|email|unique:users,email',
+            'username' => 'required|unique:users,username',
+            'password' => 'required|confirmed|min:6|max:18',
+            'role_id' => 'required',       
+        ]);
+
         try{
             $user = new User();
             $user->password = bcrypt($request->password);
@@ -33,7 +41,7 @@ class AuthenticationController extends Controller
                     $user->$key = $value;
                 }
             }         
-            //dd($user);
+
             if($user->save()){
 
                 /*Attaching User Role to the New User */ 
@@ -64,8 +72,13 @@ class AuthenticationController extends Controller
     }
 
     public function login_post(Request $request){
-        //dd($request->input());
+       
        /* Validation */
+        $this->validate($request, [
+            'email' => 'required|email',
+            'password' => 'required',   
+        ]);
+
         try{
             if(Auth::attempt(['email' => $request->email, 'password' => $request->password ] )) {                
                 
@@ -95,7 +108,7 @@ class AuthenticationController extends Controller
 
     //Reset Password Views
     public function pass_reset_view($token=null){
-            //dd($token);
+
         if(is_null($token)){      
             $data['page_forget_flag'] = 'email';
             return view('authentication.forgetpassword')->with($data);  
@@ -119,19 +132,24 @@ class AuthenticationController extends Controller
 
       if($request->input('reqPassFlag')=="email"){
 
-        $user = User::where('email', '=', $request->input('passemail'))->first();
+        $this->validate($request, [
+            'email' => 'required|email',
+        ]);
+
+        $user = User::where('email', '=', $request->input('email'))->first();
 
         if (is_null($user)) {
             $this->set_session('Email not Found.', false);
             return redirect()->route('pass_reset_view');
         }else{
-                    //Emailing user Password Reset Link
 
-                    //Updating Password reset table
+            //Emailing user Password Reset Link
+
+            //Updating Password reset table
             $token = str_random(30);
 
             $password_reset = new Password_reset();
-            $password_reset->email = $request->input('passemail');
+            $password_reset->email = $request->input('email');
             $password_reset->token = $token;
 
             if($password_reset->save()){
@@ -139,12 +157,11 @@ class AuthenticationController extends Controller
                      //Mail user Password verification Link
                 $mail = Mail::send('email.fogotPass', ['token' => $token, 'user'=>$user ], function ($m) use ($user, $request) {
                     $m->from('farhanuddin.aimviz@gmail.com', 'Online Class');
-                    $m->to($request->input('passemail'))->subject('OnlineClass Forgot Password Alert');
+                    $m->to($request->input('email'))->subject('OnlineClass Forgot Password Alert');
                 });
 
                 $this->set_session('Password Renew Link Mailed to you.', true);
                 return redirect()->route('pass_reset_view');
-
 
             }else{
                 $this->set_session('Something went wrong. Please Try again.', false);
@@ -159,12 +176,16 @@ class AuthenticationController extends Controller
             /* Password Change Submission */
                 //Password Form Validation
 
+            $this->validate($request, [
+                'password' => 'required|confirmed|min:6|max:18',
+            ]);
+
                 //Delete Password Reset row from table 'password_resets'
             $password_reset = Password_reset::where('token', $request->input('pass_token'))->first();
             $user = User::where('email', $password_reset->email )->first();
             $user_update = User::find($user->id);
 
-            $user_update->password = bcrypt($request->input('password1'));
+            $user_update->password = bcrypt($request->input('password'));
 
             if($user_update->save()){
 

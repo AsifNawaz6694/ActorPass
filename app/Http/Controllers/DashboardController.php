@@ -14,25 +14,19 @@ class DashboardController extends Controller
 {
 
     public function index(){
-    	$data['profile'] = Profile::where('user_id', Auth::user()->id)->first();
-        //dd($data['profile']);
 
-      $data['recent_classes'] = Classes::select('classes.title', 'classes.id as class_id', 'class_student.student_id', \DB::raw('count(class_student.student_id) as student_total'), 'classes.link', 'classes.created_at','classes.date', 'classes.class_status')
-                         ->where('classes.teacher_id', '=', Auth::user()->id)
-                         ->leftjoin('class_student', 'class_student.class_id', '=', 'classes.id')
-                         ->groupBy('classes.id')
-                         ->orderby('classes.created_at', 'desc')                         
-                         ->limit(3)
-                         ->get();
+    	$data['profile'] = Profile::where('user_id', Auth::user()->id)->first();
+      $data['nav_head'] = 'Dashboard';
 
         if(Auth::user()->role_id == 3){ //he is a student
-            //Student Classes //add recent classes, add 
+            //Student Classes 
             $data['recent_classes'] = Classes::join('users', 'users.id', '=', 'classes.teacher_id')
                                ->join('class_student', 'classes.id', '=', 'class_student.class_id')
                                ->select('classes.id as class_id', 'classes.title', 'classes.created_at', 'classes.date', 'classes.class_status', 'users.username as teacher_name')
                                ->where('class_student.student_id', '=', Auth::user()->id)
                                ->get();
 
+            $data['user_medias'] =  UserMedia::where('user_id', Auth::user()->id)->get();
 
         }else if(Auth::user()->role_id == 2){ //he is a teacher
             //Teacher Classes
@@ -44,14 +38,19 @@ class DashboardController extends Controller
                                ->limit(3)
                                ->get();
 
+            $data['teacher_students'] = Classes::leftjoin('class_student', 'classes.id', '=', 'class_student.class_id')
+                                                ->join('users', 'users.id', '=', 'class_student.student_id')
+                                                ->join('profile', 'profile.user_id', '=', 'users.id')
+                                                ->select('users.id', 'users.fullname', 'users.email', 'users.username', 'profile.phone')
+                                                ->where('classes.teacher_id', Auth::user()->id)
+                                                ->get();
         }
 
-        //dd($data['recent_classes']);
     	return view('dashboard.index')->with($data);
     }
     
     public function dash_classes(){
-
+        $data['nav_head'] = 'My Classes';
         if(Auth::user()->role_id == 3){ //he is a student
             //Student Classes
             $data['classes'] = Classes::join('users', 'users.id', '=', 'classes.teacher_id')

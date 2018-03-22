@@ -15,15 +15,22 @@ class ProfileController extends Controller
 
 	//Dashboard Profile index function
 	public function index(){	
-	
+		$data['nav_head'] = 'My Profile';
 		$data['profile'] = Profile::where('user_id', Auth::user()->id)->first();
 		$data['user'] = User::where('id', Auth::user()->id)->first(['fullname']);
 		return view('dashboard.my_profile')->with($data);
 	}
 
 	//Updating Profile
-
 	public function profile_update(Request $request){
+
+	    /* Validation */
+	    $this->validate($request, [
+	        'fullname' => 'required|regex:/^[\pL\s\-]+$/u',
+	        'phone' => 'numeric', 
+	        'd_o_b' => 'date',
+	        'profile_pic' => 'mimes:jpeg,JPEG,jpg,bmp,png',
+	    ]);
 
 	  try{	
 			$user_id = Auth::user()->id;
@@ -66,13 +73,19 @@ class ProfileController extends Controller
 	public function edit_password_post(Request $request){
 
 		/* Validation */
+       
+
 	  try{
 
 			if (Hash::check($request->input('oldpassword'), Auth::user()->password)) {
 			    // The passwords match...
 				
+		        $this->validate($request, [
+		            'password' => 'required|confirmed|min:6|max:18',
+		        ]);
+
 				//Updating Password
-				$newpassword1 = bcrypt($request->input('newpassword1'));
+				$newpassword1 = bcrypt($request->input('password'));
 				$user = User::find(Auth::user()->id);
 				$user->password = $newpassword1;
 				$password_updated = $user->save();

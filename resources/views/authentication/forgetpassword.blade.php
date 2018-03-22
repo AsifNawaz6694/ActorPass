@@ -8,23 +8,33 @@
      <div class="col-md-4 col-md-offset-4 login">
       <h3 class="login_content">Forget Password</h3>
        <hr>
+          @if (count($errors) > 0)
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+          @endif
+
       @include('partials.error_section')
        <form id="signin_form" action="{{route('reset_pass_post')}}" method="post">
 
           @if($page_forget_flag=="email")
             <div class="form-group_form">
               <label for="exampleInputName">Enter Your Email to Renew Password</label>
-              <input type="type" class="form-control required " name="passemail" id="exampleInputName">
+              <input type="type" class="form-control required " name="email" id="exampleInputName">
               <input type="hidden" class="form-control required" name="reqPassFlag" value="email" id="exampleInputPassword1">              
             </div>            
           @elseif($page_forget_flag=="newpass")
             <div class="form-group_form">
               <label for="exampleInputName">New Password</label>
-              <input type="password" class="form-control required " name="password1" id="exampleInputName">
+              <input type="password" class="form-control required " name="password" id="exampleInputName">
             </div>
             <div class="form-group_form">
               <label for="exampleInputPassword1">Re-enter Password</label>
-              <input type="password" class="form-control required" name="password2" id="exampleInputPassword1">              
+              <input type="password" class="form-control required" name="password_confirmation" id="exampleInputPassword1">              
             </div>
             <input type="hidden" name="pass_token" value="{{$token}}">
             <input type="hidden" class="form-control required" name="reqPassFlag" value="newpass" id="exampleInputPassword1">

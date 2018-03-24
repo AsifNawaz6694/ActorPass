@@ -84,7 +84,8 @@ class AuthenticationController extends Controller
         //Checking if Account is Verified or not
         $account_status = User::where('email', $request->email)->first(['verified']);
 
-        if($account_status->verified != 1){
+
+        if(isset($account_status->verified) && $account_status->verified != 1){
             $this->set_session('Please verify your Account to Log in.', false);
             return redirect()->route('login_view');              
         }

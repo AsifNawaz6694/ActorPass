@@ -5,7 +5,9 @@ use App\User;
 use App\StudentVideo;
 use App\Role;
 use App\Profile;
+use App\Classes;
 use App\UserMedia;
+use App\QuestionAnswer;
 use Auth;
 use Illuminate\Support\Facades\Input;
 use Hash;
@@ -16,24 +18,50 @@ use Response;
 class StudentController extends Controller
 {
 	public function video_upload($id,Request $request){
-        if(DB::table('classes')->where('id',$id)->where('class_status',1)->exists() && DB::table('class_student')->where('class_id', '=', $id)->where('student_id','=',Auth::user()->id)->exists()) {
-            $class_id = $id;                
-            $variable = StudentVideo::where('student_id',Auth::user()->id)->where('class_id',$id)->first();
-            return view('front.video_upload',['class_id'=>$class_id,'variable'=>$variable]);
+        if(DB::table('classes')->where('id',$id)->exists() && DB::table('class_student')->where('class_id', '=', $id)->where('student_id','=',Auth::user()->id)->exists()) {
+            $class_id = $id;
+            $class = Classes::where('id',$class_id)->select('class_status')->first();
+            $variable = StudentVideo::select('question_answers.id as quesID','question_answers.question', 'student_videos.*')
+            ->rightJoin('question_answers', function($join){
+                $join->on('student_videos.class_id', '=', 'question_answers.class_id')
+                ->where('question_answers.student_id', '=', Auth::user()->id);
+            })->where('student_videos.student_id',Auth::user()->id)->where('student_videos.class_id',$id)->get();
+          //dd($variable);
+            $question = QuestionAnswer::get();
+            return view('front.video_upload',['class_id'=>$class_id,'variable'=>$variable,'question'=>$question,'class'=>$class]);
         }else{
-            $this->set_session('You Donot Have Access To This Page', false);
-            return redirect()->route('public_index');
+            
+            return abort(404);
         }		
 	}
 	public function submit_video(Request $request){	
-        
+       
+
         if (!empty($request->video_id) && isset($request->video_id)) {
-            $store = StudentVideo::find($request->video_id);
-        }else{
-            $store = new StudentVideo;            
+             foreach ($request->question as $key => $value) {
+            $storeq = QuestionAnswer::find($request->quesID[$key]);            
+            $storeq->class_id = $request->class_id;
+            $storeq->student_id = Auth::user()->id;
+            $storeq->question = $value;
+            $storeq->save();            
         }
+            $store = StudentVideo::find($request->video_id);
+           
+        }else{
+            foreach ($request->question as $value) {
+            $storeq = new QuestionAnswer;            
+            $storeq->class_id = $request->class_id;
+            $storeq->student_id = Auth::user()->id;
+            $storeq->question = $value;
+            $storeq->save();            
+        }  
+            $store = new StudentVideo;  
+              
+        }
+      
+
         $store->class_id = $request->class_id;
-		$store->description = $request->description;
+        $store->description = $request->description;
 		$store->student_id =Auth::user()->id;
 		if ($request->hasFile('video')) {
           $video=$request->file('video');
@@ -112,8 +140,7 @@ class StudentController extends Controller
             $args['media_resume'] = UserMedia::where('user_id',$id)
                                                ->where('media_type',3)
                                                ->orderBy('id','DESC')
-                                               ->first();
-            
+                                               ->first();            
             return view('front.student_profile')->with($args);
         }   
     	

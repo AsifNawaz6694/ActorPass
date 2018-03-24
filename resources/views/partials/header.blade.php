@@ -135,6 +135,7 @@
 					    </ul>
 				    </div>
 
+
 				  @else
 					<div class="login-button" style="margin-top: 35px;">
 						<a href="{{route('login_view')}}" class="btn btn-login">LOGIN</a>

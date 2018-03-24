@@ -1755,6 +1755,26 @@ textarea#comment {
   text-align: center;
   padding: 10px;
 }
+
+.crown {
+    margin-left: 18px;
+    position: absolute;
+    top: -42px;
+    left: 0px;
+}
+
+.form_button {
+    text-align: center;
+}
+
+.form_button button.btn.btn-default {
+    background-color: #ed1c24;
+    border: 1px solid #ed1c24;
+    color: white;
+}
+.form_bottom {
+    margin-top: 20px;
+}
 /*New Css For WAll ANd Profile*/
 .btn_dropdown {
     padding-top: 30px;

@@ -93,10 +93,6 @@ Route::group(['middleware' => 'auth'], function()
 	/* Edit Profile Password */
 	Route::post('/dashboard/edit_password',  'ProfileController@edit_password_post')->name('edit_password_post');	
 });
-
-
-
-
 //Wall Related Routes
 Route::get('your_class/{id}','StudentController@video_upload')->name('upload_video');
 Route::get('student-wall/{id}','StudentController@student_wall')->name('student_wall');

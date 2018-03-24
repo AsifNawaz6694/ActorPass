@@ -181,7 +181,7 @@
         </div>
 
                 <!-- User Video Section -->
-               
+              
                     <div class="heading_one">
                         <h1>My Videos</h1>                
                     </div>
@@ -200,7 +200,7 @@
                      $flag = false;
                      <h1> No Videos Saved</h1>
                    @endif            
-                
+               
 
                 <!-- User Resumes -->
                
@@ -221,7 +221,6 @@
                      $flag = false;
                      <h1> No Resume Saved</h1>
                    @endif           
-                
-
+               
         @endif                    
         @endsection    

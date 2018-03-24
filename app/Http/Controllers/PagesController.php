@@ -40,8 +40,7 @@ class PagesController extends Controller
             }
              return view('front.class_wall')->with($args);           
         }else{
-            $this->set_session('You Donot Have Access To This Page', false);
-            return redirect()->route('public_index');
+           return abort(404);
         }
     }
 

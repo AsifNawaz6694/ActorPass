@@ -116,7 +116,11 @@
 				<div class="col-md-2 only-desktop">
 				  @if(Auth::check())
 					<div class="login-button" style="margin-top: 35px;">
+						@if(Auth::user()->role_id == 1)
+						<a href="{{route('admin_index')}}" class="btn btn-login">{{Auth::user()->fullname}}</a>
+						@else
 						<a href="{{route('dash_index')}}" class="btn btn-login">{{Auth::user()->fullname}}</a>
+						@endif
 					</div>
 				  @else
 					<div class="login-button" style="margin-top: 35px;">

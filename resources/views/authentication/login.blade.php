@@ -8,6 +8,17 @@
      <div class="col-md-6 col-md-offset-3 col-sm-12 col-sm-offset-0 login-form">
       <h3 class="login_content">LOGIN</h3>
        <hr>
+
+        @if (count($errors) > 0)
+              <div class="alert alert-danger">
+                  <ul>
+                      @foreach ($errors->all() as $error)
+                          <li>{{ $error }}</li>
+                      @endforeach
+                  </ul>
+              </div>
+        @endif
+
       @include('partials.error_section')       
        <form id="signin_form" action="{{route('login_post')}}" method="post">
         <div class="form-group_form">

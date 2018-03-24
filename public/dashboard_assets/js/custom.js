@@ -84,6 +84,8 @@ $(document).ready(function () {
           });
     });
 
+    /*Student Datatable*/
+    $("#studentTable").dataTable();
 });
 
 

@@ -6,7 +6,7 @@
             <div class="collapse navbar-collapse in" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav left_mobi_nav">
                     <li class="active"><a href="{{route('profile_index')}}">HOME /
-                           EDIT PROFILE
+                           {{$nav_head}}
                         </a>
                     </li>
                 </ul>

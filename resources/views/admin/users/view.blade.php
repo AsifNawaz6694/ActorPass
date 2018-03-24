@@ -7,7 +7,7 @@
           <div class="box box-primary">
             <div class="box-body box-profile">
                <div class="image-box">
-                  <img src="{{asset('public/storage/profile-pictures/'.$user->profile->profile_pic) }}" style="height:100%" class="profile-user-img img-responsive img-circle">
+                  <img src="{{asset('public/storage/profile-pictures/'.$user->profile->profile_pic) }}" style="height:100%" width="auto" class="profile-user-img img-responsive img-circle">
                   <form action="{{route('ImageUpload')}}" method="post" enctype="multipart/form-data" id="change_admin_profile_pic">
                         <input name="_token" value="{{csrf_token()}}" type="hidden">
                   <div class="camera_image">

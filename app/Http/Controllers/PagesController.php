@@ -15,6 +15,7 @@ use Session;
 class PagesController extends Controller
 {
     public function index(){
+        //dd(Auth::check());
     	return view('front.index');
     }  
     public function take_class(){

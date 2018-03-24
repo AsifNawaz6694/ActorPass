@@ -169,7 +169,7 @@
             {{ $flag = false}}
             @foreach($user_medias as $user_media)
                @if($user_media->media_type == 1) 
-                <img src="{{asset('public/storage/user-images/'. $user_media->media)}}" height="200" width="200">
+                <div class="img_dashboard"><img src="{{asset('public/storage/user-images/'. $user_media->media)}}" height="200" width="200">
                 @php $flag= true @endphp                
                @endif        
             @endforeach
@@ -181,7 +181,7 @@
         </div>
 
                 <!-- User Video Section -->
-                <div class="wrapper">
+               
                     <div class="heading_one">
                         <h1>My Videos</h1>                
                     </div>
@@ -200,18 +200,19 @@
                      $flag = false;
                      <h1> No Videos Saved</h1>
                    @endif            
-                </div>  
+                
 
                 <!-- User Resumes -->
-                <div class="wrapper">
+               
                     <div class="heading_one">
                         <h1>My Resume</h1>                
                     </div>
 
                     @foreach($user_medias as $user_media)
-                         <hr>
+                        
                        @if($user_media->media_type == 3)
-                          <a href="{{route('download_resume',['id'=>$user_media->id])}}">Resume</a>
+                         <!-- <a href="{{route('download_resume',['id'=>$user_media->id])}}">Resume</a>-->
+                         <div class="pdf_logo"> <a href="{{route('download_resume',['id'=>$user_media->id])}}"><img src="{{asset('public/assets/images/pdf.png') }}"></a></div>
                         @php $flag= true @endphp              
                        @endif    
                     @endforeach
@@ -220,7 +221,7 @@
                      $flag = false;
                      <h1> No Resume Saved</h1>
                    @endif           
-                </div> 
+                
 
         @endif                    
         @endsection    

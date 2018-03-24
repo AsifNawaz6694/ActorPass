@@ -17,11 +17,13 @@ class EmailVerification extends Mailable
      * @return void
      */
     protected $user;
+    protected $token;
 
-    public function __construct($user)
+    public function __construct($user, $token)
     {
         //
         $this->user = $user;
+        $this->token = $token;
     }
 
     /**
@@ -31,8 +33,9 @@ class EmailVerification extends Mailable
      */
     public function build()
     {
-        return $this->view('view.email_confirmation')->with([
-            'email_token' => $this->user->email_token,
+        return $this->view('email.email_confirmation')->with([
+            'email_token' => $this->token,
+            'fullname' => $this->user->fullname,
         ]);
     }
 }

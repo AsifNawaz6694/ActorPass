@@ -459,7 +459,7 @@ footer, header, hgroup, menu, nav, section {
     color: #626262;
     width: 86px;
     font-family: 'Conv_ProximaNova-Regular';
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .panel-min {
@@ -1090,3 +1090,29 @@ a:focus, a:hover {
     bottom: 20px;
   }
 /*Profile Picture Camera Icon*/
+
+.left_mobi_nav.navbar-nav>li>a {
+    padding-top: 31px;
+    padding-bottom: 0px;
+}
+
+.navbar {
+  
+    margin-bottom: 10px !important;
+   
+}
+
+.right_mobi_nav {
+    padding-top: 10px;
+}
+
+.r-m-p.left_dash {
+   
+    background-color: rgb(255, 255, 255);
+}
+
+.pdf_logo img {
+    width: 116px;
+}
+
+

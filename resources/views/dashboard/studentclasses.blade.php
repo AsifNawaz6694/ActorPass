@@ -17,14 +17,15 @@
                                 <th>Location</th>
                                 <th>Age</th>                                                        
                                 <th>Cost</th>
+                                <th>Details</th>  
 
                             @elseif(Auth::user()->role_id == 2)
                                <!-- Teacher -->
                                 <th>Class</th> 
                                 <th>No of Students</th>
-                                <th>Link</th>                                
                                 <th>Date</th>                                                        
                                 <th>Status</th>                                             
+                                <th>Details</th>                                
                             @endif               
                         </tr>
                     </thead>
@@ -38,6 +39,7 @@
                                 <td>{{$class->location}}</td>
                                 <td>{{$class->age}}</td>
                                 <td>{{$class->cost}}</td>
+                                <td><a target="_blank" href="{{$class->link}}">View Detail</a></td>
                             </tr>
                            @endforeach
                         @elseif(Auth::user()->role_id == 2)
@@ -45,14 +47,14 @@
                            @foreach($classes as $class)
                             <tr>
                                 <td><a target="_blank" href="{{route('public_wall',['id'=>$class->class_id])}}">{{$class->title}}</a></td>
-                                <td>{{$class->student_total}}</td> 
-                                <td><a target="_blank" href="{{$class->link}}">Link</a></td>
+                                <td>{{$class->student_total}}</td>                                 
                                 <td>{{$class->date}}</td>
                                 <td>@if($class->class_status==1)
                                      <span class="label label-warning">under Review</span>
                                     @elseif($class->class_status==0)
                                      <span class="label label-success">Availiable</span>
-                                    @endif</td>                                
+                                    @endif</td> 
+                                    <td><a target="_blank" href="{{$class->link}}">View Detail</a></td>                               
                             </tr>
                            @endforeach                                      
                         @endif

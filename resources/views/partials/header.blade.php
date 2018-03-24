@@ -115,9 +115,27 @@
 
 				<div class="col-md-2 only-desktop">
 				  @if(Auth::check())
-					<div class="login-button" style="margin-top: 35px;">
+				<!-- 	<div class="login-button" style="margin-top: 35px;">
 						<a href="{{route('dash_index')}}" class="btn btn-login">{{Auth::user()->fullname}}</a>
-					</div>
+					</div> -->
+
+					 <div class="dropdown btn_dropdown">
+					    <button class="btn btn-login btn-primary btn-right dropdown-toggle" type="button" data-toggle="dropdown">{{Auth::user()->fullname}}
+					    <span class="caret"></span></button>
+					    <ul class="dropdown-menu">
+					       	
+					      @if(Auth::user()->role_id == 2 || Auth::user()->role_id == 3)
+					        <li><a target="_blank" href="{{route('dash_index')}}">Dashboard</a></li>					      	
+					      @elseif(Auth::user()->role_id == 1)
+					        <li><a target="_blank" href="{{route('admin_index')}}">Admin Dashboard</a></li>					      	
+					      @endif					       
+
+					      <li><a href="{{route('logout_user')}}">Logout</a></li>
+					     
+					    </ul>
+				    </div>
+
+
 				  @else
 					<div class="login-button" style="margin-top: 35px;">
 						<a href="{{route('login_view')}}" class="btn btn-login">LOGIN</a>

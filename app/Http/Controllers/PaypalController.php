@@ -85,6 +85,7 @@ class PaypalController extends Controller
 		DB::table('profile')
             ->where('user_id', Auth::user()->id)
             ->update(['package_student' => 1]);
+            $this->set_session('You Have Successfully Featured Your Account', true);
 		return redirect()->route('dash_index');
 	}
 

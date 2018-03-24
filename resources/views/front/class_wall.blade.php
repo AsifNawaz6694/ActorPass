@@ -10,7 +10,7 @@
 	         	<div class="col-md-12">
 	         		<div class="row">
 			         	<div class="col-md-1">
-			         		<img src="{{asset('public/assets/images/crown.jpg') }}" class="img-responsive">
+			         		<div class="crown"><img src="{{asset('public/assets/images/crown.png') }}" class="img-responsive"></div>
 					         <div class="f_wall_img img_top pull-right">
 					         	<img src="{{asset('public/storage/profile-pictures/'.$value->profile_pic) }}" class="img-responsive">
 					         </div>

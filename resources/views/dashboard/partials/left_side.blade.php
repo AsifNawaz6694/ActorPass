@@ -9,7 +9,9 @@
                     <!--<img src="{{ asset('dashboard_assets/images/funder_user_img.png') }}" class="img-responsive center-block img-circle"/> -->
                     
                     @if(isset(Auth::user()->profile->profile_pic))
-                        <img src="{{ asset('public/dashboard_assets/images/profile/'.Auth::user()->profile->profile_pic) }}" class="img-responsive center-block img-circle"/>                        
+                    
+                    
+                        <img src="{{asset('public/storage/profile-pictures/'.Auth::user()->profile->profile_pic)}}" class="img-responsive center-block img-circle"/>                        
                     @else
                         <img src="{{ asset('public/dashboard_assets/images/user-dummy.png') }}" class="img-responsive center-block img-circle"/>
                     @endif

@@ -52,10 +52,9 @@ class AuthenticationController extends Controller
                 $user->attachRole($request->input('role_id'));   
 
 	             //Creating Profile for this new User.
-                //event(new UserEvent($user));
+                event(new UserEvent($user));
                
                 dispatch(new SendVerificationEmail($user));
-                dd(123);
                 $this->set_session('User Successfully Registered.', true);
             }
             else{

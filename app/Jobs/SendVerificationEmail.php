@@ -9,6 +9,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use App\Mail\EmailVerification;
 use Mail;
+use App\User;
 
 class SendVerificationEmail implements ShouldQueue
 {
@@ -34,8 +35,13 @@ class SendVerificationEmail implements ShouldQueue
      */
     public function handle()
     {
-        //
-        $email = new EmailVerification($this->user);
+        //Generating and Saving random token to Users Table
+        $token = str_random(30);
+        $user = User::find($this->user->id);
+        $user->email_token = $token;
+        $email_token_update = $user->save();
+
+        $email = new EmailVerification($this->user, $token);
         Mail::to($this->user->email)->send($email);
     }
 }

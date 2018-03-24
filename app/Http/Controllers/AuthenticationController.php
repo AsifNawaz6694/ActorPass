@@ -11,6 +11,8 @@ use App\Profile;
 use App\Password_reset;
 use Mail;
 use App\Http\Requests\RegistrationRequest;
+use App\Jobs\SendVerificationEmail;
+
 
 class AuthenticationController extends Controller
 {
@@ -50,9 +52,10 @@ class AuthenticationController extends Controller
                 $user->attachRole($request->input('role_id'));   
 
 	             //Creating Profile for this new User.
-                event(new UserEvent($user));
-                //dispatch(new SendVerificationEmail($user));
-
+                //event(new UserEvent($user));
+               
+                dispatch(new SendVerificationEmail($user));
+                dd(123);
                 $this->set_session('User Successfully Registered.', true);
             }
             else{
@@ -78,6 +81,14 @@ class AuthenticationController extends Controller
             'email' => 'required|email',
             'password' => 'required',   
         ]);
+
+        //Checking if Account is Verified or not
+        $account_status = User::where('email', $request->email)->first(['verified']);
+
+        if($account_status->verified != 1){
+            $this->set_session('Please verify your Account to Log in.', false);
+            return redirect()->route('login_view');              
+        }
 
         try{
             if(Auth::attempt(['email' => $request->email, 'password' => $request->password ] )) {                
@@ -201,5 +212,33 @@ class AuthenticationController extends Controller
 
         }
 
+    }
+
+    public function email_verify_post($token=null){
+        
+        try{
+
+            if(!is_null($token)){
+
+                $verified = User::where('email_token', $token)->update(['verified'=> 1, 'email_token' => null]);
+                
+                if($verified){
+                    $this->set_session('Email Verified', true);    
+                    return redirect()->route('login_view');  
+                }else{
+                    $this->set_session('Email Couldnot be Verified', false);    
+                    return redirect()->route('login_view');
+                }
+
+            }else{
+                $this->set_session('Something went wrong. Please try again', false);    
+                return redirect()->route('login_view');                  
+            }
+
+
+        }catch(\Exception $e){
+            $this->set_session('Something went wrong. Please try again'.$e->getMessage(), false);    
+            return redirect()->route('login_view');                       
+        }    
     }
 }

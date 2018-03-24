@@ -94,8 +94,8 @@ Route::group(['middleware' => 'auth'], function()
 	Route::post('/dashboard/edit_password',  'ProfileController@edit_password_post')->name('edit_password_post');	
 });
 
-
-
+/* Email Verify Post Route */
+Route::get('/email-verify/{email_token}',  'AuthenticationController@email_verify_post')->name('email_verify_post');
 
 //Wall Related Routes
 Route::get('your_class/{id}','StudentController@video_upload')->name('upload_video');

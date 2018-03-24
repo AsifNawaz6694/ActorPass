@@ -21,7 +21,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputStatus" class="col-sm-2 control-label">Enroll Teacher</label>
+                            <label for="inputStatus" class="col-sm-2 control-label">Enroll Student</label>
                             <div class="col-sm-10">
                                 <select name="student_id[]" class="form-control select2" multiple="multiple" data-placeholder="Select a State"
                                 style="width: 100%;">                                        

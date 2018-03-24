@@ -22,7 +22,7 @@
       @include('partials.error_section')       
        <form id="signin_form" action="{{route('login_post')}}" method="post">
         <div class="form-group_form">
-          <label for="exampleInputName">USERNAME</label>
+          <label for="exampleInputName">Email</label>
           <input type="text" class="form-control required" name="email" id="exampleInputName">
         </div>
         <div class="form-group_form">

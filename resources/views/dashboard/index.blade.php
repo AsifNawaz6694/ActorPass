@@ -166,7 +166,10 @@
             <div class="heading_one">
                 <h1>My Images</h1>                
             </div>
-            {{ $flag = false}}
+            <?php //$flag = false; ?>
+            @php
+            $flag = false
+            @endphp
             @foreach($user_medias as $user_media)
                @if($user_media->media_type == 1) 
                 <div class="img_dashboard"><img src="{{asset('public/storage/user-images/'. $user_media->media)}}" height="200" width="200">
@@ -175,7 +178,7 @@
             @endforeach
 
            @if(!$flag)
-             $flag = false;
+             @php $flag = false @endphp
              <h1> No Images Saved</h1>
            @endif            
         </div>
@@ -197,7 +200,7 @@
                     @endforeach
                   
                    @if(!$flag)
-                     $flag = false;
+                     @php $flag = false @endphp
                      <h1> No Videos Saved</h1>
                    @endif            
                
@@ -218,7 +221,7 @@
                     @endforeach
 
                    @if(!$flag)
-                     $flag = false;
+                      @php $flag = false; @endphp 
                      <h1> No Resume Saved</h1>
                    @endif           
                

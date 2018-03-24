@@ -43,7 +43,7 @@
                                         <li><a href="{{route('view_class',['id'=>$value->id])}}">View</a></li>
                                         <li><a href="{{route('delete_class',['id'=>$value->id])}}">Delete</a></li>
                                         <li><a href="{{route('all_videos',['id'=>$value->id])}}">All Videos</a></li>
-                                        <li><a href="{{route('enroll_students',['id'=>$value->id])}}">Assign Students</a></li>
+                                        <li><a href="{{route('enroll_students',['id'=>$value->id])}}">Enroll Students</a></li>
                                     </ul>
                                 </div>
                             </td>

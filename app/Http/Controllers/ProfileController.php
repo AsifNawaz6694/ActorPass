@@ -30,6 +30,7 @@ class ProfileController extends Controller
 	        'phone' => 'numeric', 
 	        'd_o_b' => 'date',
 	        'profile_pic' => 'mimes:jpeg,JPEG,jpg,bmp,png',
+	        'cover' => 'mimes:jpeg,JPEG,jpg,bmp,png',
 	    ]);
 
 	  try{	
@@ -45,13 +46,23 @@ class ProfileController extends Controller
 			  //updating file if Present
 		      if(Input::hasFile('profile_pic')){
 		        $file = Input::file('profile_pic');
-		        $tmpFilePath = '/dashboard_assets/images/profile';
+		        $tmpFilePath = '/storage/profile-pictures';
 		        $tmpFileName = time() . '-' . $file->getClientOriginalName();
 		        $file = $file->move(public_path() . $tmpFilePath, $tmpFileName);
 		      //$path = $tmpFilePath . $tmpFileName;
 		        $path = $tmpFileName;
 
 		        $pro_update['profile_pic'] = $path;
+		      }
+
+		        //updating Cover file if Present
+		      if(Input::hasFile('cover')){
+		        $file = Input::file('cover');
+		        $tmpFilePath = '/storage/cover-photos/';
+		        $tmpFileName = time() . '-' . $file->getClientOriginalName();
+		        $file = $file->move(public_path() . $tmpFilePath, $tmpFileName);		      
+		        $path = $tmpFileName;
+		        $pro_update['cover'] = $path;
 		      }
 			
 			$profile_update = $profile->update($pro_update);

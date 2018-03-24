@@ -7,13 +7,19 @@
          	<form id="change_cover" action="{{route('ajax_change_cover')}}" method="POST" enctype="multipart/form-data">
                 {{csrf_field()}}
 	            <div class="f_img_banner">
-	            	<img src="{{asset('public/storage/cover-photos/'.$user->profile->cover) }}" class="img-responsive">
-	            	 <div class="button_banner">
+	            	@if(!empty($user->profile->cover) && $user->profile->cover)
+                <img src="{{asset('public/storage/cover-photos/'.$user->profile->cover) }}" class="img-responsive">
+                @else
+                <img src="{{asset('public/storage/cover-photos/default_cover.jpg') }}" class="img-responsive">
+                @endif
+                @if(Auth::user()->role_id == 3 && $user->id == Auth::user()->id)
+	            	  <div class="button_banner">
                       <i class="fa fa-camera set_update_btn" aria-hidden="true"></i>
                       Update Cover
                       <input type="file" name="cover" id="cover">
-                      <input type="hidden" name="student_id" id="student_id" value="{{$user->id}}">                      
-                    </div>  
+                      <input type="hidden" name="student_id" id="student_id" value="{{$user->id}}">
+                  </div>  
+                @endif
 	            </div>
         	</form>
          </div>
@@ -22,7 +28,14 @@
    <div class="container">
       <div class="col-md-3 border_left">
          <div class="vertical-menu">
-            <div class="f_side_img"><img src="{{asset('public/storage/profile-pictures/'.$user->profile->profile_pic) }}" class="img-responsive"></div>
+            <div class="f_side_img">
+              @if(!empty($user->profile->profile_pic) && $user->profile->profile_pic)
+                 <img src="{{asset('public/storage/profile-pictures/'.$user->profile->profile_pic) }}" class="img-responsive">
+                @else
+                 <img src="{{asset('public/storage/profile-pictures/profile_picture.jpg') }}" class="img-responsive">
+                @endif
+            
+            </div>
             <div class="side_content">
                <h3 class="name_profile">{{$user->fullname}}</h3>
                <p class="actor">{{$role->name}}</p>

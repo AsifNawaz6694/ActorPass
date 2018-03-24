@@ -51,6 +51,11 @@
                               <input type="file" name="profile_pic" class="form-control">
                           </div>
 
+                          <div class="form-group">
+                              <label>Wall Cover<span></span></label>
+                              <input type="file" name="cover" class="form-control">
+                          </div>
+
                            <div class="form-group">
                                <input type="hidden" name="_token" value="{{Session::token()}}">
                                <button type="submit" class="btn btn-default center-block btn-block">Save changes

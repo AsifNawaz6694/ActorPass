@@ -14,11 +14,7 @@ class CreateQuestionAnswersTable extends Migration
     public function up()
     {
         Schema::create('question_answers', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('student_id')->unsigned();
-            $table->foreign('student_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->integer('class_id')->unsigned();
-            $table->foreign('class_id')->references('id')->on('classes')->onDelete('cascade')->onUpdate('cascade');
+            $table->increments('id');                   
             $table->longText('question')->nullable();
             $table->longText('answer')->nullable();
             $table->timestamps();

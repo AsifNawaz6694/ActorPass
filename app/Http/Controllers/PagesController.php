@@ -25,7 +25,8 @@ class PagesController extends Controller
     }
     
     public function public_wall($id){
-      if ( ( DB::table('classes')->where('id', '=', $id)->where('teacher_id','=',Auth::user()->id)->exists() )|| ( Auth::user()->role_id == '1' ) || ( DB::table('winners')->where('class_id',$id)->exists() &&  DB::table('class_student')->where('class_id',$id)->where('student id',Auth::user()->id) ) ){
+
+      if ( ( DB::table('classes')->where('id', '=', $id)->where('teacher_id','=',Auth::user()->id)->exists() ) || ( Auth::user()->role_id == '1' ) || ( DB::table('winners')->where('class_id',$id)->exists() &&  DB::table('class_student')->where('class_id',$id)->where('student id',Auth::user()->id) ) ){
              $args['winner'] = DB::table('winners')->leftJoin('users','users.id','winners.user_id')->select('user_id as winner_id')->where('class_id',$id)->first();
             
             $args['videos']= StudentVideo::leftJoin('users','users.id','=','student_videos.student_id')

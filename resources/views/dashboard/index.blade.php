@@ -162,32 +162,36 @@
             <!-- Student -->
 
         <!-- User Image Section -->
-        <div class="wrapper">
-            <div class="heading_one">
-                <h1>My Images</h1>                
-            </div>
-            <?php //$flag = false; ?>
-            @php
-            $flag = false
-            @endphp
-            @foreach($user_medias as $user_media)
-               @if($user_media->media_type == 1) 
-                <div class="img_dashboard"><img src="{{asset('public/storage/user-images/'. $user_media->media)}}" height="200" width="200">
-                @php $flag= true @endphp                
-               @endif        
-            @endforeach
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="">
+                <div class="heading_one">
+                    <h1>My Images</h1>                
+                </div>
+                <?php //$flag = false; ?>
+                @php
+                $flag = false
+                @endphp
+                <div class="img_dashboard s_margin_18">
+                    @foreach($user_medias as $user_media)
+                       @if($user_media->media_type == 1) 
+                        
+                        <img src="{{asset('public/storage/user-images/'. $user_media->media)}}" height="200" width="200">
+                        
+                        @php $flag= true @endphp                
+                       @endif        
+                    @endforeach
 
-           @if(!$flag)
-             @php $flag = false @endphp
-             <h1> No Images Saved</h1>
-           @endif            
-        </div>
-
+                    @if(!$flag)
+                     @php $flag = false @endphp
+                     <h1> No Images Saved</h1>
+                    @endif          
+                </div>  
                 <!-- User Video Section -->
-               
-                    <div class="heading_one">
-                        <h1>My Videos</h1>                
-                    </div>
+              
+                <div class="heading_one">
+                    <h1>My Videos</h1>                
+                </div>
+                <div class="img_dashboard s_margin_18">
                     @foreach($user_medias as $user_media)
                        @if($user_media->media_type == 2)
                         <video width="30%" controls>
@@ -199,32 +203,37 @@
                        @endif
                     @endforeach
                   
-                   @if(!$flag)
-                     @php $flag = false @endphp
-                     <h1> No Videos Saved</h1>
-                   @endif            
-                
+                    @if(!$flag)
+                      @php $flag = false @endphp
+                      <h1> No Videos Saved</h1>
+                    @endif
+                </div>              
+               
 
                 <!-- User Resumes -->
                
-                    <div class="heading_one">
-                        <h1>My Resume</h1>                
-                    </div>
+                <div class="heading_one">
+                    <h1>My Resume</h1>                
+                </div>
 
+                <div class="img_dashboard s_margin_18">
                     @foreach($user_medias as $user_media)
-                        
-                       @if($user_media->media_type == 3)
-                         <!-- <a href="{{route('download_resume',['id'=>$user_media->id])}}">Resume</a>-->
-                         <div class="pdf_logo"> <a href="{{route('download_resume',['id'=>$user_media->id])}}"><img src="{{asset('public/assets/images/pdf.png') }}"></a></div>
+                      @if($user_media->media_type == 3)
+                        <!-- <a href="{{route('download_resume',['id'=>$user_media->id])}}">Resume</a>-->
+                        <div class="pdf_logo"> <a href="{{route('download_resume',['id'=>$user_media->id])}}"><img src="{{asset('public/assets/images/pdf.png') }}"></a></div>
                         @php $flag= true @endphp              
-                       @endif    
+                      @endif    
                     @endforeach
 
-                   @if(!$flag)
+                    @if(!$flag)
                       @php $flag = false; @endphp 
-                     <h1> No Resume Saved</h1>
-                   @endif           
-                
+                      <h1> No Resume Saved</h1>
+                    @endif 
+                </div>    
 
+            </div>
+            <br>
+        </div>           
+               
         @endif                    
         @endsection    

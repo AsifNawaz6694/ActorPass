@@ -7,6 +7,20 @@
     overflow: hidden;
     position: relative;
   }
+  .box-profile{
+    position: relative;
+  }
+
+  .box-profile:hover .delete_image_profile{
+
+      display: block;
+  } 
+   .delete_image_profile {
+      position: absolute;
+      display: none;
+      right: 50px;
+  }
+  
   .nav > li > a > img {
     width: 20px;
     height: 20px;
@@ -23,6 +37,7 @@
     padding: 10px 0;
     display: none;
   }
+ 
   .image-box:hover .camera_image {
     display: block;
   }

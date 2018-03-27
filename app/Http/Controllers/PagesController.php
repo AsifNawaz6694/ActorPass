@@ -18,9 +18,14 @@ class PagesController extends Controller
         //dd(Auth::check());
     	return view('front.index');
     }  
+    public function remove_picture(){
+        DB::table('profile')
+            ->where('user_id', Auth::user()->id)
+            ->update(['profile_pic' => '']);
+            return redirect()->back();
+    }
     public function take_class(){
-    $classes = Classes::leftJoin('users','users.id','=','classes.teacher_id')->leftJoin('profile','profile.user_id','=','classes.teacher_id')->paginate(10);
-    
+    $classes = Classes::leftJoin('users','users.id','=','classes.teacher_id')->leftJoin('profile','profile.user_id','=','classes.teacher_id')->paginate(10);    
     return view('front.takeaclass',['classes' => $classes]);
     }
     

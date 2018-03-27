@@ -128,7 +128,7 @@ class ProfileController extends Controller
 	      if(Input::hasFile('image_upload')){
 
 	        $file = Input::file('image_upload');
-	        $tmpFilePath = '/dashboard_assets/images/profile';
+	        $tmpFilePath = '/storage/profile-pictures/';
 	        $tmpFileName = time() . '-' . $file->getClientOriginalName();
 	        $file = $file->move(public_path() . $tmpFilePath, $tmpFileName);
 

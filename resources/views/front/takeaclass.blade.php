@@ -1,5 +1,6 @@
 @extends('masterlayout')
 @section('content')
+
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
@@ -15,7 +16,15 @@
 		@foreach($classes as $class)
 		<div class="row">
 			<div class="col-md-3">
-				<div class="image_takeatime"><img src="{{ asset('public/storage/profile-pictures/' . $class->profile_pic) }}"></div>
+				@if(!empty($class->profile_pic) || $class->profile_pic != '' )
+					<div class="image_takeatime">
+						<img src="{{ asset('public/storage/profile-pictures/' . $class->profile_pic) }}">
+					</div>
+					@else
+					<div class="image_takeatime">
+						<img src="{{ asset('public/storage/profile-pictures/placeholder.png') }}">
+					</div>
+				@endif
 				<div class="image_content">
 					<img src="{{ asset('public/assets/images/take_image.png') }}">
 				</div>

@@ -5,15 +5,15 @@
         </a>
         <div class="user_deatils">
             <a href="#">
+                <a href="{{route('remove_picture')}}">
+                        <i class="fa fa-lg fa-remove delete_image_profile"> </i>
+                    </a>
                 <div class="avatar_box">
                     <!--<img src="{{ asset('dashboard_assets/images/funder_user_img.png') }}" class="img-responsive center-block img-circle"/> -->
-                    
                     @if(isset(Auth::user()->profile->profile_pic))
-                    
-                    
-                        <img src="{{asset('public/storage/profile-pictures/'.Auth::user()->profile->profile_pic)}}" class="img-responsive center-block img-circle"/>                        
+                        <img src="{{asset('public/storage/profile-pictures/'.Auth::user()->profile->profile_pic)}}" class="img-responsive center-block img-circle s_image_circle"/>
                     @else
-                        <img src="{{ asset('public/dashboard_assets/images/user-dummy.png') }}" class="img-responsive center-block img-circle"/>
+                        <img src="{{ asset('public/dashboard_assets/images/default1.png') }}" class="img-responsive center-block img-circle s_image_circle"/>
                     @endif
 
                   <form action="{{route('user_image_upload')}}" method="post" enctype="multipart/form-data" id="Singleimage_upload_form">
@@ -22,7 +22,7 @@
                     <i class="fa fa-camera fa-2x" aria-hidden="true"></i>
                         <input type="file" id="image_upload" name="image_upload" value="" style="display: none"/>
                     </span>
-                  </form>               
+                  </form>              
                 </div>
             </a>
             <h3>

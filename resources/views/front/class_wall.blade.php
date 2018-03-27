@@ -35,6 +35,14 @@
            				@if(Auth::user()->id == $value->teacher_id)
            				<a href="{{route('select_winner',['id'=>$value->user_id,'class_id'=>$value->class_id])}}">Select Winner</a>
            				@endif
+
+           				<div class="row">
+		                   <div class="col-md-12">
+						         <h3 class="profile_content">Questions</h3>
+						                         		
+		                   </div>           					
+           				</div>
+
 		                 <div class="row">
 		                   <div class="col-md-12">
 		                     <div class="padding_commit">

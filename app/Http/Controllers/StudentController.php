@@ -21,13 +21,17 @@ class StudentController extends Controller
         if(DB::table('classes')->where('id',$id)->exists() && DB::table('class_student')->where('class_id', '=', $id)->where('student_id','=',Auth::user()->id)->exists()) {
             $class_id = $id;
             $class = Classes::where('id',$class_id)->select('class_status')->first();
+            
             $variable = StudentVideo::select('question_answers.id as quesID','question_answers.question', 'student_videos.*')
             ->rightJoin('question_answers', function($join){
                 $join->on('student_videos.class_id', '=', 'question_answers.class_id')
                 ->where('question_answers.student_id', '=', Auth::user()->id);
             })->where('student_videos.student_id',Auth::user()->id)->where('student_videos.class_id',$id)->get();
-          //dd($variable);
+          
+         // dd(isset( $variable[0]->description) );
+          
             $question = QuestionAnswer::get();
+            //dd($class);
             return view('front.video_upload',['class_id'=>$class_id,'variable'=>$variable,'question'=>$question,'class'=>$class]);
         }else{
             

@@ -50,7 +50,9 @@ class DashboardController extends Controller
     }
     
     public function dash_classes(){
+        
         $data['nav_head'] = 'My Classes';
+
         if(Auth::user()->role_id == 3){ //he is a student
             //Student Classes
             $data['classes'] = Classes::join('users', 'users.id', '=', 'classes.teacher_id')
@@ -58,7 +60,6 @@ class DashboardController extends Controller
                                ->select('classes.id', 'classes.link', 'classes.title', 'users.fullname', 'classes.cost', 'classes.location', 'classes.age')                     
                                ->where('class_student.student_id', '=', Auth::user()->id)
                                ->get();
-
 
         }else if(Auth::user()->role_id == 2){ //he is a teacher
             //Teacher Classes
@@ -72,8 +73,7 @@ class DashboardController extends Controller
                                ->leftjoin('class_student', 'class_student.class_id', '=', 'classes.id')
                                ->groupBy('classes.id')                                                     
                                ->get();
-
-            //  dd($data['classes']);                    
+            //dd($data['classes']);                    
         }
 
     	return view('dashboard.studentclasses')->with($data);

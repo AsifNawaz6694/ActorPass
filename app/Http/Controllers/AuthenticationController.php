@@ -12,7 +12,7 @@ use App\Password_reset;
 use Mail;
 use App\Http\Requests\RegistrationRequest;
 use App\Jobs\SendVerificationEmail;
-
+//
 
 class AuthenticationController extends Controller
 {

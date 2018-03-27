@@ -18,52 +18,39 @@ use Response;
 class StudentController extends Controller
 {
 	public function video_upload($id,Request $request){
-        if(DB::table('classes')->where('id',$id)->exists() && DB::table('class_student')->where('class_id', '=', $id)->where('student_id','=',Auth::user()->id)->exists()) {
+        if(Auth::user()->role_id == '1' || DB::table('classes')->where('id',$id)->exists() && DB::table('class_student')->where('class_id', '=', $id)->where('student_id','=',Auth::user()->id)->exists()) {
             $class_id = $id;
             $class = Classes::where('id',$class_id)->select('class_status')->first();
             
             $variable = StudentVideo::select('question_answers.id as quesID','question_answers.question', 'student_videos.*')
             ->rightJoin('question_answers', function($join){
-                $join->on('student_videos.class_id', '=', 'question_answers.class_id')
-                ->where('question_answers.student_id', '=', Auth::user()->id);
+                $join->on('student_videos.id', '=', 'question_answers.video_id');
+                
             })->where('student_videos.student_id',Auth::user()->id)->where('student_videos.class_id',$id)->get();
-          
-         // dd(isset( $variable[0]->description) );
-          
+
             $question = QuestionAnswer::get();
             //dd($class);
             return view('front.video_upload',['class_id'=>$class_id,'variable'=>$variable,'question'=>$question,'class'=>$class]);
-        }else{
-            
+        }else{            
             return abort(404);
         }		
 	}
-	public function submit_video(Request $request){	
-       
+	public function submit_video(Request $request){
 
         if (!empty($request->video_id) && isset($request->video_id)) {
              foreach ($request->question as $key => $value) {
-            $storeq = QuestionAnswer::find($request->quesID[$key]);            
-            $storeq->class_id = $request->class_id;
-            $storeq->student_id = Auth::user()->id;
+            $storeq = QuestionAnswer::find($request->quesID[$key]);  
+            $storeq->video_id = $request->video_id;
             $storeq->question = $value;
             $storeq->save();            
         }
             $store = StudentVideo::find($request->video_id);
            
         }else{
-            foreach ($request->question as $value) {
-            $storeq = new QuestionAnswer;            
-            $storeq->class_id = $request->class_id;
-            $storeq->student_id = Auth::user()->id;
-            $storeq->question = $value;
-            $storeq->save();            
-        }  
+     
             $store = new StudentVideo;  
               
         }
-      
-
         $store->class_id = $request->class_id;
         $store->description = $request->description;
 		$store->student_id =Auth::user()->id;
@@ -77,6 +64,15 @@ class StudentController extends Controller
         }
         $store->video = $this->UploadFiles('video', Input::file('video'));
         $store->save();
+        if (empty($request->video_id) && !isset($request->video_id)) {
+            foreach ($request->question as $value) {
+                $storeq = new QuestionAnswer; 
+                $storeq->video_id = $store->id;
+                $storeq->question = $value;
+                $storeq->save();            
+            } 
+        }
+
           if (!empty($request->video_id) && isset($request->video_id)) {            
             $this->set_session('You Have Successfully Updated Video', true);
         }else{            

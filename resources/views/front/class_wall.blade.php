@@ -39,7 +39,53 @@
            				<div class="row">
 		                   <div class="col-md-12">
 						         <h3 class="profile_content">Questions</h3>
-						                         		
+						          @php $quesFlag = false; @endphp
+						         @foreach($question_answers as $question_answer)
+						         	@if($question_answer->video_id == $value->id)
+						         		@php $quesFlag = true; @endphp
+						         		Q. <p>{{$question_answer->question}}</p>
+						         		@if(!is_null($question_answer->answer))
+
+
+						         		   @if(Auth::user()->role_id == 3)
+						         		   	<!-- Student -->
+						         			<p> Ans. {{$question_answer->answer}} </p>
+
+						         		   @elseif(Auth::user()->role_id == 2)
+						         		    <!-- Teacher -->
+						         			 <p>Reply to this Student Question</p>						         
+						         			 <form id="replyForm" action="{{route('reply_question')}}" method="post">
+						         			 		<b>Reply: </b>
+						         			 		<textarea id="answer" name="answer">{{$question_answer->answer}}</textarea>
+						         			 		<input type="hidden" name="ques_id" value="{{$question_answer->question_id}}" >
+						         			 		<input type="hidden" name="_token" value="{{Session::token()}}">
+						         			 		<input type="submit" name="submit" value="Update">
+						         			 </form>
+
+						         		   @endif
+						         		@else
+						         		   @if(Auth::user()->role_id == 3)
+						         		   	<!-- Student -->
+						         		   	<p>This Question has not been Answered.</p>
+
+						         		   @elseif(Auth::user()->role_id == 2)
+						         		    <!-- Teacher -->
+						         			 <p>Reply to this Student Question</p>						         		<form id="replyForm" action="{{route('reply_question')}}" method="post">
+						         			 		<b>Reply: </b>
+						         			 		<textarea id="answer" name="answer"></textarea>
+						         			 		<input type="hidden" name="ques_id" value="{{$question_answer->question_id}}" >
+						         			 		<input type="hidden" name="_token" value="{{Session::token()}}">
+						         			 		<input type="submit" name="submit" value="Reply">
+						         			     </form>
+						         		   @endif
+						         		@endif
+						         	@endif
+						         @endforeach
+
+					         	<!-- Checking if there are any Questions -->
+					         	@if(!$quesFlag)
+					         	  <p>No Questions to Display</p>
+					         	@endif					                        		
 		                   </div>           					
            				</div>
 

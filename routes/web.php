@@ -99,6 +99,9 @@ Route::group(['middleware' => 'auth'], function()
 /* Email Verify Post Route */
 Route::get('/email-verify/{email_token}',  'AuthenticationController@email_verify_post')->name('email_verify_post');
 
+/* Teacher Reply to question Route */ 
+Route::post('/reply_question',  'PagesController@reply_question')->name('reply_question');
+
 //Wall Related Routes
 Route::get('your_class/{id}','StudentController@video_upload')->name('upload_video');
 Route::get('student-wall/{id}','StudentController@student_wall')->name('student_wall');

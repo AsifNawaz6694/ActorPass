@@ -12,11 +12,14 @@ use Mail;
 use Auth;
 use DB;
 use Session;
+use App\QuestionAnswer;
+
 class PagesController extends Controller
 {
     public function index(){
         //dd(Auth::check());
     	return view('front.index');
+
     }  
     public function remove_picture(){
         DB::table('profile')
@@ -24,6 +27,7 @@ class PagesController extends Controller
             ->update(['profile_pic' => '']);
             return redirect()->back();
     }
+
     public function take_class(){
     $classes = Classes::leftJoin('users','users.id','=','classes.teacher_id')->leftJoin('profile','profile.user_id','=','classes.teacher_id')->paginate(10);    
     return view('front.takeaclass',['classes' => $classes]);
@@ -31,7 +35,9 @@ class PagesController extends Controller
     
     public function public_wall($id){
 
-      if ( ( DB::table('classes')->where('id', '=', $id)->where('teacher_id','=',Auth::user()->id)->exists() ) || ( Auth::user()->role_id == '1' ) || ( DB::table('winners')->where('class_id',$id)->exists() &&  DB::table('class_student')->where('class_id',$id)->where('student id',Auth::user()->id) ) ){
+
+      if ( ( DB::table('classes')->where('id', '=', $id)->where('teacher_id','=',Auth::user()->id)->exists() )|| ( Auth::user()->role_id == '1' ) || ( DB::table('winners')->where('class_id',$id)->exists() &&  DB::table('class_student')->where('class_id',$id)->where('student id',Auth::user()->id) ) ){
+
              $args['winner'] = DB::table('winners')->leftJoin('users','users.id','winners.user_id')->select('user_id as winner_id')->where('class_id',$id)->first();
             
             $args['videos']= StudentVideo::leftJoin('users','users.id','=','student_videos.student_id')
@@ -42,10 +48,19 @@ class PagesController extends Controller
                                         ->where('student_videos.status','=',1)
                                         ->orderBy('student_videos.id','DESC')
                                         ->get();
-            foreach ($args['videos'] as $value) {            
+                                        
+            foreach ($args['videos'] as $value) {   
                 $args['comments'][$value->id] = Comment::where('video_id','=',$value->id)
                                         ->get();
             }
+
+            /* Getting Question/Answers of this Class */
+            $args['question_answers'] = QuestionAnswer::join('student_videos', 'student_videos.id', '=', 'question_answers.video_id')
+                ->select('question_answers.video_id', 'question_answers.question', 'question_answers.answer', 
+                    'question_answers.id as question_id')
+                ->where('student_videos.class_id', $id)->get();
+            //dd($args['question_answers']);
+            //dd($args['videos']);
              return view('front.class_wall')->with($args);           
         }else{
            return abort(404);
@@ -102,8 +117,30 @@ class PagesController extends Controller
             return redirect()->back();            
         }
     }
+
     public function account_feature_status(){
         $this->set_session('You Have Already Featured Your Account', false);
             return redirect()->back();  
+    }
+
+    public function reply_question(Request $request){
+        //dd($request->input());
+
+        if($request->has('ques_id') && $request->has('answer')){
+            $reply_update = QuestionAnswer::find($request->input('ques_id'));
+            $reply_update->answer = $request->input('answer');
+
+            if($reply_update->save()){
+                $this->set_session('Question has been Replied', true);
+                return redirect()->back();              
+            }else{
+                $this->set_session('Question couldnot be Replied', false);
+                return redirect()->back();
+            }
+
+        }else{
+                $this->set_session('Question couldnot be Replied', false);
+                return redirect()->back();
+        }
     }
 }

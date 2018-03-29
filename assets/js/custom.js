@@ -14,3 +14,16 @@ $(this).parent().find(".glyphicon-plus").removeClass("glyphicon-plus").addClass(
 $(this).parent().find(".glyphicon-minus").removeClass("glyphicon-minus").addClass("glyphicon-plus");
 });
 
+
+$('#imageUpload').change(function(){			
+			readImgUrlAndPreview(this);
+			function readImgUrlAndPreview(input){
+				 if (input.files && input.files[0]) {
+			            var reader = new FileReader();
+			            reader.onload = function (e) {			            	
+			                $('#imagePreview').attr('src', e.target.result);
+							}
+			          };
+			          reader.readAsDataURL(input.files[0]);
+			     }	
+		});

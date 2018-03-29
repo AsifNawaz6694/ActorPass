@@ -21,9 +21,9 @@
 	<!--Jquery custom Validation -->
 	<link href="assets/css/custom_validatiion.css" rel="stylesheet">
 	<!--Mobile menu -->
-	<link href="assets/plugins/menu/css/hamburgers.css" rel="stylesheet">
+<!-- 	<link href="assets/plugins/menu/css/hamburgers.css" rel="stylesheet">
 	<link href="assets/plugins/menu/css/jquery.mmenu.all.css" rel="stylesheet">
-	<link href="assets/plugins/menu/css/jquery.mhead.css" rel="stylesheet">
+	<link href="assets/plugins/menu/css/jquery.mhead.css" rel="stylesheet"> -->
 	<!-- Animation CSS -->
 	<!-- <link rel="stylesheet" type="text/css" href="assets/css/default.css" />
 	<link rel="stylesheet" type="text/css" href="assets/css/component.css" /> -->
@@ -62,7 +62,7 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</a>
-					<div id="my-menu">
+				<!-- 	<div id="my-menu">
 						<ul class="nav navbar-nav">
 							<li>
 								<a href="index.php">HOME</a>
@@ -83,7 +83,7 @@
 								<a href="login.php">LOGIN</a>
 							</li>
 						</ul>
-					</div>
+					</div> -->
 				</div>
 
 				<div class="col-md-7 col-sm-12 col-xs-12">

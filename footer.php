@@ -1,4 +1,5 @@
 <footer>
+
 	<div class="footer_content">
 		<div class="container">
 			<div class="row">
@@ -49,6 +50,8 @@
 <script src="assets/js/script.js"></script>
 <!-- Custom-js -->
 <script src="assets/js/custom.js"></script>
+
+ <!--Myclass-->
 <div class="modal fade" id="myModal-2" role="dialog" style="z-index: 1040 !important;">
     <div class="modal-dialog">
     
@@ -69,6 +72,7 @@
       
     </div>
   </div>
+  <!--/closed-->
 
 
 </div>

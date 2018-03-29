@@ -13,19 +13,25 @@
 			<div class="row separator section-icons">
 				<div class="col-md-4 col-sm-6 col-xs-12 text-center" data-aos="fade-right">
 					<div class="icon">
-						<div class="icon-edit"></div>
+						<a href="./register.php">
+							<div class="icon-edit"></div>
+						</a>
 					</div>
 					<h4>SIGN UP FOR AN <br>ACTORSPASS</h4>
 				</div>
 				<div class="col-md-4 col-sm-6 col-xs-12 text-center" data-aos="fade-right">
 					<div class="icon">
-						<div class="icon-upload"></div>
+						<a href="#">
+							<div class="icon-upload"></div>
+						</a>
 					</div>
 					<h4>UPLOAD YOUR REEL, <br>HEADSHOTS, & RESUME</h4>
 				</div>
 				<div class="col-md-4 col-sm-6 col-xs-12 text-center col-md-offset-0 col-sm-offset-3 col-xs-offset-0" data-aos="fade-right">
 					<div class="icon">
-						<div class="icon-class"></div>
+						<a href="./takeaclass.php">
+							<div class="icon-class"></div>
+						</a>
 					</div>
 					<h4> TAKE AN <br>ONLINE CLASS</h4>
 

@@ -56,5 +56,29 @@
 <!-- Custom-js -->
 <script src="{{ asset('public/assets/js/custom.js') }}"></script>
 
+ <!--Myclass-->
+<div class="modal fade" id="myModal-2" role="dialog" style="z-index: 1040 !important;">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
+
+          <h4 class="modal-title">Architecto beatae </h4>
+        </div>
+        <div class="modal-body">
+          <p>ed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolor moque laudorss antium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque pro porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat elium voluptatem. Ut enim ad minima veniam.</p>
+        </div>
+        <!--<div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>-->
+      </div>
+      
+    </div>
+  </div>
+  <!--/closed-->
+  
+
 </body>
 </html>

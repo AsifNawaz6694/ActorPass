@@ -20,13 +20,18 @@
 	<link href="{{ asset('public/assets/css/validationEngine.jquery.css') }}" rel="stylesheet">
 	<!--Jquery custom Validation -->
 	<link href="{{ asset('public/assets/css/custom_validatiion.css') }}" rel="stylesheet">
-	<!--Mobile menu -->
+	
+	<!--Mobile menu 
 	<link href="{{ asset('public/assets/plugins/menu/css/hamburgers.css') }}" rel="stylesheet">
 	<link href="{{ asset('public/assets/plugins/menu/css/jquery.mmenu.all.css') }}" rel="stylesheet">
 	<link href="{{ asset('public/assets/plugins/menu/css/jquery.mhead.css') }}" rel="stylesheet">
-	<!-- Animation CSS -->
+
+
+	 Animation CSS 
 	<!-- <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/default.css') }}" />
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/component.css') }}" /> -->
+
+
 	<!-- AOS Animation -->
     <link href="{{ asset('public/assets/css/aos.css') }}" rel="stylesheet">
 	<!-- style.css -->
@@ -62,7 +67,8 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</a>
-					<div id="my-menu">
+
+<!-- 				<div id="my-menu">
 						<ul class="nav navbar-nav">
 							<li>
 								<a href="{{ route('public_index') }}">HOME</a>
@@ -83,7 +89,9 @@
 								<a href="{{ route('login_view') }}">LOGIN</a>
 							</li>
 						</ul>
-					</div>
+					</div> -->
+
+
 				</div>
 
 				<div class="col-md-7 col-sm-12 col-xs-12">

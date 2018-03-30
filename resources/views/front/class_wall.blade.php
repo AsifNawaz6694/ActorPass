@@ -3,9 +3,7 @@
 	         
 @foreach($videos as $value)
 
-<section class="my_class">
-
-   <div class="container">
+<div class="container">
       <div class="row">
          <div class="col-md-12">
             <h3 class="f_content">
@@ -15,6 +13,19 @@
          </div>
       </div>
    </div>
+
+<section class="my_class">
+
+   <!--<div class="container">
+      <div class="row">
+         <div class="col-md-12">
+            <h3 class="f_content">
+               MY RECENT SHARING
+            </h3>
+            <hr>
+         </div>
+      </div>
+   </div>-->
 
    <div class="container">
       <div class="row">
@@ -112,7 +123,8 @@
                   COMMENTS
                </h3>
                <hr>
-
+               <div class="row f_row">
+                  
                <div class="comment-wrap">
                   <div class="photo col-md-1">
                      <!--<div class="avatar" style="background-image: url(img src="images/comment_male.png"></div>-->
@@ -147,8 +159,9 @@
                         </div>-->
                      </div>
                @endforeach  
+               </div>
 
-               <div class="f_load"><a href="#">Load More</a></div>
+               <!--<div class="f_load"><a href="#">Load More</a></div>-->
             </div>
             <div class="col-md-4">
                <div class="f_top">

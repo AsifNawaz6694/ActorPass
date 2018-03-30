@@ -23,6 +23,12 @@ class AdminController extends Controller
     	return view('admin.users.index', compact('users'));
     }
 
+    public function remove_picture_admin($user_id){
+            DB::table('profile')
+            ->where('user_id',$user_id)
+            ->update(['profile_pic' => '']);
+            return redirect()->back();
+    }
     public function user_view($id){
     	$user = User::find($id);
     	if($user){    		
@@ -81,12 +87,13 @@ class AdminController extends Controller
         }
     }
    
-    public function ImageUpload(){
+    public function ImageUpload(Request $request){
+
         $img_name = '';
         if(Input::file('profile_pic')){
         $img_name = $this->UploadImage('profile_pic', Input::file('profile_pic'));
 
-        Profile::where('user_id' ,'=', '1')->update([
+        Profile::where('user_id' ,'=', $request->user_id)->update([
         'profile_pic' => $img_name
         ]);  
         $path = asset('public/storage/profile-pictures/').'/'.$img_name; 
@@ -185,7 +192,7 @@ class AdminController extends Controller
         $profile = Profile::where('user_id',$id)->delete();
         $delete = User::find($id);                
         $delete->delete();
-        $this->set_session('User Is Deleted', false); 
+        $this->set_session('User Is Deleted', true); 
         return redirect()->route('users');
     }
 

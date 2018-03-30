@@ -5,10 +5,18 @@
     <!-- Profile Image -->
     <div class="box box-primary">
       <div class="box-body box-profile">
+          <a href="{{route('remove_picture_admin',['user_id'=>$user->profile->user_id])}}">
+              <i class="fa fa-lg fa-remove delete_image_profile"> </i>
+          </a>
          <div class="image-box">
-            <img src="{{asset('public/storage/profile-pictures/'.$user->profile->profile_pic) }}" style="height:100%" width="auto" class="profile-user-img img-responsive img-circle">
+            @if(!empty($user->profile->profile_pic) && isset($user->profile->profile_pic))
+            <img src="{{asset('public/storage/profile-pictures/'.$user->profile->profile_pic) }}" style="height:160px; width:160px" class="profile-user-img img-responsive img-circle">
+            @else
+            <img src="{{asset('public/storage/profile-pictures/default1.png') }}" style="height:160px; width:160px" class="profile-user-img img-responsive img-circle">
+            @endif
             <form action="{{route('ImageUpload')}}" method="post" enctype="multipart/form-data" id="change_admin_profile_pic">
                   <input name="_token" value="{{csrf_token()}}" type="hidden">
+                  <input name="user_id" value="{{$user->profile->user_id}}" type="hidden">
             <div class="camera_image">
               <i class="fa fa-camera fa-2x" aria-hidden="true"></i>
               <input name="profile_pic" id="change_admin_profile_pic" type="file">

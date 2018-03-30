@@ -89,10 +89,14 @@
 						</div>
 
 						<div class="button_button_about">
-							<a href="#" class="btn" type="button">GET STARTED AS A GUEST</a>
-							
-						</div>
-						
+							@if(!Auth::check())
+							<a href="{{route('login_view')}}" class="btn" type="button">GET STARTED AS A GUEST</a>
+							@elseif(Auth::user()->role_id == 2 || Auth::user()->role_id == 3)
+							<a href="{{route('dash_index')}}" class="btn" type="button">GET STARTED AS A GUEST</a>
+							@elseif(Auth::user()->role_id == 1)
+							<a href="{{route('admin_index')}}" class="btn" type="button">GET STARTED AS A GUEST</a>
+							@endif							
+						</div>						
 					</div>	
 				</div>
 			</div>
@@ -138,10 +142,14 @@
 						</div>
 
 						<div class="button_button_about">
-							<a href="#" class="btn" type="button">GET STARTED AS A VIP</a>
-							
-						</div>
-						
+							@if(!Auth::check())
+							<a href="{{route('login_view')}}" class="btn" type="button">GET STARTED AS A VIP</a>
+							@elseif(Auth::user()->role_id == 2 || Auth::user()->role_id == 3)
+							<a href="{{route('dash_index')}}" class="btn" type="button">GET STARTED AS A VIP</a>
+							@elseif(Auth::user()->role_id == 1)
+							<a href="{{route('admin_index')}}" class="btn" type="button">GET STARTED AS A VIP</a>
+							@endif	
+						</div>						
 					</div>	
 				</div>
 			</div>

@@ -68,7 +68,7 @@
                             <div class="media">
                                 <div class="media-body">
                                     <h4 class="media-heading">
-                                        <a href="{{route('public_wall',['id'=>$recent_class->class_id])}}">{{$recent_class->title}} - Tought by {{$recent_class->teacher_name}}</a>
+                                        <a href="{{route('public_wall',['id'=>$recent_class->class_id])}}">{{$recent_class->title}} - Taught by {{$recent_class->teacher_name}}</a>
                                     </h4>
                                     <p>
                                         

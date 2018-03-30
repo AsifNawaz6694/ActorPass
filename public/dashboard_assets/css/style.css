@@ -197,10 +197,22 @@ footer, header, hgroup, menu, nav, section {
     display: none;
     transition: width 0.5s ease-in-out
 }
+ .s_image_circle{
+         height: 164px;
+    }
+.delete_image_profile {
+    position: absolute;
+    display: none;
+    right: 85px;
+}
+.user_deatils:hover .delete_image_profile {
+    display: block;
+}
 
 .avatar_box:hover .camera_image {
     display: block;
 }
+
 
 .camera_image i {
     color: #FFFFFF;

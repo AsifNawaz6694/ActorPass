@@ -19,19 +19,24 @@ class PagesController extends Controller
     public function index(){
         //dd(Auth::check());
     	return view('front.index');
+
+    }  
+    public function remove_picture(){
+        DB::table('profile')
+            ->where('user_id', Auth::user()->id)
+            ->update(['profile_pic' => '']);
+            return redirect()->back();
     }
 
     public function take_class(){
-    $classes = Classes::leftJoin('users','users.id','=','classes.teacher_id')->leftJoin('profile','profile.user_id','=','classes.teacher_id')->paginate(10);
-    
+    $classes = Classes::leftJoin('users','users.id','=','classes.teacher_id')->leftJoin('profile','profile.user_id','=','classes.teacher_id')->paginate(10);    
     return view('front.takeaclass',['classes' => $classes]);
     }
     
     public function public_wall($id){
 
-
+        if(Auth::check()){
       if ( ( DB::table('classes')->where('id', '=', $id)->where('teacher_id','=',Auth::user()->id)->exists() )|| ( Auth::user()->role_id == '1' ) || ( DB::table('winners')->where('class_id',$id)->exists() &&  DB::table('class_student')->where('class_id',$id)->where('student id',Auth::user()->id) ) ){
-
              $args['winner'] = DB::table('winners')->leftJoin('users','users.id','winners.user_id')->select('user_id as winner_id')->where('class_id',$id)->first();
             
             $args['videos']= StudentVideo::leftJoin('users','users.id','=','student_videos.student_id')
@@ -64,6 +69,9 @@ class PagesController extends Controller
              return view('front.class_wall')->with($args);           
         }else{
            return abort(404);
+        }
+        }else{
+            return redirect()->route('login_view');
         }
     }
 

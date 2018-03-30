@@ -20,6 +20,8 @@ Route::get('/', 'PagesController@index')->name('public_index');
 Route::get('class_wall/{id}', 'PagesController@public_wall')->name('public_wall');
 Route::POST('/contact_page','PagesController@contact_page')->name('contact_page');
 Route::POST('/post_comment/{class_id}','PagesController@post_comment')->name('post_comment');
+Route::get('/remove_picture','PagesController@remove_picture')->name('remove_picture');
+Route::get('/remove_picture_admin/{user_id}','AdminController@remove_picture_admin')->name('remove_picture_admin');
 Route::get('select_winner/{id}/{class_id}','PagesController@winner')->name('select_winner');
 Route::get('/about', function(){
 	return view('front.about');

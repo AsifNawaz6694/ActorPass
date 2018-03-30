@@ -4,6 +4,7 @@
 */
 
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+
     .dashboard_navigation ul li a {
         font-size: 16px;
         padding: 16px 20px;
@@ -47,6 +48,7 @@
 */
 @media (min-width: 768px) and (max-width: 1024px) {
 
+   
     .dashboard_left_side a.navbar-brand {
         display: block;
         width: 60%;
@@ -214,7 +216,7 @@
     }
 
     .user_deatils {
-        width: 30%;
+        width: 80%;
         margin: 0px auto;
     }
 
@@ -225,6 +227,10 @@
 
     .user_deatils h3 {
         margin-top: 6px;
+    margin-left: 70px;
+    }
+    .user_deatils p {
+    margin-left: 55px;
     }
 
     .user_deatils h3 a {
@@ -308,5 +314,16 @@
 
     .right_mobi_nav li {
         float: left;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+
+    .s_image_circle{
+         height: 140px;
+    }
+    .delete_image_profile {
+        position: absolute;
+        right: 80px;
     }
 }

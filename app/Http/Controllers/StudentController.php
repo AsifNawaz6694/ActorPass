@@ -44,12 +44,9 @@ class StudentController extends Controller
             $storeq->question = $value;
             $storeq->save();            
         }
-            $store = StudentVideo::find($request->video_id);
-           
-        }else{
-     
-            $store = new StudentVideo;  
-              
+            $store = StudentVideo::find($request->video_id);           
+        }else{     
+            $store = new StudentVideo;                
         }
         $store->class_id = $request->class_id;
         $store->description = $request->description;

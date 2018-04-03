@@ -18,7 +18,7 @@
 				         <div class="col-md-6 f_padding_profile">
 				            <h3 class="wall_content">{{$value->fullname}}
 
-				             <b style="color: grey">  @if($value->user_id == $winner->winner_id) Winner @endif</b>
+				             <b style="color: grey">  @if(isset($winner->winner_id) && $value->user_id == $winner->winner_id) Winner @endif</b>
 				         </h3>
 				            <p class="wall_text">{{$value->created_at}} <i class="fa fa-globe" aria-hidden="true"></i></p>
 				         </div>

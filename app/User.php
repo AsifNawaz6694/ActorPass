@@ -10,7 +10,6 @@ class User extends Authenticatable
 {
     use Notifiable;
     use EntrustUserTrait; // add this trait to your user model
-
     /**
      * The attributes that are mass assignable.
      *

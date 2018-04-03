@@ -48,11 +48,17 @@ class PagesController extends Controller
                                         ->orderBy('student_videos.id','DESC')
                                         ->get();
                                         
-            foreach ($args['videos'] as $value) {   
-                $args['comments'][$value->id] = Comment::where('video_id','=',$value->id)
-                                        ->get();
+            foreach ($args['videos'] as $value) {  
+               //dd($value);
+                $args['comments'][$value->id] = Comment::join('profile', 'profile.user_id', '=', 'comments.user_id')
+                                                ->select('comments.comment', 'profile.profile_pic')
+                                                ->where('video_id','=',$value->id)
+                                                ->get();
+              // $args['comments'][$value->id]['profile_pic'] = $value->profile_pic;                        
+             //dd($args['comments'][$value->id]);
             }
 
+ 
             /* Getting Question/Answers of this Class */
             $args['question_answers'] = QuestionAnswer::join('student_videos', 'student_videos.id', '=', 'question_answers.video_id')
                 ->select('question_answers.video_id', 'question_answers.question', 'question_answers.answer', 

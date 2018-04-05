@@ -9,7 +9,7 @@
         <img src="{{asset('public/storage/profile-pictures/'.Auth::user()->profile->profile_pic)}}" class="img-responsive img-circle" height="10px;" width="10px;" alt="User Image"
         >
         @else
-        Image Donot Exist
+         <img src="{{asset('public/storage/profile-pictures/default1.png') }}" style="height:160px; width:160px" class="profile-user-img img-responsive img-circle">
         @endif
       </div>
       <div class="pull-left info">

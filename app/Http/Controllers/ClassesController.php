@@ -32,7 +32,7 @@ class ClassesController extends Controller
         DB::table('classes')
             ->where('id', $id)
             ->update(['class_status' => 1]);
-        $this->set_session('You Have Successfully Send An Email', true);       
+        $this->set_session('You Have Successfully Send An Email To The Teacher', true);       
         return redirect()->back();
 
     }
@@ -80,23 +80,30 @@ class ClassesController extends Controller
     }
 
     public function store(Request $request){
-
-    	$store = new Classes;
-        $store->title = $request->title; 
-        $store->teacher_id = $request->teacher_id; 
-        $store->location = $request->location; 
-        $store->cost = $request->cost; 
-        $store->age = $request->age; 
-        $store->link = $request->link; 
-        $store->date = $request->date; 
-        $store->time = $request->time; 
-        $store->description = $request->description; 
-        if ($store->save()) {
-            $this->set_session('Class Created Successfully.', true);
-            return redirect()->route('classes');
+        
+        if ($request->teacher_id != '' ) {
+            $store = new Classes;
+            $store->title = $request->title; 
+            $store->teacher_id = $request->teacher_id; 
+            $store->location = $request->location; 
+            $store->cost = $request->cost; 
+            $store->age = $request->age; 
+            $store->link = $request->link; 
+            $store->date = $request->date; 
+            $store->time = $request->time; 
+            $store->description = $request->description; 
+            if (isset($store) && $store->save()) {                
+                $this->set_session('Class Created Successfully.', true);
+                return redirect()->route('classes');
+            }else{
+                $this->set_session('Class couldnot be Created. Please try again.', false);
+                return redirect()->back();
+            }
         }else{
-            $this->set_session('Class couldnot be Created. Please try again.', false);
+            $this->set_session('Class couldnot be Created. Please Select Some Data.', false);
+            return redirect()->back();
         }
+    	
     }
 
     public function edit(Request $request, $id){
@@ -127,22 +134,28 @@ class ClassesController extends Controller
     public function destroy($id){
         $delete = Classes::find($id);
         $delete->delete();
-         $this->set_session('Class Deleted Successfully.', false);
+         $this->set_session('Class Deleted Successfully.', true);
         return redirect()->route('classes');
     }
     public function enroll_students_store(Request $request){         
         $users = $request->student_id;            
         $class_id = $request->class_id;
-        foreach ($users as $value) {            
+        if (isset($users)) {
+           foreach ($users as $value) {            
             $store = new ClassStudent;
-            if (ClassStudent::where('class_id', '=',$class_id)->where('student_id','=',$value)->exists()) {               
+            if (ClassStudent::where('class_id', '=',$class_id)->where('student_id','=',$value)->exists()) {
+
             }else{
                 $store->class_id = $class_id;
                 $store->student_id = $value;        
                 $store->save();
                 $this->set_session('Students Enrolled In Class Successfully.', true);
+                }
             }
+        }else{
+            $this->set_session('Please Select Students To Be Enrolled In Class Successfully.', false);
         }
+        
         return redirect()->back();
     }
 
@@ -173,7 +186,7 @@ class ClassesController extends Controller
                 $message->to($user->email)->subject('ACTOR PASS - YOU ARE ENROLLED');
             });
         }
-        $this->set_session('Emails Have Been Sent To All The Users Of This Class.', true);
+        $this->set_session('Emails Have Been Sent To All The Students Of This Class.', true);
         return redirect()->back();
     }
 }

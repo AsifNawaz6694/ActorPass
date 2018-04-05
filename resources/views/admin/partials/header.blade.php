@@ -69,10 +69,8 @@
       <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
         <span class="sr-only">Toggle navigation</span>
       </a>
-
       <div class="navbar-custom-menu">
-        <ul class="nav navbar-nav">
-         @include('admin.partials.notification')
+        <ul class="nav navbar-nav">         
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">

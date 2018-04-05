@@ -73,8 +73,7 @@
                   <div class="col-md-4  col-md-offset-4">
                      <button type="submit" class="btn btn-login s-btn-width">Upload</button>
                   </div>
-                  @endif						
-                  <p class="description col-md-4  col-md-offset-4">Integer vel vestibulum turpis. Nulla eros urna, molestie eu est et, laoreet aliquet libero. Cras vitae molestie erat. Donec </p>
+                  @endif	
                </div>
                <br>
             </form>

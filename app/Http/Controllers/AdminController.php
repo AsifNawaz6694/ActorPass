@@ -143,18 +143,25 @@ class AdminController extends Controller
     }
 
     public function activate_user($id){
+        
         DB::table('users')
             ->where('id', $id)
             ->update(['verified' => 1]);        
+        
         $this->set_session('User Is Activated', true); 
         return redirect()->back();
     }
     
     public function deactivate_user($id){
-        DB::table('users')
-            ->where('id', $id)
-            ->update(['verified' => 0]);         
-        $this->set_session('User Is Deactivated', false); 
+        $role = User::select('role_id')->where('id',$id)->first();
+        if($role['role_id'] != '1'){
+            DB::table('users')
+                ->where('id', $id)
+                ->update(['verified' => 0]);   
+            $this->set_session('User Is Deactivated', true); 
+        }else{
+            $this->set_session('Admin Cannot Be Deactivated', false);             
+        }
         return redirect()->back();
     }  
 

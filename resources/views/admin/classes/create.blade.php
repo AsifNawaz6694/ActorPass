@@ -2,6 +2,7 @@
 @section('content')
 <div class="row">
     <!-- /.col -->
+    @include('partials.error_section')
     <div class="col-md-12">
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">

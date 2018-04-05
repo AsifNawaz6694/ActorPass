@@ -18,12 +18,13 @@
                   <span id="fileselector">
                   <label class="" for="imageUpload">
                   <input type="hidden" name="class_id" value="{{$class_id}}">
-                  <input type="file" name="video" id="imageUpload" class="hide"/>
+                  <input type="file" name="video" id="imageUpload" class="hide"  onchange="javascript: document.getElementById ('fileName').innerHTML = this.value"/>
                   <i class="fa fa-cloud-upload"></i>
                   <img src="" id="imagePreview" alt="" width="100px";/>
                   </label>
                   </span>
                </div>
+               <p id="fileName" class="text-center"></p><br>
                <div class="row">
                   <div class="col-md-4  col-md-offset-4 form-group">
                      <label class="">Description</label>

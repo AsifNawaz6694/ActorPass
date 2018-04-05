@@ -50,7 +50,7 @@ class LoginController extends Controller
       if(Auth::attempt(['email' => $request->email, 'password' => $request->password ] )) {                
         return redirect()->route('home');  
       }else{
-        $this->set_session('Invalid Username/Password', false);
+        $this->set_session('Invalid Email/Password', false);
         return redirect()->route('login_view');             
       }
 

@@ -76,9 +76,9 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 @if(!empty(Auth::user()->profile->profile_pic)) 
                 <img src="{{asset('public/storage/profile-pictures/'.Auth::user()->profile->profile_pic)}}" class="img-circle" alt="User Image"
-                >
-                @else
-                Image Donot Exist
+                >  
+                 @else
+                <img src="{{asset('public/storage/profile-pictures/default1.png') }}" class="img-circle" alt="User Image">             
                 @endif
               <span class="hidden-xs">ADMIN</span>
             </a>
@@ -87,9 +87,9 @@
               <li class="user-header">
                 @if(!empty(Auth::user()->profile->profile_pic))
                 <img src="{{asset('public/storage/profile-pictures/'.Auth::user()->profile->profile_pic)}}" class="img-circle" alt="User Image"
-                >
-                @else
-              Image Donot Exist
+                >  
+                 @else
+                <img src="{{asset('public/storage/profile-pictures/default1.png') }}" class="img-circle" alt="User Image">              
                 @endif
                 <p>
                   ADMIN - {{Auth::user()->fullname}}

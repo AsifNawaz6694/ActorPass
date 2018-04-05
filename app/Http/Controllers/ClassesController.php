@@ -20,7 +20,7 @@ class ClassesController extends Controller
     }
 
     public function send_emails_teachers($id){
-        $link = 'localhost/actor-pass/class_wall/' . $id;       
+        $link = 'http://site.startupbug.net:6888/actor-pass/v1/class_wall/' . $id;       
         $users = Classes::leftJoin('users','users.id','=','classes.teacher_id')
                         ->select('users.email','users.fullname')
                         ->where('classes.id','=',$id)
@@ -75,7 +75,7 @@ class ClassesController extends Controller
     }
 
     public function create(){
-    	$args['users'] = User::all();
+    	$args['users'] = User::where('role_id',2)->get();
     	return view('admin.classes.create')->with($args);
     }
 
@@ -174,7 +174,7 @@ class ClassesController extends Controller
     }
 
     public function send_emails(Request $request,$id){
-        $link = 'localhost/actor-pass/your_class/' . $id;       
+        $link = 'http://site.startupbug.net:6888/actor-pass/v1/your_class/' . $id;       
         $users = Classes::leftJoin('class_student','class_student.class_id','=','classes.id')
                         ->leftJoin('users','users.id','=','class_student.student_id')
                         ->select('class_student.student_id','users.email','users.fullname')

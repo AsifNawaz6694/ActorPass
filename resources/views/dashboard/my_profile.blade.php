@@ -33,10 +33,10 @@
                                <label>Phone <span>*</span></label>
                                <input type="number" name="phone" value="@if(isset($profile->phone)){{$profile->phone}}@endif"  class="form-control">
                            </div>
-                           <div class="form-group">
+               <!--             <div class="form-group">
                                <label>DOB <span>*</span></label>
                                <input type="date" name="d_o_b" value="@if(isset($profile->d_o_b)){{$profile->d_o_b}}@endif" class="form-control">
-                           </div>
+                           </div> -->
                            <div class="form-group">
                                <label>I am a <span>*</span></label>
                                <select class="form-control" name="gender">
@@ -45,6 +45,32 @@
                                    <option @if(($profile->gender=="female")) selected @endif value="female">Female</option>
                                </select>
                            </div>
+
+                          <div class="form-group">
+                              <label>Age range<span></span></label>
+                              <input type="range" name="age_range" id="ageInputId" value="@if(isset($profile->age_range)){{$profile->age_range}}@endif" min="0" max="85" oninput="ageOutputId.value = ageInputId.value">
+                               <output name="ageOutputName" id="ageOutputId">@if(isset($profile->age_range)){{$profile->age_range}}@endif</output>
+                          </div>
+
+                          <div class="form-group">
+                              <label>Hair color<span></span></label>
+                              <input type="color" name="hair_color" value="@if(isset($profile->hair_color)){{$profile->hair_color}}@endif">
+                          </div>
+
+                          <div class="form-group">
+                              <label>Eye color<span></span></label>
+                              <input type="color" name="eye_color" value="@if(isset($profile->eye_color)){{$profile->eye_color}}@endif">
+                          </div>
+
+                          <div class="form-group">
+                              <label>Height:<span></span></label>
+                              <input type="number" name="height" value="@if(isset($profile->height)){{$profile->height}}@endif" step=".01">
+                          </div>
+                                  
+                          <div class="form-group">
+                              <label>Current city:<span></span></label>
+                              <input type="text" name="current_city" value="@if(isset($profile->current_city)){{$profile->current_city}}@endif">
+                          </div>
 
                           <div class="form-group">
                               <label>Profile Pic <span></span></label>

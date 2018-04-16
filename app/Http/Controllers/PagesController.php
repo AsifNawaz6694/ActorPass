@@ -42,7 +42,7 @@ class PagesController extends Controller
             $args['videos']= StudentVideo::leftJoin('users','users.id','=','student_videos.student_id')
                                         ->leftJoin('profile','profile.user_id','=','users.id')
                                         ->leftJoin('classes','classes.id','=','student_videos.class_id')
-                                        ->select('classes.teacher_id','student_videos.class_id','student_videos.id','users.id as user_id','profile.profile_pic','student_videos.status','student_videos.description','student_videos.video','student_videos.created_at','users.fullname')
+                                        ->select('classes.teacher_id','student_videos.class_id','student_videos.id','users.id as user_id','profile.profile_pic','student_videos.status','student_videos.video','student_videos.created_at','users.fullname')
                                         ->where('student_videos.class_id','=',$id)
                                         ->where('student_videos.status','=',1)
                                         ->orderBy('student_videos.id','DESC')

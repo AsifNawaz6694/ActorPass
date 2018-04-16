@@ -57,7 +57,7 @@ class ClassesController extends Controller
     public function all_videos(Request $request,$id){
         $args['class'] = Classes::find($id);
         $args['videos'] = StudentVideo::leftJoin('users','users.id','=','student_videos.student_id')
-                                        ->select('student_videos.id as studen_video_id','student_videos.status','users.fullname','users.email','users.verified','users.id','student_videos.video','student_videos.description')
+                                        ->select('student_videos.id as studen_video_id','student_videos.status','users.fullname','users.email','users.verified','users.id','student_videos.video')
                                         ->where('student_videos.class_id',$id)
                                         ->orderBy('student_videos.id' , 'DESC')
                                         ->get();
@@ -68,7 +68,7 @@ class ClassesController extends Controller
         $args['class'] = Classes::find($id);
         $args['students'] = ClassStudent::leftJoin('users','users.id','=','class_student.student_id')
                                         ->leftJoin('profile','profile.user_id','=','class_student.student_id')
-                                        ->select('users.fullname','users.email','users.verified','profile.d_o_b','profile.phone','profile.gender','users.id')                          
+                                        ->select('users.fullname','users.email','users.verified','profile.phone','profile.gender','users.id')                          
                                         ->where('class_id',$id)
                                         ->get();
         return view('admin.classes.view')->with($args);
@@ -91,7 +91,7 @@ class ClassesController extends Controller
             $store->link = $request->link; 
             $store->date = $request->date; 
             $store->time = $request->time; 
-            $store->description = $request->description; 
+           // $store->description = $request->description; 
             if (isset($store) && $store->save()) {                
                 $this->set_session('Class Created Successfully.', true);
                 return redirect()->route('classes');
@@ -122,7 +122,7 @@ class ClassesController extends Controller
         $update_class->link = $request->link; 
         $update_class->date = $request->date; 
         $update_class->time = $request->time; 
-        $update_class->description = $request->description; 
+        //$update_class->description = $request->description; 
         if ($update_class->save()) {
             $this->set_session('Class Updated Successfully.', true);
             return redirect()->route('classes');

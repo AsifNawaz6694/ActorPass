@@ -16,34 +16,45 @@
             <table class="table">
                <tr>
                   <td>
-                     <label>Full Name <span>*</span></label>
+                     <label>Full Name</label>
                      <p>{{isset(Auth::user()->fullname) ? Auth::user()->fullname : '-'}}</p>
                   </td>
                   <td>
-                     <label>Phone <span>*</span></label>
+                     <label>Phone</label>
                      <p>{{isset($profile->phone) ? $profile->phone : '-'}}</p>
                   </td>
+
+                  <td>
+                     <label>Height</label>
+                     <p>{{isset($profile->height) ? $profile->height : '-'}}</p>
+                  </td>
+
                </tr>
                <tr>
                   <td>
-                     <label>Email Address <span>*</span></label>
+                     <label>Email Address</label>
                      <p>{{isset(Auth::user()->email) ? Auth::user()->email : '-'}}</p>
                   </td>
                   <td>
-                     <label>DOB <span>*</span></label>
-                     <p>{{isset($profile->d_o_b) ? $profile->d_o_b : '-'}}</p>
+                     <label>Gender</label>
+                     <p>{{isset($profile->gender) ? $profile->gender : '-'}}</p>
                   </td>
+                    <td>
+                     <label>Age</label>
+                     <p>{{isset($profile->age_range) ? $profile->age_range : '-'}}</p>
+                  </td>                             
                </tr>
-               <!--<tr>
+
+               <tr>
                   <td>
-                      <label>Password <span>*</span></label>
-                      <p>123456</p>
+                     <label>Hair color</label>
+                     <div class="s_square" style="background: {{isset($profile->hair_color) ? $profile->hair_color : ''}}"></div>
                   </td>
-                  <td>
-                      <label>I am a <span>*</span></label>
-                      <p>Innovator</p>
-                  </td>
-                  </tr> -->
+                  <td colspan="2">
+                     <label>Eye color</label>
+                     <div class="s_square" style="background: {{isset($profile->eye_color) ? $profile->eye_color : ''}}"></div>
+                  </td>                
+               </tr>              
             </table>
          </div>
       </div>
@@ -157,29 +168,44 @@
 <!-- User Image Section -->
 <div class="clearfix"></div>
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-   <div class="">
+   <div class="col-md-6 col-lg-6">
       <div class="heading_one">
-         <h1>My Images</h1>
+         <h2>My Images</h2>
       </div>
       <?php //$flag = false; ?>
       @php
       $flag = false
       @endphp
       <div class="img_dashboard s_margin_18">
-         @foreach($user_medias as $user_media)
-         @if($user_media->media_type == 1) 
-         <img src="{{asset('public/storage/user-images/'. $user_media->media)}}" height="200" width="200">
-         @php $flag= true @endphp                
-         @endif        
-         @endforeach
-         @if(!$flag)
-         @php $flag = false @endphp
-         <h1> No Images Saved</h1>
+
+        <form action="{{route('upload_media')}}" method="post" enctype="multipart/form-data">
+          {{csrf_field()}}
+          <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+
+            @foreach($user_medias as $user_media)
+            @if($user_media->media_type == 1) 
+            <img src="{{asset('public/storage/user-images/'. $user_media->media)}}" height="200" width="200">
+            @php $flag= true @endphp                
+            @endif        
+            @endforeach
+            @if(!$flag)
+            @php $flag = false @endphp
+            <h1 style="padding: 8px 0px;"> No Images saved - Click Here to Add Image</h1>
+
+              <input type="file" name="image[]" accept="image/x-png,image/gif,image/png,image/jpeg" class="form-control" {{ Auth::user()->profile->package_student ? 'multiple' : ''}}>
+       
+             @if(Auth::user()->profile->package_student == 1)
+             <p>You May Select Up To 3 Images</p>
+             @endif
+              @if($errors->first('image'))
+                <div class="text-danger">{{ $errors->first('image') }}</div>
+              @endif
+                                                                                            
          @endif          
       </div>
       <!-- User Video Section -->
       <div class="heading_one">
-         <h1>My Videos</h1>
+         <h2>My Videos</h2>
       </div>
       <div class="img_dashboard s_margin_18">
          @foreach($user_medias as $user_media)
@@ -194,12 +220,19 @@
          @endforeach
          @if(!$flag)
          @php $flag = false @endphp
-         <h1> No Videos Saved</h1>
+         <h1 style="padding: 8px 0px;"> No Videos Saved - Click Here to Add Videos</h1>
+             <input type="file" name="video[]" accept="video/mp4,video/x-m4v,video/*" class="form-control" {{ Auth::user()->profile->package_student ? 'multiple' : ''}}>
+             @if(Auth::user()->profile->package_student == 1)
+             <p>You May Select Up To 3 Videos</p>
+             @endif
+             @if($errors->first('video'))
+                <div class="text-danger">{{ $errors->first('video') }}</div>
+              @endif
          @endif
       </div>
       <!-- User Resumes -->
       <div class="heading_one">
-         <h1>My Resume</h1>
+         <h2>My Resume</h2>
       </div>
       <div class="img_dashboard s_margin_18">
          @foreach($user_medias as $user_media)
@@ -211,9 +244,23 @@
          @endforeach
          @if(!$flag)
          @php $flag = false; @endphp 
-         <h1> No Resume Saved</h1>
+         <h1 style="padding: 8px 0px;"> No Resume Saved - Click here to Upload Resume</h1>
+
+          <input type="file" name="resume" accept="application/pdf" class="form-control">
+          @if($errors->first('resume'))
+             <div class="text-danger">{{ $errors->first('resume') }}</div>
+           @endif
+
          @endif 
       </div>
+
+         <div class="form-group">
+             <input type="hidden" name="_token" value="{{Session::token()}}">
+             <button type="submit" class="btn btn-default center-block btn-block s_form_button">Save changes
+             </button>
+         </div>
+     </form> 
+
    </div>
    <br>
 </div>

@@ -2046,3 +2046,9 @@ h3.f_content {
     max-height: 350px;
     overflow-y: scroll;
 }
+.s_disclaimer {
+    padding: 20px 0px;
+}
+.s_disclaimer span {
+    color: #851618;
+}

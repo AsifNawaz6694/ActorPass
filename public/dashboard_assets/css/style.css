@@ -1130,3 +1130,34 @@ a:focus, a:hover {
 .s_margin_18{
     margin-left: 18px;
 }
+.s_square {
+    width: 30px;
+    border: 1px solid #666;
+    height: 30px;
+    border-radius: 49%;
+    box-shadow: 2px 2px #8888886e;
+}
+.heading_one h2 {
+    font-family: 'Conv_ProximaNova-Bold';
+    color: #525151;
+    font-size: 24px;
+    padding: 10px 15px;
+}
+.s_form_button{
+    font-family: 'Conv_ProximaNova-Semibold_0';
+    color: white;
+    background-color: #ed1c24;
+    font-size: 17px;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 0px;
+}
+.s_form_button:hover{
+    font-family: 'Conv_ProximaNova-Semibold_0';
+    color: white;
+    background-color: #c23131;
+    font-size: 17px;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 0px;
+}

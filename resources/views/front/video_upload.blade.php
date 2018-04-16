@@ -10,7 +10,7 @@
             @endif
             <hr>
             <h2 class="heading-primary">UPLOAD</h2>
-            <p class="upload_content">Go ahead and upload your design</p>
+            <p class="upload_content">Click Here to Upload Your Class Assignment</p>
             <!-- <div class="upload_icon">   <i class="fa fa-cloud-upload"></i></div> -->
             <form enctype="multipart/form-data" method="POST" action="{{route('ajax_submit_video')}}">
                {{csrf_field()}}
@@ -26,27 +26,19 @@
                </div>
                <p id="fileName" class="text-center"></p><br>
                <div class="row">
-                  <div class="col-md-4  col-md-offset-4 form-group">
-                     <label class="">Description</label>
-                     
-                     <textarea name="description" class="form-control" rows="5">@if(isset($variable[0]->description)) {{$variable[0]->description}} @endif</textarea>
+                  <div class="col-md-4  col-md-offset-4 form-group">  
                      <div class="form-group form_bottom">
-                        <label for="question">Question # 1</label>
+                        <label for="question">Type a Question For Your Teacher Here</label>
                         <input type="hidden" name="quesID[]" value="
                         
                         {{isset($variable[0]->quesID) ? $variable[0]->quesID: ''}}
 
                         ">
-                        <input type="text" class="form-control" id="ques1" placeholder="" name="question[]" value="
-
-                        {{isset($variable[0]->question) ? $variable[0]->question : ''}}
-
-
-                        ">
+                        <input type="text" class="form-control" id="ques1" placeholder="eg: What is your favorite thing an actor does?" name="question[]" value="{{isset($variable[0]->question) ? $variable[0]->question : ''}}">
                      </div>
                      @if(Auth::user()->featured == 1)
                      <div class="form-group">
-                        <label for="pwd">Question # 2</label>
+                        <label for="pwd">Type a second Question For Your Teacher Here</label>
                         <input type="hidden" name="quesID[]" value="{{
                      
                         isset($variable[1]->quesID) ? $variable[1]->quesID : ''
@@ -78,6 +70,10 @@
                </div>
                <br>
             </form>
+            <p class="text-center s_disclaimer">
+              <span>Disclaimer :</span> Please remember your video assignment and your question will be visible to the entire classroom
+            </p>
+
          </div>
       </div>
    </div>

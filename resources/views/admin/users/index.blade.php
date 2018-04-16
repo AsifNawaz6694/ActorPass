@@ -17,7 +17,7 @@
                                     <th>Email</th>
                                     <th>Phone</th>
                                     <th>Gender</th>
-                                    <th>Date Of Birth</th>
+                                  <!--   <th>Date Of Birth</th> -->
                                     <th>User Type</th>
                                     <th>Status</th>
                                     <th>Action</th>
@@ -31,7 +31,7 @@
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->profile->phone }}</td>
                                         <td>{{ $user->profile->gender }}</td>
-                                        <td>{{ $user->profile->d_o_b }}</td>
+                                       <!--  <td>{{ $user->profile->d_o_b }}</td> -->
                                         <td>{{ $user->roles[0]->display_name }}</td>
                                         <td>
                                             @if($user->verified == 1)

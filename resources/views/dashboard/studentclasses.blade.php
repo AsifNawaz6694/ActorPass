@@ -16,7 +16,7 @@
                                 <th>Teacher</th>
                                 <th>Date of Class</th>
                                 <th>Details</th>
-                                <th>Wall</th>                                  
+                                <th>Classroom</th>                                  
 
                             @elseif(Auth::user()->role_id == 2)
                                <!-- Teacher -->

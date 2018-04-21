@@ -19,6 +19,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\UserEvent' => [
             'App\Listeners\UserProfile',
         ],
+        'App\Events\StudentEvent' => [
+            'App\Listeners\StudentSendEmails',
+        ],        
     ];
 
     /**

@@ -12,6 +12,9 @@ use DB;
 use Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
+use App\Jobs\SendStudentEmails;
+
+
 class ClassesController extends Controller
 {
     public function index(){
@@ -20,22 +23,32 @@ class ClassesController extends Controller
     }
 
     public function send_emails_teachers($id){
-        $link = 'http://site.startupbug.net:6888/actor-pass/v1/class_wall/' . $id;       
+
+        $link = 'http://site.startupbug.net:6888/actor-pass/v1/class_wall/' . $id;   
+
         $users = Classes::leftJoin('users','users.id','=','classes.teacher_id')
                         ->select('users.email','users.fullname')
                         ->where('classes.id','=',$id)
                         ->first();
-        Mail::send('email.send_email_teacher',['users'=>$users,'link'=> $link] , function ($message) use($users){
+       // dd($users);
+
+        $check = Mail::send('email.send_email_teacher',['users'=>$users,'link'=> $link] , function ($message) use($users){
             $message->from('asifnawaz.aimviz@gmail.com', 'Actor Pass - Enrollment Email');
             $message->to($users->email)->subject('ACTOR PASS - YOU ARE ENROLLED');
-        }); 
+        });
+
+       // dd($check);
+
         DB::table('classes')
             ->where('id', $id)
             ->update(['class_status' => 1]);
-        $this->set_session('You Have Successfully Send An Email To The Teacher', true);       
+
+        $this->set_session('You Have Successfully Send An Email To The Teacher', true);   
+
         return redirect()->back();
 
     }
+
     public function approve_video($id){
       
         DB::table('student_videos')
@@ -179,13 +192,22 @@ class ClassesController extends Controller
                         ->leftJoin('users','users.id','=','class_student.student_id')
                         ->select('class_student.student_id','users.email','users.fullname')
                         ->where('class_student.class_id','=',$id)
-                        ->get();
-        foreach($users as $user){
-            Mail::send('email.send_email',['users'=>$user,'link'=> $link] , function ($message) use($user) {
-                $message->from('asifnawaz.aimviz@gmail.com', 'Actor Pass - Enrollment Email');
-                $message->to($user->email)->subject('ACTOR PASS - YOU ARE ENROLLED');
-            });
-        }
+                        ->get()->toArray();
+                       // dd($users);
+        //Sending students emails               
+        //dispatch(new SendStudentEmails(array ($users, $link)));
+          dispatch(new SendStudentEmails($users,$link));
+                        //dd($users[0]);
+                        $users = $users[0];
+        //dd($users->email);
+       // foreach($users as $user){
+       //      //dd($u);
+       //      Mail::send('email.send_email',['users'=>$user,'link'=> $link] , function ($message) use($user) {
+       //          $message->from('asifnawaz.aimviz@gmail.com', 'Actor Pass - Enrollment Email');
+       //          $message->to($user->email)->subject('ACTOR PASS - YOU ARE ENROLLED');
+       //      });
+       //  }
+
         $this->set_session('Emails Have Been Sent To All The Students Of This Class.', true);
         return redirect()->back();
     }

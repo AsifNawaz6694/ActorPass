@@ -41,7 +41,7 @@ class SendStudentEmails implements ShouldQueue
     {  
         foreach($this->usersz as $user){
             $student_email = new studentEmail($user, $this->link);
-            $status = Mail::to('farhanuddin.aimviz@gmail.com')->queue($student_email);
+            $status = Mail::to($user['email'])->queue($student_email);
         }
     }
 }

@@ -54,12 +54,12 @@
 
                           <div class="form-group">
                               <label>Hair color:<span></span></label>
-                              <input type="color" name="hair_color" class="f_width" value="@if(isset($profile->hair_color)){{$profile->hair_color}}@endif">
+                              <input type="color" name="hair_color" value="@if(isset($profile->hair_color)){{$profile->hair_color}}@endif">
                           </div>
 
                           <div class="form-group">
                               <label>Eye color:<span></span></label>
-                              <input type="color" name="eye_color" class="f_width" value="@if(isset($profile->eye_color)){{$profile->eye_color}}@endif">
+                              <input type="color" name="eye_color" value="@if(isset($profile->eye_color)){{$profile->eye_color}}@endif">
                           </div>
 
                           <div class="form-group">

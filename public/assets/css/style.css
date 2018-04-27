@@ -2053,6 +2053,12 @@ h3.f_content {
     color: #851618;
 }
 
-.f_width {
-    width: 100% !important;
+.wall_content a {
+    font-family: 'hind-regular';
+    font-size: 20px;
+    color: #292929;
+}
+
+section.my_class {
+    margin-top: 30px;
 }

@@ -27,7 +27,7 @@ class ProfileController extends Controller
 	    /* Validation */
 	    $this->validate($request, [
 	        'fullname' => 'required|regex:/^[\pL\s\-]+$/u',
-	        'phone' => 'numeric', 
+	        //'phone' => 'numeric', 
 	        //'d_o_b' => 'date',
 	        'profile_pic' => 'mimes:jpeg,JPEG,jpg,bmp,png',
 	        'cover' => 'mimes:jpeg,JPEG,jpg,bmp,png',

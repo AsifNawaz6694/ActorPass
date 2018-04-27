@@ -38,5 +38,19 @@ class User extends Authenticatable
     public function class()
     {   
         return $this->hasMany('App\Classes', 'teacher_id', 'id');
-    }    
+    }
+
+    public static function getTeacherName($userid){
+        $user = User::where('id', $userid)->first(['fullname']);
+
+        if($user){
+          $username = $user->fullname;
+          return $username;
+
+        }else{
+            return 'No Name';
+        }
+        
+
+    }
 }

@@ -15,7 +15,7 @@
                                 <th>Title</th>                       
                                 <th>Teacher</th>
                                 <th>Date of Class</th>
-                                <th>Details</th>
+                              <!--   <th>Details</th> -->
                                 <th>Classroom</th>                                  
 
                             @elseif(Auth::user()->role_id == 2)
@@ -24,7 +24,7 @@
                                 <th>No of Students</th>
                                 <th>Date</th>                                                        
                                 <th>Status</th>                                             
-                                <th>Details</th>
+                                <!-- <th>Details</th> -->
                                 <th>Classroom</th>
                             @endif               
                         </tr>
@@ -37,7 +37,7 @@
                                 <td><a href="{{route('public_wall',['id'=>$class->id])}}">{{$class->title}}</a></td> 
                                 <td>{{$class->fullname}}</td>
                                 <td>@php echo date("F jS, Y", strtotime($class->date)); @endphp</td>
-                                <td><a target="_blank" href="{{$class->link}}">View Detail</a></td>
+                                <!-- <td><a target="_blank" href="{{$class->link}}">View Detail</a></td> -->
                                 <td><a target="_blank" href="{{route('upload_video', ['id' =>$class->id])}}">View Classroom</a></td>
                             </tr>
                            @endforeach
@@ -53,7 +53,7 @@
                                     @elseif($class->class_status==0)
                                      <span class="label label-success">Availiable</span>
                                     @endif</td> 
-                                    <td><a target="_blank" href="{{$class->link}}">View Detail</a></td>
+                                   <!--  <td><a target="_blank" href="{{$class->link}}">View Detail</a></td> -->
                                     <td><a target="_blank" href="{{route('public_wall', ['id'=>$class->class_id])}}">View Class</a></td>
                             </tr>
                            @endforeach                                      

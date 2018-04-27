@@ -64,26 +64,26 @@
 
                           <div class="form-group">
                               <label>Height:<span></span></label>
-                              <input type="number" placeholder="in feet" name="height" value="@if(isset($profile->height)){{$profile->height}}@endif" step=".01">
+                              <input type="number" placeholder="in feet" name="height" class="f_width" value="@if(isset($profile->height)){{$profile->height}}@endif" step=".01">
                           </div>
                                   
                           <div class="form-group">
                               <label>Current city:<span></span></label>
-                              <input type="text" name="current_city" value="@if(isset($profile->current_city)){{$profile->current_city}}@endif">
+                              <input type="text" name="current_city" class="f_width" value="@if(isset($profile->current_city)){{$profile->current_city}}@endif">
                           </div>
 
                           <div class="form-group">
                               <label>Profile Pic <span></span></label>
-                              <input type="file" name="profile_pic" class="form-control">
+                              <input type="file" name="profile_pic" class="f_width" class="form-control">
                           </div>
 
                           <div class="form-group">
                               <label>Wall Cover<span></span></label>
-                              <input type="file" name="cover" class="form-control">
+                              <input type="file" name="cover" class="f_width" class="form-control">
                           </div>
 
                            <div class="form-group">
-                               <input type="hidden" name="_token" value="{{Session::token()}}">
+                               <input type="hidden" name="_token" class="f_width" value="{{Session::token()}}">
                                <button type="submit" class="btn btn-default center-block btn-block">Save changes
                                </button>
                            </div>

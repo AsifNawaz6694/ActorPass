@@ -34,42 +34,48 @@ class PagesController extends Controller
     }
     
     public function public_wall($id){
-
+        
         if(Auth::check()){
-      if ( ( DB::table('classes')->where('id', '=', $id)->where('teacher_id','=',Auth::user()->id)->exists() )|| ( Auth::user()->role_id == '1' ) || ( DB::table('winners')->where('class_id',$id)->exists() &&  DB::table('class_student')->where('class_id',$id)->where('student id',Auth::user()->id) ) ){
-             $args['winner'] = DB::table('winners')->leftJoin('users','users.id','winners.user_id')->select('user_id as winner_id')->where('class_id',$id)->first();
-            
-            $args['videos']= StudentVideo::leftJoin('users','users.id','=','student_videos.student_id')
-                                        ->leftJoin('profile','profile.user_id','=','users.id')
-                                        ->leftJoin('classes','classes.id','=','student_videos.class_id')
-                                        ->select('classes.teacher_id','student_videos.class_id','student_videos.id','users.id as user_id','profile.profile_pic','student_videos.status','student_videos.video','student_videos.created_at','users.fullname', 'student_videos.description')
-                                        ->where('student_videos.class_id','=',$id)
-                                        ->where('student_videos.status','=',1)
-                                        ->orderBy('student_videos.id','DESC')
-                                        ->get();
-                                        
-            foreach ($args['videos'] as $value) {  
-               //dd($value);
-                $args['comments'][$value->id] = Comment::join('profile', 'profile.user_id', '=', 'comments.user_id')
-                                                ->select('comments.comment', 'profile.profile_pic')
-                                                ->where('video_id','=',$value->id)
-                                                ->get();
-              // $args['comments'][$value->id]['profile_pic'] = $value->profile_pic;                        
-             //dd($args['comments'][$value->id]);
-            }
 
- 
-            /* Getting Question/Answers of this Class */
-            $args['question_answers'] = QuestionAnswer::join('student_videos', 'student_videos.id', '=', 'question_answers.video_id')
-                ->select('question_answers.video_id', 'question_answers.question', 'question_answers.answer', 
-                    'question_answers.id as question_id')
-                ->where('student_videos.class_id', $id)->get();
-            //dd($args['question_answers']);
-            //dd($args['videos']);
-             return view('front.class_wall')->with($args);           
-        }else{
-           return abort(404);
-        }
+
+              if ( ( DB::table('classes')->where('id', '=', $id)->where('teacher_id','=',Auth::user()->id)->exists() )|| ( Auth::user()->role_id == '1' ) || ( DB::table('winners')->where('class_id',$id)->exists() &&  DB::table('class_student')->where('class_id',$id)->where('student id',Auth::user()->id) ) ){
+                
+                     $args['winner'] = DB::table('winners')->leftJoin('users','users.id','winners.user_id')->select('user_id as winner_id')->where('class_id',$id)->first();
+                    
+                    $args['videos'] = StudentVideo::leftJoin('users','users.id','=','student_videos.student_id')
+                                                ->leftJoin('profile','profile.user_id','=','users.id')
+                                                ->leftJoin('classes','classes.id','=','student_videos.class_id')
+                                                ->select('classes.teacher_id','student_videos.class_id','student_videos.id','users.id as user_id','profile.profile_pic','student_videos.status','student_videos.video', 'student_videos.description','student_videos.created_at','users.fullname', 'classes.title as class_title')
+                                                ->where('student_videos.class_id','=',$id)
+                                                ->where('student_videos.status','=',1)
+                                                ->orderBy('student_videos.id','DESC')
+
+                                                ->get();
+                     //dd($args);
+
+                    foreach ($args['videos'] as $value) {  
+                       //dd($value);
+                        $args['comments'][$value->id] = Comment::join('profile', 'profile.user_id', '=', 'comments.user_id')
+                                                        ->select('comments.comment', 'profile.profile_pic')
+                                                        ->where('video_id','=',$value->id)
+                                                        ->get();
+                      // $args['comments'][$value->id]['profile_pic'] = $value->profile_pic;                        
+                     //dd($args['comments'][$value->id]);
+                    }
+
+         
+                    /* Getting Question/Answers of this Class */
+                    $args['question_answers'] = QuestionAnswer::join('student_videos', 'student_videos.id', '=', 'question_answers.video_id')
+                        ->select('question_answers.video_id', 'question_answers.question', 'question_answers.answer', 
+                            'question_answers.id as question_id')
+                        ->where('student_videos.class_id', $id)->get();
+                    //dd($args['question_answers']);
+                    //dd($args['videos']);
+                     return view('front.class_wall')->with($args);           
+                }else{
+                    //dd(123);
+                   return abort(404);
+                }
         }else{
             return redirect()->route('login_view');
         }

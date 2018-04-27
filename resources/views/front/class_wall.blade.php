@@ -2,20 +2,50 @@
 @section('content')
 <section class="my_class">
    <div class="container">
-      @foreach($videos as $value)
-      <div class="row">
-         <div class="col-md-12">
-            <div class="col-md-8 bg_f">
+    <div class="row">
+
+
+      @if(isset($videos) && count($videos) > 0)
+               <h1 class="test text-center f_text">{{$videos[0]->class_title}}</h1>
+            @endif 
+      
+            @if(isset($videos) && count($videos) > 0)
+               <h1 class="test text-center f_textteacher">Teacher : {{App\User::getTeacherName($videos[0]->teacher_id) }}</h1>
+            @endif
+         
+            <!--@if(isset($videos) && count($videos) > 0)
+               <h1 class="test text-center f_text">Class name:{{$videos[0]->class_title}}</h1>
+            @endif  -->           
+
+      @foreach($videos as $value)      
+         <div class="col-md-6 col-sm-12">
+            <div class="col-md-12 bg_f">
                <div class="wall_img img_top pull-left">
-                  <img src="{{asset('public/storage/profile-pictures/'.$value->profile_pic) }}" class="img-responsive">
+               @if(!empty($value->profile_pic))
+                 <img src="{{asset('public/storage/profile-pictures/'.$value->profile_pic) }}" class="img-responsive">
+               @else
+                 <img src="{{asset('public/storage/profile-pictures/placeholder.png') }}" class="img-responsive">
+               @endif
+
                </div>
-               <img src="{{asset('public/assets/images/crown-2.png') }}" class="img-responsive f_crown-2">
+
+                <img src="{{asset('public/assets/images/crown-2.png') }}" class="img-responsive f_crown-2">
+               <a href="{{route('student_wall', ['id' => $value->user_id])}}"><h3 class="wall_content f_nouman">{{$value->fullname}} </a> <b style="color: grey">  @if(isset($winner->winner_id) && $value->user_id == $winner->winner_id) Winner @endif</h3>
+               <p class="wall_text f_num">{{$value->created_at->diffForHumans()}} <i class="fa fa-globe" aria-hidden="true"></i></p>
+
+        <!--        <img src="{{asset('public/assets/images/crown-2.png') }}" class="img-responsive f_crown-2">
                <h3 class="wall_content f_nouman">{{$value->fullname}} 
+
+               <img src="{{asset('public/assets/images/crown-2.png') }}" class="img-responsive f_crown-2">
+               <a href="{{route('student_wall', ['id' => $value->user_id])}}"><h3 class="wall_content f_nouman">{{$value->fullname}} </a>
+
+
                   <b style="color: grey">  @if(isset($winner->winner_id) && $value->user_id == $winner->winner_id) Winner @endif </b>
                </h3>
                <p class="wall_text f_num">{{$value->created_at->diffForHumans()}} 
                   <i class="fa fa-globe" aria-hidden="true"></i>
-               </p>
+               </p> -->
+
                <button type="button" class="btn f_right" data-toggle="modal" data-target="#myModal-2">Basic</button>
                <video width="100%" controls>
                   <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
@@ -106,17 +136,25 @@
                   @endforeach  
                </div>
             </div>
-            <div class="col-md-4">
+   <!--          <div class="col-md-4">
                <div class="f_top">
+<<<<<<< HEAD
                   <div class="col-md-11 col-md-offset-1 bg_f">
                      <h3 class="content_f_heading">Description: </h3>
                      <p class="f_sed">{{$value->description}}</p>
                   </div> 
+=======
+               <div class="col-md-11 col-md-offset-1 bg_f">
+                     <h3 class="content_f_heading">Description: </h3>
+                     <p class="f_sed">{{$value->description}}</p>
+                  </div>
+>>>>>>> 2842e7b089a12967659bddf8da2fb58e366e4705
                </div>
-            </div>
+            </div> -->
          </div>
-      </div>
-      @endforeach
+    
+          @endforeach
+        </div>
    </div>       
 </section>
 @endsection

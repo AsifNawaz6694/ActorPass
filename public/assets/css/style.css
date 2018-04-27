@@ -1740,7 +1740,7 @@ textarea#comment {
     font-family: 'hind-bold';
     letter-spacing: 1px;
     font-size: 18px;
-    width: 85%;
+    width: 100%;
 }
 .btn-login:hover {
     color: #fff;
@@ -2051,4 +2051,28 @@ h3.f_content {
 }
 .s_disclaimer span {
     color: #851618;
+}
+
+.wall_content a {
+    font-family: 'hind-regular';
+    font-size: 20px;
+    color: #292929;
+}
+
+section.my_class {
+    margin-top: 30px;
+}
+
+.f_text {
+    font-size: 32px;
+    color: #851618;
+    font-family: 'GOTHAM-BOLD';
+}
+
+.f_textteacher {
+    font-size: 24px;
+    color: #851618;
+    font-family: 'GOTHAM-BOLD';
+    margin-bottom: 27px;
+    font-style: italic;
 }

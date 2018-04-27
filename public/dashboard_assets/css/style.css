@@ -700,6 +700,7 @@ footer, header, hgroup, menu, nav, section {
 .bg_footer_color {
     background-color: #7a1618;
     padding: 10px 0px;
+    margin-top: 98px;
 }
 
 .footer_main p {

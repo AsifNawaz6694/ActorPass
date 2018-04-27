@@ -46,6 +46,7 @@
                                </select>
                            </div>
 
+                        @if(Auth::user()->role_id != 2)   
                           <div class="form-group">
                               <label>Age range:<span></span></label>
                               <input type="range" name="age_range" id="ageInputId" value="@if(isset($profile->age_range)){{$profile->age_range}}@endif" min="0" max="85" oninput="ageOutputId.value = ageInputId.value">
@@ -66,6 +67,7 @@
                               <label>Height:<span></span></label>
                               <input type="number" placeholder="in feet" name="height" class="f_width" value="@if(isset($profile->height)){{$profile->height}}@endif" step=".01">
                           </div>
+                        @endif
                                   
                           <div class="form-group">
                               <label>Current city:<span></span></label>

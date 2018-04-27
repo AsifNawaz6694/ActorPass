@@ -19,42 +19,54 @@
                      <label>Full Name</label>
                      <p>{{isset(Auth::user()->fullname) ? Auth::user()->fullname : '-'}}</p>
                   </td>
+
                   <td>
                      <label>Phone</label>
                      <p>{{isset($profile->phone) ? $profile->phone : '-'}}</p>
                   </td>
-
-                  <td>
-                     <label>Height</label>
-                     <p>{{isset($profile->height) ? $profile->height : '-'}}</p>
-                  </td>
+                  @if(Auth::user()->role_id != 2)
+                    <td>
+                       <label>Height</label>
+                       <p>{{isset($profile->height) ? $profile->height : '-'}}</p>
+                    </td>                                    
+                  @endif
 
                </tr>
                <tr>
+                 
+                 @if(Auth::user()->role_id != 2)
                   <td>
                      <label>Email Address</label>
                      <p>{{isset(Auth::user()->email) ? Auth::user()->email : '-'}}</p>
                   </td>
-                  <td>
-                     <label>Gender</label>
-                     <p>{{isset($profile->gender) ? $profile->gender : '-'}}</p>
-                  </td>
+                 @endif
+
+                  @if(Auth::user()->role_id != 2)
+                    <td>
+                       <label>Gender</label>
+                       <p>{{isset($profile->gender) ? $profile->gender : '-'}}</p>
+                    </td>
+                  @endif
+
+                  @if(Auth::user()->role_id != 2)  
                     <td>
                      <label>Age</label>
                      <p>{{isset($profile->age_range) ? $profile->age_range : '-'}}</p>
-                  </td>                             
+                    </td>
+                  @endif                            
                </tr>
-
-               <tr>
-                  <td>
-                     <label>Hair color</label>
-                     <div class="s_square" style="background: {{isset($profile->hair_color) ? $profile->hair_color : ''}}"></div>
-                  </td>
-                  <td colspan="2">
-                     <label>Eye color</label>
-                     <div class="s_square" style="background: {{isset($profile->eye_color) ? $profile->eye_color : ''}}"></div>
-                  </td>                
-               </tr>              
+                  @if(Auth::user()->role_id != 2)  
+                     <tr>
+                        <td>
+                           <label>Hair color</label>
+                           <div class="s_square" style="background: {{isset($profile->hair_color) ? $profile->hair_color : ''}}"></div>
+                        </td>
+                        <td colspan="2">
+                           <label>Eye color</label>
+                           <div class="s_square" style="background: {{isset($profile->eye_color) ? $profile->eye_color : ''}}"></div>
+                        </td>                
+                     </tr>
+                  @endif                                   
             </table>
          </div>
       </div>
@@ -155,7 +167,7 @@
                @endif
             </td>
             <td>{{$teacher_student->username}}</td>
-            <td><a target="_blank" href="{{route('student_wall', ['id'=> $teacher_student->id])}}">View Wall</a></td>
+            <td><a target="_blank" href="{{route('student_wall', ['id'=> $teacher_student->id])}}">View Profile</a></td>
          </tr>
          @endforeach
          <tr>

@@ -1130,3 +1130,68 @@ a:focus, a:hover {
 .s_margin_18{
     margin-left: 18px;
 }
+.s_square {
+    width: 30px;
+    border: 1px solid #666;
+    height: 30px;
+    border-radius: 49%;
+    box-shadow: 2px 2px #8888886e;
+}
+.heading_one h2 {
+    font-family: 'Conv_ProximaNova-Bold';
+    color: #525151;
+    font-size: 24px;
+    padding: 10px 15px;
+}
+.s_form_button{
+    font-family: 'Conv_ProximaNova-Semibold_0';
+    color: white;
+    background-color: #ed1c24;
+    font-size: 17px;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 0px;
+}
+.s_form_button:hover{
+    font-family: 'Conv_ProximaNova-Semibold_0';
+    color: white;
+    background-color: #c23131;
+    font-size: 17px;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 0px;
+}
+input[type=range]{
+    -webkit-appearance: none;
+    padding: 13px 0px;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 300px;
+    height: 5px;
+    background: rgb(144, 144, 144);
+    border: none;
+    border-radius: 3px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 26px;
+    width: 16px;
+    /*border-radius: 50%;*/
+    background: red;
+    margin-top: -10px;
+}
+
+/*input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: red;
+}*/
+
+.f_width {
+    width: 100% !important;
+}

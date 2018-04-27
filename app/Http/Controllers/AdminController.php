@@ -59,7 +59,7 @@ class AdminController extends Controller
     $store_profile = new Profile;
     $store_profile->user_id = $user_id;
     $store_profile->phone = $request->phone;
-    $store_profile->d_o_b = $request->d_o_b;
+   // $store_profile->d_o_b = $request->d_o_b;
     $store_profile->gender = $request->gender;
     if ($request->hasFile('profile_pic')) {
           $image=$request->file('profile_pic');
@@ -128,7 +128,7 @@ class AdminController extends Controller
             ->update([
                 'phone' => $request->phone,
                 'gender' => $request->gender,
-                'd_o_b' => $request->d_o_b
+               // 'd_o_b' => $request->d_o_b
             ]);
         $this->set_session('User Updated Successfully', true);
         return redirect()->route('users');
@@ -143,18 +143,25 @@ class AdminController extends Controller
     }
 
     public function activate_user($id){
+        
         DB::table('users')
             ->where('id', $id)
             ->update(['verified' => 1]);        
+        
         $this->set_session('User Is Activated', true); 
         return redirect()->back();
     }
     
     public function deactivate_user($id){
-        DB::table('users')
-            ->where('id', $id)
-            ->update(['verified' => 0]);         
-        $this->set_session('User Is Deactivated', false); 
+        $role = User::select('role_id')->where('id',$id)->first();
+        if($role['role_id'] != '1'){
+            DB::table('users')
+                ->where('id', $id)
+                ->update(['verified' => 0]);   
+            $this->set_session('User Is Deactivated', true); 
+        }else{
+            $this->set_session('Admin Cannot Be Deactivated', false);             
+        }
         return redirect()->back();
     }  
 

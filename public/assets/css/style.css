@@ -1740,7 +1740,7 @@ textarea#comment {
     font-family: 'hind-bold';
     letter-spacing: 1px;
     font-size: 18px;
-    width: 85%;
+    width: 100%;
 }
 .btn-login:hover {
     color: #fff;
@@ -2045,4 +2045,14 @@ h3.f_content {
 .f_row {
     max-height: 350px;
     overflow-y: scroll;
+}
+.s_disclaimer {
+    padding: 20px 0px;
+}
+.s_disclaimer span {
+    color: #851618;
+}
+
+.f_width {
+    width: 100% !important;
 }

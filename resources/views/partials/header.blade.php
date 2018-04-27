@@ -128,7 +128,7 @@
 					</div> -->
 
 					 <div class="dropdown btn_dropdown">
-					    <button class="btn btn-login btn-primary btn-right dropdown-toggle" type="button" data-toggle="dropdown">{{Auth::user()->fullname}}
+					    <button class="btn btn-login btn-primary btn-right dropdown-toggle f_btn" type="button" data-toggle="dropdown">{{Auth::user()->fullname}}
 					    <span class="caret"></span></button>
 					    <ul class="dropdown-menu">
 					       	

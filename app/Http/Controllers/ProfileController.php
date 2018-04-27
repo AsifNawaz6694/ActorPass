@@ -23,12 +23,12 @@ class ProfileController extends Controller
 
 	//Updating Profile
 	public function profile_update(Request $request){
-
+		//dd($request->input());
 	    /* Validation */
 	    $this->validate($request, [
 	        'fullname' => 'required|regex:/^[\pL\s\-]+$/u',
 	        'phone' => 'numeric', 
-	        'd_o_b' => 'date',
+	        //'d_o_b' => 'date',
 	        'profile_pic' => 'mimes:jpeg,JPEG,jpg,bmp,png',
 	        'cover' => 'mimes:jpeg,JPEG,jpg,bmp,png',
 	    ]);
@@ -41,7 +41,7 @@ class ProfileController extends Controller
 
 			$profile = Profile::where('user_id', $user_id);
 
-			$pro_update = array('phone' => $request->input('phone'), 'd_o_b' => $request->input('d_o_b'), 'gender' => $request->input('gender'));
+			$pro_update = array('phone' => $request->input('phone'), 'gender' => $request->input('gender'), 'age_range' => $request->input('age_range'), 'hair_color' => $request->input('hair_color'), 'eye_color' => $request->input('eye_color'), 'height' => $request->input('height'), 'current_city' => $request->input('current_city'));
 
 			  //updating file if Present
 		      if(Input::hasFile('profile_pic')){

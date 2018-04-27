@@ -66,7 +66,7 @@
 			               <source src="https://www.w3schools.com/html/mov_bbb.ogg" type="video/ogg">
 			               Your browser does not support HTML5 video.
 			            </video>
-			            <p class="video_content">{{$value->description}}</p>
+			          <!--   <p class="video_content">{{$value->description}}</p> -->
 			            <!-- <p class="video_text">Shared via Lipsum</p> -->
 			            <!-- <div class="details"><a href="#">click here for details</a></div> -->
 			         </div><hr>		         

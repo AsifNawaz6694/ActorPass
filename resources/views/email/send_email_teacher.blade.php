@@ -3,7 +3,7 @@
 <p>Therefore you are requested to go through this link and view all students videos and declare any winner and runner up after evaluating all students performances respectively</p>
 <br>
 <b>LINK For Your Class</b>
-<p>You are requested to upload your video on <strong> <a href="{{$link}}">{{$link}}</a> </strong></p>
+<p>You are requested to review all the videos submitted by the students of this class on <strong> <a href="{{$link}}">{{$link}}</a> </strong></p>
 <br>
 <br>
 <b>Regards</b>

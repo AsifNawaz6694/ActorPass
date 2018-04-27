@@ -1,4 +1,4 @@
-<b>DEAR</b> <strong>{{$users->fullname}}</strong> 
+<b>DEAR</b> <strong>{{$users['fullname']}}</strong> 
 <p>You Have Been Successfully Enrolled In Actor Pass As A Student</p>
 <br>
 <b>LINK For Your Class</b>

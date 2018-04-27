@@ -52,6 +52,8 @@ $('.video_lecture').click(function(e){
     console.log(src);
 });
 
+
+
 // $('#package_id').on('change', function(e){
 //     e.preventDefault();
 //     console.log("herezz");

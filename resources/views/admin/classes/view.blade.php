@@ -60,12 +60,12 @@
                      <p>{{$class->link}}</p>                    
                     </div>
                   </div>
-                  <div class="form-group">
+                <!--   <div class="form-group">
                     <label for="inputStatus" class="col-sm-2 control-label">Description</label>
                     <div class="col-sm-10">                     
                     {!!html_entity_decode($class->description)!!}
                     </div>
-                  </div>
+                  </div> -->
                 </form>
               </div>                
               <!-- /.tab-pane -->
@@ -88,7 +88,7 @@
                                     <th>Email</th>
                                     <th>Phone number</th>
                                     <th>Gender</th>
-                                    <th>Date Of Birth</th>
+                                    <!-- <th>Date Of Birth</th> -->
                                     <th>Status</th>                                    
                                     <th>Action</th>
                                 </tr>
@@ -100,7 +100,7 @@
                                   <td>{{$value->email}}</td>                                  
                                   <td>{{$value->phone}}</td>                                  
                                   <td>{{$value->gender}}</td>                                  
-                                  <td>{{$value->d_o_b}}</td>                                  
+                                  <!-- <td>{{$value->d_o_b}}</td>   -->                                
                                   <td>
                                     @if($value->verified == 1)
                                     <a href="" class="btn btn-primary">Activated</a>

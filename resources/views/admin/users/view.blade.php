@@ -64,13 +64,13 @@
                 <p>{{ $user->profile->gender }}</p>
               </div>
             </div>
-            <div class="form-group">
+      <!--       <div class="form-group">
               <label for="inputCountry" class="col-sm-2 control-label">Date of Birth</label>
 
               <div class="col-sm-10">
                 <p>{{ $user->profile->d_o_b }}</p>
               </div>
-            </div>
+            </div> -->
             <div class="form-group">
               <label for="inputStatus" class="col-sm-2 control-label">Status</label>
 

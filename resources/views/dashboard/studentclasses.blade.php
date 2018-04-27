@@ -14,11 +14,9 @@
                                <!-- Student -->
                                 <th>Title</th>                       
                                 <th>Teacher</th>
-                                <th>Location</th>
-                                <th>Age</th>                                                        
-                                <th>Cost</th>
+                                <th>Date of Class</th>
                                 <th>Details</th>
-                                <th>Wall</th>                                  
+                                <th>Classroom</th>                                  
 
                             @elseif(Auth::user()->role_id == 2)
                                <!-- Teacher -->
@@ -27,7 +25,7 @@
                                 <th>Date</th>                                                        
                                 <th>Status</th>                                             
                                 <th>Details</th>
-                                <th>Class wall</th>
+                                <th>Classroom</th>
                             @endif               
                         </tr>
                     </thead>
@@ -38,11 +36,9 @@
                             <tr>
                                 <td><a href="{{route('public_wall',['id'=>$class->id])}}">{{$class->title}}</a></td> 
                                 <td>{{$class->fullname}}</td>
-                                <td>{{$class->location}}</td>
-                                <td>{{$class->age}}</td>
-                                <td>{{$class->cost}}</td>
+                                <td>@php echo date("F jS, Y", strtotime($class->date)); @endphp</td>
                                 <td><a target="_blank" href="{{$class->link}}">View Detail</a></td>
-                                <td><a target="_blank" href="{{route('upload_video', ['id' =>$class->id])}}">View Class wall</a></td>
+                                <td><a target="_blank" href="{{route('upload_video', ['id' =>$class->id])}}">View Classroom</a></td>
                             </tr>
                            @endforeach
                         @elseif(Auth::user()->role_id == 2)

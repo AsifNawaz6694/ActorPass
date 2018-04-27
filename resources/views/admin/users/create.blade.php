@@ -52,12 +52,12 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <label for="inputPhone" class="col-sm-2 control-label">Date of Birth</label>
                             <div class="col-sm-10">
                                 <input type="date" class="form-control" name="d_o_b">
                             </div>
-                        </div>
+                        </div> -->
                         <div class="form-group">
                             <label for="inputStatus" class="col-sm-2 control-label">Status</label>
                             <div class="col-sm-10">

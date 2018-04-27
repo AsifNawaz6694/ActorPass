@@ -69,18 +69,16 @@
       <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
         <span class="sr-only">Toggle navigation</span>
       </a>
-
       <div class="navbar-custom-menu">
-        <ul class="nav navbar-nav">
-         @include('admin.partials.notification')
+        <ul class="nav navbar-nav">         
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 @if(!empty(Auth::user()->profile->profile_pic)) 
                 <img src="{{asset('public/storage/profile-pictures/'.Auth::user()->profile->profile_pic)}}" class="img-circle" alt="User Image"
-                >
-                @else
-                Image Donot Exist
+                >  
+                 @else
+                <img src="{{asset('public/storage/profile-pictures/default1.png') }}" class="img-circle" alt="User Image">             
                 @endif
               <span class="hidden-xs">ADMIN</span>
             </a>
@@ -89,9 +87,9 @@
               <li class="user-header">
                 @if(!empty(Auth::user()->profile->profile_pic))
                 <img src="{{asset('public/storage/profile-pictures/'.Auth::user()->profile->profile_pic)}}" class="img-circle" alt="User Image"
-                >
-                @else
-              Image Donot Exist
+                >  
+                 @else
+                <img src="{{asset('public/storage/profile-pictures/default1.png') }}" class="img-circle" alt="User Image">              
                 @endif
                 <p>
                   ADMIN - {{Auth::user()->fullname}}

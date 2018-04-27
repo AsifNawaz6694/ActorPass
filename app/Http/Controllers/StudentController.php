@@ -44,15 +44,12 @@ class StudentController extends Controller
             $storeq->question = $value;
             $storeq->save();            
         }
-            $store = StudentVideo::find($request->video_id);
-           
-        }else{
-     
-            $store = new StudentVideo;  
-              
+            $store = StudentVideo::find($request->video_id);           
+        }else{     
+            $store = new StudentVideo;                
         }
         $store->class_id = $request->class_id;
-        $store->description = $request->description;
+        //$store->description = $request->description;
 		$store->student_id =Auth::user()->id;
 		if ($request->hasFile('video')) {
           $video=$request->file('video');
@@ -97,7 +94,7 @@ class StudentController extends Controller
         $user = User::where('id',$id)->first();
         $role = Role::select('name')->where('id','=',$user->role_id)->first();
         $videos = StudentVideo::leftJoin('users','users.id','=','student_videos.student_id')
-                                ->select('student_videos.description','student_videos.video','student_videos.created_at','users.fullname')
+                                ->select('student_videos.video','student_videos.created_at','users.fullname')
                                 ->where('student_videos.student_id','=',$id)
                                 ->get();
     	return view('front.student_wall',['videos'=>$videos,'user'=>$user,'role'=>$role]);

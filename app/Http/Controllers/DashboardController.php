@@ -55,9 +55,10 @@ class DashboardController extends Controller
 
         if(Auth::user()->role_id == 3){ //he is a student
             //Student Classes
+            //Removing Price age Location.
             $data['classes'] = Classes::join('users', 'users.id', '=', 'classes.teacher_id')
                                ->join('class_student', 'classes.id', '=', 'class_student.class_id')
-                               ->select('classes.id', 'classes.link', 'classes.title', 'users.fullname', 'classes.cost', 'classes.location', 'classes.age')                     
+                               ->select('classes.id', 'classes.link', 'classes.title', 'users.fullname', 'classes.date')
                                ->where('class_student.student_id', '=', Auth::user()->id)
                                ->get();
 

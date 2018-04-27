@@ -1,17 +1,11 @@
 @extends('masterlayout')
 @section('content')
-
-<!-- Signup Page -->
-
-<!-- Signup Page -->
-<!-- Signup Page -->
 <section class="login">
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-3 col-sm-12 col-sm-offset-0  login-form">
                 <h3 class="login_content">LETS GET STARTED</h3>
                 <hr>
-
                 @if (count($errors) > 0)
                     <div class="alert alert-danger">
                         <ul>
@@ -21,7 +15,6 @@
                         </ul>
                     </div>
                 @endif
-
                 @include('partials.error_section')
                 <form id="signin_form" action="{{ route('signup_post') }}" method="post">
                     <div class="form-group_form">
@@ -82,5 +75,4 @@
         </div>
     </div>
 </section>
-
 @endsection

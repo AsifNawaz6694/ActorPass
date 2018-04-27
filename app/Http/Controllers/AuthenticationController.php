@@ -100,7 +100,7 @@ class AuthenticationController extends Controller
                 }
             
             }else{
-                $this->set_session('Invalid Username/Password', false);
+                $this->set_session('Invalid Email/Password', false);
                 return redirect()->route('login_view');             
             }
 

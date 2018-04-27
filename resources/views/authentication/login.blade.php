@@ -39,10 +39,11 @@
       </div>
 
         <div class="form-group" role="group" aria-label="...">
-          <div class="account_signin_register"><a href="{{route('register_index')}}" class="btn btn-default_signup">NO ACCOUNT? SIGN UP NOW</a>     
+          <div class="account_signin_register">
+          <button type="submit" class="btn login_now">LOG IN</button>
+            <input type="hidden" name="_token" value="{{Session::token()}}">          
+            <a href="{{route('register_index')}}" class="btn btn-default_signup">NO ACCOUNT? SIGN UP NOW</a>     
           <!--<a  href="#" class="btn btn-default_login">LOGIN NOW</a>-->
-        <input type="hidden" name="_token" value="{{Session::token()}}">          
-          <button type="submit" class="btn login_now">LOGIN</button>
         </div>
     </div>
       </form>

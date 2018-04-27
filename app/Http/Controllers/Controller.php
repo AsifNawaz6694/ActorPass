@@ -15,5 +15,5 @@ class Controller extends BaseController
     protected function set_session($msg, $status){
 	     session()->put('result', $status);
 	     session()->put('msg', $msg);
-    }    
+    }
 }

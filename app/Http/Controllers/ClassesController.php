@@ -12,6 +12,9 @@ use DB;
 use Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
+use App\Jobs\SendStudentEmails;
+
+
 class ClassesController extends Controller
 {
     public function index(){
@@ -20,22 +23,32 @@ class ClassesController extends Controller
     }
 
     public function send_emails_teachers($id){
-        $link = 'localhost/actor-pass/class_wall/' . $id;       
+
+        $link = 'http://site.startupbug.net:6888/actor-pass/v1/class_wall/' . $id;   
+
         $users = Classes::leftJoin('users','users.id','=','classes.teacher_id')
                         ->select('users.email','users.fullname')
                         ->where('classes.id','=',$id)
                         ->first();
-        Mail::send('email.send_email_teacher',['users'=>$users,'link'=> $link] , function ($message) use($users){
+       // dd($users);
+
+        $check = Mail::send('email.send_email_teacher',['users'=>$users,'link'=> $link] , function ($message) use($users){
             $message->from('asifnawaz.aimviz@gmail.com', 'Actor Pass - Enrollment Email');
             $message->to($users->email)->subject('ACTOR PASS - YOU ARE ENROLLED');
-        }); 
+        });
+
+       // dd($check);
+
         DB::table('classes')
             ->where('id', $id)
             ->update(['class_status' => 1]);
-        $this->set_session('You Have Successfully Send An Email', true);       
+
+        $this->set_session('You Have Successfully Send An Email To The Teacher', true);   
+
         return redirect()->back();
 
     }
+
     public function approve_video($id){
       
         DB::table('student_videos')
@@ -57,7 +70,7 @@ class ClassesController extends Controller
     public function all_videos(Request $request,$id){
         $args['class'] = Classes::find($id);
         $args['videos'] = StudentVideo::leftJoin('users','users.id','=','student_videos.student_id')
-                                        ->select('student_videos.id as studen_video_id','student_videos.status','users.fullname','users.email','users.verified','users.id','student_videos.video','student_videos.description')
+                                        ->select('student_videos.id as studen_video_id','student_videos.status','users.fullname','users.email','users.verified','users.id','student_videos.video')
                                         ->where('student_videos.class_id',$id)
                                         ->orderBy('student_videos.id' , 'DESC')
                                         ->get();
@@ -68,35 +81,42 @@ class ClassesController extends Controller
         $args['class'] = Classes::find($id);
         $args['students'] = ClassStudent::leftJoin('users','users.id','=','class_student.student_id')
                                         ->leftJoin('profile','profile.user_id','=','class_student.student_id')
-                                        ->select('users.fullname','users.email','users.verified','profile.d_o_b','profile.phone','profile.gender','users.id')                          
+                                        ->select('users.fullname','users.email','users.verified','profile.phone','profile.gender','users.id')                          
                                         ->where('class_id',$id)
                                         ->get();
         return view('admin.classes.view')->with($args);
     }
 
     public function create(){
-    	$args['users'] = User::all();
+    	$args['users'] = User::where('role_id',2)->get();
     	return view('admin.classes.create')->with($args);
     }
 
     public function store(Request $request){
-
-    	$store = new Classes;
-        $store->title = $request->title; 
-        $store->teacher_id = $request->teacher_id; 
-        $store->location = $request->location; 
-        $store->cost = $request->cost; 
-        $store->age = $request->age; 
-        $store->link = $request->link; 
-        $store->date = $request->date; 
-        $store->time = $request->time; 
-        $store->description = $request->description; 
-        if ($store->save()) {
-            $this->set_session('Class Created Successfully.', true);
-            return redirect()->route('classes');
+        
+        if ($request->teacher_id != '' ) {
+            $store = new Classes;
+            $store->title = $request->title; 
+            $store->teacher_id = $request->teacher_id; 
+            $store->location = $request->location; 
+            $store->cost = $request->cost; 
+            $store->age = $request->age; 
+            $store->link = $request->link; 
+            $store->date = $request->date; 
+            $store->time = $request->time; 
+           // $store->description = $request->description; 
+            if (isset($store) && $store->save()) {                
+                $this->set_session('Class Created Successfully.', true);
+                return redirect()->route('classes');
+            }else{
+                $this->set_session('Class couldnot be Created. Please try again.', false);
+                return redirect()->back();
+            }
         }else{
-            $this->set_session('Class couldnot be Created. Please try again.', false);
+            $this->set_session('Class couldnot be Created. Please Select Some Data.', false);
+            return redirect()->back();
         }
+    	
     }
 
     public function edit(Request $request, $id){
@@ -115,7 +135,7 @@ class ClassesController extends Controller
         $update_class->link = $request->link; 
         $update_class->date = $request->date; 
         $update_class->time = $request->time; 
-        $update_class->description = $request->description; 
+        //$update_class->description = $request->description; 
         if ($update_class->save()) {
             $this->set_session('Class Updated Successfully.', true);
             return redirect()->route('classes');
@@ -127,22 +147,28 @@ class ClassesController extends Controller
     public function destroy($id){
         $delete = Classes::find($id);
         $delete->delete();
-         $this->set_session('Class Deleted Successfully.', false);
+         $this->set_session('Class Deleted Successfully.', true);
         return redirect()->route('classes');
     }
     public function enroll_students_store(Request $request){         
         $users = $request->student_id;            
         $class_id = $request->class_id;
-        foreach ($users as $value) {            
+        if (isset($users)) {
+           foreach ($users as $value) {            
             $store = new ClassStudent;
-            if (ClassStudent::where('class_id', '=',$class_id)->where('student_id','=',$value)->exists()) {               
+            if (ClassStudent::where('class_id', '=',$class_id)->where('student_id','=',$value)->exists()) {
+
             }else{
                 $store->class_id = $class_id;
                 $store->student_id = $value;        
                 $store->save();
                 $this->set_session('Students Enrolled In Class Successfully.', true);
+                }
             }
+        }else{
+            $this->set_session('Please Select Students To Be Enrolled In Class Successfully.', false);
         }
+        
         return redirect()->back();
     }
 
@@ -161,19 +187,28 @@ class ClassesController extends Controller
     }
 
     public function send_emails(Request $request,$id){
-        $link = 'localhost/actor-pass/your_class/' . $id;       
+        $link = 'http://site.startupbug.net:6888/actor-pass/v1/your_class/' . $id;       
         $users = Classes::leftJoin('class_student','class_student.class_id','=','classes.id')
                         ->leftJoin('users','users.id','=','class_student.student_id')
                         ->select('class_student.student_id','users.email','users.fullname')
                         ->where('class_student.class_id','=',$id)
-                        ->get();
-        foreach($users as $user){
-            Mail::send('email.send_email',['users'=>$user,'link'=> $link] , function ($message) use($user) {
-                $message->from('asifnawaz.aimviz@gmail.com', 'Actor Pass - Enrollment Email');
-                $message->to($user->email)->subject('ACTOR PASS - YOU ARE ENROLLED');
-            });
-        }
-        $this->set_session('Emails Have Been Sent To All The Users Of This Class.', true);
+                        ->get()->toArray();
+                       // dd($users);
+        //Sending students emails               
+        //dispatch(new SendStudentEmails(array ($users, $link)));
+          dispatch(new SendStudentEmails($users,$link));
+                        //dd($users[0]);
+                        $users = $users[0];
+        //dd($users->email);
+       // foreach($users as $user){
+       //      //dd($u);
+       //      Mail::send('email.send_email',['users'=>$user,'link'=> $link] , function ($message) use($user) {
+       //          $message->from('asifnawaz.aimviz@gmail.com', 'Actor Pass - Enrollment Email');
+       //          $message->to($user->email)->subject('ACTOR PASS - YOU ARE ENROLLED');
+       //      });
+       //  }
+
+        $this->set_session('Emails Have Been Sent To All The Students Of This Class.', true);
         return redirect()->back();
     }
 }

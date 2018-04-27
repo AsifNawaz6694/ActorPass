@@ -1,7 +1,7 @@
 @extends('masterlayout')
 @section('content')
 <section class="profile">
-   <div class="container">   
+<div class="container">   
       <div class="col-md-12">
 @include('partials.error_section')
          <h3 class="profile_content">MY RECENT SHARING</h3>

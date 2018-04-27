@@ -3,8 +3,16 @@
 <section class="my_class">
    <div class="container">
     <div class="row">
-      @foreach($videos as $value)
       
+            @if(isset($videos) && count($videos) > 0)
+               <h1 class="test text-center">Teacher Name: {{App\User::getTeacherName($videos[0]->teacher_id) }}</h1>
+            @endif
+         
+            @if(isset($videos) && count($videos) > 0)
+               <h1 class="test text-center">Class name:{{$videos[0]->class_title}}</h1>
+            @endif             
+
+      @foreach($videos as $value)      
          <div class="col-md-6 col-sm-12">
             <div class="col-md-12 bg_f">
                <div class="wall_img img_top pull-left">

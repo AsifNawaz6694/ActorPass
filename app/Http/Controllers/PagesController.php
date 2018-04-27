@@ -41,15 +41,16 @@ class PagesController extends Controller
                 
                      $args['winner'] = DB::table('winners')->leftJoin('users','users.id','winners.user_id')->select('user_id as winner_id')->where('class_id',$id)->first();
                     
-                    $args['videos']= StudentVideo::leftJoin('users','users.id','=','student_videos.student_id')
+                    $args['videos'] = StudentVideo::leftJoin('users','users.id','=','student_videos.student_id')
                                                 ->leftJoin('profile','profile.user_id','=','users.id')
                                                 ->leftJoin('classes','classes.id','=','student_videos.class_id')
-                                                ->select('classes.teacher_id','student_videos.class_id','student_videos.id','users.id as user_id','profile.profile_pic','student_videos.status','student_videos.video', 'student_videos.description','student_videos.created_at','users.fullname')
+                                                ->select('classes.teacher_id','student_videos.class_id','student_videos.id','users.id as user_id','profile.profile_pic','student_videos.status','student_videos.video', 'student_videos.description','student_videos.created_at','users.fullname', 'classes.title as class_title')
                                                 ->where('student_videos.class_id','=',$id)
                                                 ->where('student_videos.status','=',1)
                                                 ->orderBy('student_videos.id','DESC')
                                                 ->get();
-                                                
+                     //dd($args);
+
                     foreach ($args['videos'] as $value) {  
                        //dd($value);
                         $args['comments'][$value->id] = Comment::join('profile', 'profile.user_id', '=', 'comments.user_id')

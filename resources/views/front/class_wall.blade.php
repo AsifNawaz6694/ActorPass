@@ -108,10 +108,10 @@
             </div>
             <div class="col-md-4">
                <div class="f_top">
-           <!--        <div class="col-md-11 col-md-offset-1 bg_f">
+                  <div class="col-md-11 col-md-offset-1 bg_f">
                      <h3 class="content_f_heading">Description: </h3>
                      <p class="f_sed">{{$value->description}}</p>
-                  </div> -->
+                  </div> 
                </div>
             </div>
          </div>

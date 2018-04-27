@@ -37,6 +37,7 @@ class PagesController extends Controller
         
         if(Auth::check()){
 
+
               if ( ( DB::table('classes')->where('id', '=', $id)->where('teacher_id','=',Auth::user()->id)->exists() )|| ( Auth::user()->role_id == '1' ) || ( DB::table('winners')->where('class_id',$id)->exists() &&  DB::table('class_student')->where('class_id',$id)->where('student id',Auth::user()->id) ) ){
                 
                      $args['winner'] = DB::table('winners')->leftJoin('users','users.id','winners.user_id')->select('user_id as winner_id')->where('class_id',$id)->first();
@@ -48,6 +49,7 @@ class PagesController extends Controller
                                                 ->where('student_videos.class_id','=',$id)
                                                 ->where('student_videos.status','=',1)
                                                 ->orderBy('student_videos.id','DESC')
+
                                                 ->get();
                      //dd($args);
 

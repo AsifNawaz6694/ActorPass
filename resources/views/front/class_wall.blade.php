@@ -138,10 +138,17 @@
             </div>
    <!--          <div class="col-md-4">
                <div class="f_top">
+<<<<<<< HEAD
+                  <div class="col-md-11 col-md-offset-1 bg_f">
+                     <h3 class="content_f_heading">Description: </h3>
+                     <p class="f_sed">{{$value->description}}</p>
+                  </div> 
+=======
                <div class="col-md-11 col-md-offset-1 bg_f">
                      <h3 class="content_f_heading">Description: </h3>
                      <p class="f_sed">{{$value->description}}</p>
                   </div>
+>>>>>>> 2842e7b089a12967659bddf8da2fb58e366e4705
                </div>
             </div> -->
          </div>

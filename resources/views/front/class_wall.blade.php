@@ -35,7 +35,7 @@
                   <img src="{{asset('public/storage/profile-pictures/'.$value->profile_pic) }}" class="img-responsive">
                </div>
                 <img src="{{asset('public/assets/images/crown-2.png') }}" class="img-responsive f_crown-2">
-               <h3 class="wall_content f_nouman">{{$value->fullname}} <b style="color: grey">  @if($value->user_id == $winner->winner_id) Winner @endif</h3>
+               <h3 class="wall_content f_nouman">{{$value->fullname}} <b style="color: grey">  @if(isset($winner->winner_id) && $value->user_id == $winner->winner_id) Winner @endif</h3>
                <p class="wall_text f_num">{{$value->created_at->diffForHumans()}} <i class="fa fa-globe" aria-hidden="true"></i></p>
                <button type="button" class="btn f_right" data-toggle="modal" data-target="#myModal-2">Basic</button>
                <video width="100%" controls>
